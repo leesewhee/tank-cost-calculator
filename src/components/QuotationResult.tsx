@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +10,7 @@ import {
   numberToKorean,
 } from "@/lib/calculations";
 import { FileText, Printer, Download, Package, Users, Layers, DollarSign } from "lucide-react";
+import { FormulaTooltip, formulaData } from "./FormulaTooltip";
 
 interface QuotationResultProps {
   result: CalculationResult;
@@ -101,14 +101,22 @@ export function QuotationResult({
             </thead>
             <tbody>
               <tr className="table-row-hover border-b">
-                <td className="p-3">RESIN (RF-1001 or EQ)</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.resin}>
+                    RESIN (RF-1001 or EQ)
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(result.materials.resin)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.resin)}</td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.materials.resin * materialPrices.resin)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">CHOPPED STRAND MAT#450</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.mat450}>
+                    CHOPPED STRAND MAT#450
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(result.materials.mat450)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.mat450)}</td>
@@ -122,21 +130,33 @@ export function QuotationResult({
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.materials.rovingCloth * materialPrices.rovingCloth)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">ROVING #2200</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.roving2200}>
+                    ROVING #2200
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(result.materials.roving2200)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.roving2200)}</td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.materials.roving2200 * materialPrices.roving2200)}</td>
               </tr>
               <tr className="table-row-hover border-b">
-                <td className="p-3">SURFACE MAT#30</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.surfaceMat}>
+                    SURFACE MAT#30
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(result.materials.surfaceMat)}</td>
                 <td className="p-3 text-right">M²</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.surfaceMat)}</td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.materials.surfaceMat * materialPrices.surfaceMat)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">CONSUMABLE (소모품)</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.consumable}>
+                    CONSUMABLE (소모품)
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right">1</td>
                 <td className="p-3 text-right">LOT</td>
                 <td className="p-3 text-right">-</td>
@@ -172,28 +192,44 @@ export function QuotationResult({
             </thead>
             <tbody>
               <tr className="table-row-hover border-b">
-                <td className="p-3">WINDING LABOR</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.windingLabor}>
+                    WINDING LABOR
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{result.labor.winding}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.winding)}</td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.labor.winding * laborPrices.winding)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">ASSEMBLY LABOR</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.assemblyLabor}>
+                    ASSEMBLY LABOR
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{result.labor.assembly}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.assembly)}</td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.labor.assembly * laborPrices.assembly)}</td>
               </tr>
               <tr className="table-row-hover border-b">
-                <td className="p-3">CHEMICAL LABOR</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.chemicalLabor}>
+                    CHEMICAL LABOR
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{result.labor.chemical}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.chemical)}</td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.labor.chemical * laborPrices.chemical)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">SPECIAL LABOR</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.specialLabor}>
+                    SPECIAL LABOR
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{result.labor.special}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.special)}</td>
@@ -223,23 +259,33 @@ export function QuotationResult({
               <table className="w-full text-sm">
                 <tbody>
                   <tr className="border-b">
-                    <td className="py-2">Body</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.bodyArea}>Body</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{result.areas.body}</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-2">Bottom</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.bottomArea}>Bottom</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{result.areas.bottom}</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-2">Head</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.headArea}>Head</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{result.areas.head}</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-2">Joint (S.W)</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.jointSW}>Joint (S.W)</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{result.areas.jointSW}</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-2">Joint (C.B)</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.jointCB}>Joint (C.B)</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{result.areas.jointCB}</td>
                   </tr>
                   <tr className="font-semibold bg-secondary">
@@ -250,15 +296,21 @@ export function QuotationResult({
               </table>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-primary">무게 (kg)</h4>
+              <h4 className="font-semibold mb-3 text-primary">
+                <FormulaTooltip info={formulaData.weight}>무게 (kg)</FormulaTooltip>
+              </h4>
               <table className="w-full text-sm">
                 <tbody>
                   <tr className="border-b">
-                    <td className="py-2">내식층 (C.B) Total</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.cbRatio}>내식층 (C.B) Total</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{formatCurrency(result.weights.cbTotal)}</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-2">구조층 (S.W) Total</td>
+                    <td className="py-2">
+                      <FormulaTooltip info={formulaData.swBodyRatio}>구조층 (S.W) Total</FormulaTooltip>
+                    </td>
                     <td className="py-2 text-right tabular-nums">{formatCurrency(result.weights.swTotal)}</td>
                   </tr>
                   <tr className="font-semibold bg-secondary">
@@ -288,15 +340,27 @@ export function QuotationResult({
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.costs.subtotal)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">3) INSPECTION & TEST</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.inspection}>
+                    3) INSPECTION & TEST
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.costs.inspection)}</td>
               </tr>
               <tr className="table-row-hover border-b">
-                <td className="p-3">4) TRANSPORTATION</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.transportation}>
+                    4) TRANSPORTATION
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.costs.transportation)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
-                <td className="p-3">5) 일반관리비 및 이익</td>
+                <td className="p-3">
+                  <FormulaTooltip info={formulaData.profit}>
+                    5) 일반관리비 및 이익
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.costs.profit)}</td>
               </tr>
               <tr className="bg-primary text-primary-foreground font-bold text-lg">
