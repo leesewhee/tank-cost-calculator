@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import {
   Popover,
   PopoverContent,
@@ -22,21 +22,23 @@ interface FormulaTooltipProps {
   className?: string;
 }
 
-export function FormulaTooltip({ info, children, className = "" }: FormulaTooltipProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export const FormulaTooltip = forwardRef<HTMLSpanElement, FormulaTooltipProps>(
+  ({ info, children, className = "" }, ref) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
-      <PopoverTrigger asChild>
-        <span 
-          className={`cursor-help inline-flex items-center gap-1 hover:text-primary transition-colors border-b border-dashed border-muted-foreground/50 hover:border-primary ${className}`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {children}
-          <Info className="w-3 h-3 opacity-50 print:hidden" />
-        </span>
-      </PopoverTrigger>
-      <PopoverContent className="w-80 p-0 print:hidden" align="start">
+    return (
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
+        <PopoverTrigger asChild>
+          <span 
+            ref={ref}
+            className={`cursor-help inline-flex items-center gap-1 hover:text-primary transition-colors border-b border-dashed border-muted-foreground/50 hover:border-primary ${className}`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {children}
+            <Info className="w-3 h-3 opacity-50 print:hidden" />
+          </span>
+        </PopoverTrigger>
+        <PopoverContent className="w-80 p-0 print:hidden z-50 bg-popover" align="start">
         <div className="bg-primary/10 px-4 py-2 border-b">
           <h4 className="font-semibold text-sm flex items-center gap-2">
             <Calculator className="w-4 h-4" />
@@ -84,7 +86,9 @@ export function FormulaTooltip({ info, children, className = "" }: FormulaToolti
       </PopoverContent>
     </Popover>
   );
-}
+});
+
+FormulaTooltip.displayName = "FormulaTooltip";
 
 // 계산식 정보 데이터
 export const formulaData = {

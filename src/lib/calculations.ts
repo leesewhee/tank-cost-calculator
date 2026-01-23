@@ -5,12 +5,21 @@ export interface TankDimensions {
   height: number;   // 높이 (m)
 }
 
+// 사용자 정의 항목
+export interface CustomItem {
+  id: string;
+  name: string;
+  value: number;
+  unit?: string;
+}
+
 export interface MaterialPrices {
   resin: number;           // 수지 단가 (원/kg)
   mat450: number;          // 매트#450 단가 (원/kg)
   rovingCloth: number;     // 로빙 클로스 단가 (원/kg)
   roving2200: number;      // 로빙 #2200 단가 (원/kg)
   surfaceMat: number;      // 서피스 매트 단가 (원/m2)
+  custom?: CustomItem[];   // 사용자 정의 재료
 }
 
 export interface LaborPrices {
@@ -18,6 +27,7 @@ export interface LaborPrices {
   assembly: number;        // 조립 인건비 (원/M/D)
   chemical: number;        // 케미칼 인건비 (원/M/D)
   special: number;         // 특수 인건비 (원/M/D)
+  custom?: CustomItem[];   // 사용자 정의 인건비
 }
 
 export interface FixedCosts {
@@ -29,6 +39,7 @@ export interface FixedCosts {
   gasket: number;          // 가스켓
   boltNut: number;         // B/N/2W
   ladder: number;          // 사다리 및 핸드레일
+  custom?: CustomItem[];   // 사용자 정의 고정비용
 }
 
 export interface SafetyMargins {
@@ -36,6 +47,7 @@ export interface SafetyMargins {
   transportation: number;  // 운송비
   profitMargin: number;    // 일반관리비 및 이익률 (%)
   safetyFactor: number;    // 안전율 (%)
+  custom?: CustomItem[];   // 사용자 정의 마진/안전
 }
 
 export interface ThicknessConfig {
@@ -48,6 +60,7 @@ export interface ThicknessConfig {
   jointCB: number;         // 이음부(c.b) 두께 (mm)
   ll: number;              // L/L 두께 (mm)
   hoop: number;            // 후프 두께 (mm)
+  custom?: CustomItem[];   // 사용자 정의 두께
 }
 
 export interface CalculationResult {
