@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
 import {
   TankDimensions,
   MaterialPrices,
@@ -11,11 +12,13 @@ import {
   FixedCosts,
   SafetyMargins,
   ThicknessConfig,
+  CustomItem,
   defaultMaterialPrices,
   defaultLaborPrices,
   getDefaultsByDiameter,
 } from "@/lib/calculations";
 import { Calculator, Settings, Cylinder, Ruler } from "lucide-react";
+import { CustomItemInput } from "./CustomItemInput";
 
 interface TankInputFormProps {
   onCalculate: (
@@ -177,6 +180,16 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                   />
                 </div>
               </div>
+              <Separator className="my-4" />
+              <div>
+                <Label className="text-sm font-medium text-muted-foreground mb-2 block">추가 재료</Label>
+                <CustomItemInput
+                  items={materialPrices.custom || []}
+                  onItemsChange={(items) => setMaterialPrices({...materialPrices, custom: items})}
+                  unitLabel="원/kg"
+                  valueLabel="단가"
+                />
+              </div>
             </TabsContent>
             
             <TabsContent value="labor" className="space-y-4">
@@ -217,6 +230,16 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                     className="input-field number-input"
                   />
                 </div>
+              </div>
+              <Separator className="my-4" />
+              <div>
+                <Label className="text-sm font-medium text-muted-foreground mb-2 block">추가 인건비</Label>
+                <CustomItemInput
+                  items={laborPrices.custom || []}
+                  onItemsChange={(items) => setLaborPrices({...laborPrices, custom: items})}
+                  unitLabel="원/M.D"
+                  valueLabel="단가"
+                />
               </div>
             </TabsContent>
             
@@ -294,6 +317,16 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                     className="input-field number-input"
                   />
                 </div>
+              </div>
+              <Separator className="my-4" />
+              <div>
+                <Label className="text-sm font-medium text-muted-foreground mb-2 block">추가 고정비용</Label>
+                <CustomItemInput
+                  items={fixedCosts.custom || []}
+                  onItemsChange={(items) => setFixedCosts({...fixedCosts, custom: items})}
+                  unitLabel="원"
+                  valueLabel="금액"
+                />
               </div>
             </TabsContent>
             
@@ -381,6 +414,16 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                   />
                 </div>
               </div>
+              <Separator className="my-4" />
+              <div>
+                <Label className="text-sm font-medium text-muted-foreground mb-2 block">추가 두께 항목</Label>
+                <CustomItemInput
+                  items={thickness.custom || []}
+                  onItemsChange={(items) => setThickness({...thickness, custom: items})}
+                  unitLabel="mm"
+                  valueLabel="두께"
+                />
+              </div>
             </TabsContent>
             
             <TabsContent value="safety" className="space-y-4">
@@ -421,6 +464,16 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                     className="input-field number-input"
                   />
                 </div>
+              </div>
+              <Separator className="my-4" />
+              <div>
+                <Label className="text-sm font-medium text-muted-foreground mb-2 block">추가 마진/안전 항목</Label>
+                <CustomItemInput
+                  items={safetyMargins.custom || []}
+                  onItemsChange={(items) => setSafetyMargins({...safetyMargins, custom: items})}
+                  unitLabel="원"
+                  valueLabel="금액"
+                />
               </div>
             </TabsContent>
           </Tabs>
