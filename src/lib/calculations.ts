@@ -251,16 +251,16 @@ export function calculateTank(
   // 용량 계산 (원통 부피)
   const capacity = PI * Math.pow(diameter / 2, 2) * height;
   
-  // 면적 계산
-  const bodyArea = PI * diameter * height;
-  const bottomArea = PI * Math.pow(diameter / 2, 2);
-  const headArea = bottomArea;
+  // 면적 계산 (π ≈ 3.14 적용)
+  const bodyArea = PI * diameter * height;                    // Body: π × D × H
+  const bottomArea = PI * Math.pow(diameter / 2, 2);          // BTM: π × (D/2)²
+  const headArea = bottomArea * 1.1;                          // Head: BTM × 1.1 (접시형 헤드 곡률 반영)
   
-  // 이음부 면적 (경험식 기반)
-  const jointSWArea = diameter * 1.88; // 직경에 비례
-  const jointCBArea = diameter * 1.57;
-  const llArea = diameter * 0.69;
-  const hoopArea = diameter * 1.5;
+  // 이음부 및 보강 면적
+  const jointSWArea = 0.6 * PI * diameter;                    // Joint(S.W): 0.6 × π × D (유효 폭 0.6m)
+  const jointCBArea = 0.5 * PI * diameter;                    // Joint(C.B): 0.5 × π × D (유효 폭 0.5m)
+  const hoopArea = 0.2 * PI * diameter;                       // Hoop: 0.2 × π × D
+  const llArea = 1.44;                                        // L/L: 고정값 1.44 m²
   
   const totalArea = bodyArea + bottomArea + headArea + jointSWArea + jointCBArea + llArea + hoopArea;
   
@@ -286,24 +286,47 @@ export function calculateTank(
   
   const totalWeight = cbTotal + swTotal;
   
-  // 재료 수량 계산 (회귀식 기반)
-  // 수지량 = 전체 무게 * 0.7 (수지 함량 약 70%)
-  const resinWeight = totalWeight * 0.7;
+  // ========================================
+  // 자재 소요량 분해 (Material Breakdown)
+  // ========================================
   
-  // 유리섬유량 = 전체 무게 * 0.3
-  const gfWeight = totalWeight * 0.3;
+  // A. 내식층 (C.B Layer) - 모든 부위 공통: 수지 70%, Glass #450 30%
+  const cbResin = cbTotal * 0.7;
+  const cbMat450 = cbTotal * 0.3;
   
-  // 매트#450 = 전체 유리섬유의 약 43%
-  const mat450Weight = Math.round(gfWeight * 0.43);
+  // B. 구조층 (S.W Layer) - 부위별 상이
+  // Body: 수지 40%, Roving 60%
+  const swBodyResin = swBody * 0.4;
+  const swBodyRoving = swBody * 0.6;
   
-  // 로빙#2200 = 전체 유리섬유의 약 50%
-  const roving2200Weight = Math.round(gfWeight * 0.50);
+  // BTM/Head: 수지 70%, Glass #450 30%
+  const swBottomResin = swBottom * 0.7;
+  const swBottomMat450 = swBottom * 0.3;
+  const swHeadResin = swHead * 0.7;
+  const swHeadMat450 = swHead * 0.3;
   
-  // 로빙 클로스 = 용량 기반 (큰 탱크에서만 사용)
+  // Joint, L/L, Hoop: 수지 70%, Glass #450 30%
+  const swJointResin = swJoint * 0.7;
+  const swJointMat450 = swJoint * 0.3;
+  const swLLResin = swLL * 0.7;
+  const swLLMat450 = swLL * 0.3;
+  const swHoopResin = swHoop * 0.7;
+  const swHoopMat450 = swHoop * 0.3;
+  
+  // 총 수지량
+  const resinWeight = cbResin + swBodyResin + swBottomResin + swHeadResin + swJointResin + swLLResin + swHoopResin;
+  
+  // 총 매트#450 (내식층 + 구조층 BTM/Head/Joint/LL/Hoop)
+  const mat450Weight = Math.round(cbMat450 + swBottomMat450 + swHeadMat450 + swJointMat450 + swLLMat450 + swHoopMat450);
+  
+  // 로빙#2200 = Body 구조층의 유리섬유
+  const roving2200Weight = Math.round(swBodyRoving);
+  
+  // 로빙 클로스 = 용량 기반 (보강용)
   const rovingClothWeight = capacity > 10 ? Math.round(capacity * 2.08) : Math.round(capacity * 1.7);
   
-  // 서피스 매트 = 전체 면적 * 1.2 (여유량)
-  const surfaceMatArea = Math.round(totalArea * 1.2);
+  // 서피스 매트 #30 = 전체 면적 × 2.2 (겹침 및 여유율 반영)
+  const surfaceMatArea = Math.round(totalArea * 2.2);
   
   // 소모품비 계산 (재료비의 약 6.5%)
   const materialSubtotal = 
