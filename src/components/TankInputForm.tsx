@@ -273,24 +273,6 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>SQ 파이프 단가 (원/m)</Label>
-                  <Input
-                    type="text"
-                    value={formatNumber(fixedCosts.sqPipe)}
-                    onChange={(e) => setFixedCosts({...fixedCosts, sqPipe: parseNumber(e.target.value)})}
-                    className="input-field number-input"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>SQ 파이프 길이 (m)</Label>
-                  <Input
-                    type="number"
-                    value={fixedCosts.sqPipeLength}
-                    onChange={(e) => setFixedCosts({...fixedCosts, sqPipeLength: parseFloat(e.target.value) || 0})}
-                    className="input-field number-input"
-                  />
-                </div>
-                <div className="space-y-2">
                   <Label>가스켓 (원)</Label>
                   <Input
                     type="text"
