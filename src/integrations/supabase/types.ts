@@ -14,7 +14,71 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      drawings: {
+        Row: {
+          created_at: string
+          drawing_name: string
+          drawing_number: string
+          id: string
+          project_id: string
+          revision: string
+          revision_date: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          drawing_name: string
+          drawing_number: string
+          id?: string
+          project_id: string
+          revision?: string
+          revision_date: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          drawing_name?: string
+          drawing_number?: string
+          id?: string
+          project_id?: string
+          revision?: string
+          revision_date?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "drawings_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          created_at: string
+          created_date: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_date: string
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_date?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

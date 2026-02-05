@@ -1,4 +1,4 @@
- import { useState } from "react";
+import { useState, useEffect } from "react";
  import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
  import { Button } from "@/components/ui/button";
  import { Input } from "@/components/ui/input";
@@ -27,9 +27,13 @@
  } from "@/components/ui/select";
  import { ArrowLeft, FileText, Plus, Pencil, Trash2 } from "lucide-react";
  import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
  
  interface Drawing {
    id: string;
+  projectId: string;
+  projectName: string;
    drawingNumber: string;
    drawingName: string;
    revision: string;
@@ -40,50 +44,20 @@
    id: string;
    name: string;
    createdDate: string;
-   drawings: Drawing[];
  }
- 
- const initialProjects: Project[] = [
-   {
-     id: "1",
-     name: "OO 아파트 건설 공사",
-     createdDate: "2026.02.05",
-     drawings: [
-       {
-         id: "d1",
-         drawingNumber: "DWG-001",
-         drawingName: "1층 평면도",
-         revision: "Rev. 3",
-         revisionDate: "2026.01.20",
-       },
-       {
-         id: "d2",
-         drawingNumber: "DWG-002",
-         drawingName: "2층 평면도",
-         revision: "Rev. 1",
-         revisionDate: "2025.12.10",
-       },
-       {
-         id: "d3",
-         drawingNumber: "DWG-003",
-         drawingName: "전기 배선도",
-         revision: "Rev. 0",
-         revisionDate: "2025.11.01",
-       },
-     ],
-   },
- ];
  
  const DrawingRevision = () => {
    const navigate = useNavigate();
-   const [projects, setProjects] = useState<Project[]>(initialProjects);
-   const [selectedProjectId, setSelectedProjectId] = useState<string>(projects[0]?.id || "");
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [drawings, setDrawings] = useState<Drawing[]>([]);
+  const [selectedProjectId, setSelectedProjectId] = useState<string>("");
    const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
    const [isDrawingDialogOpen, setIsDrawingDialogOpen] = useState(false);
    const [editingDrawing, setEditingDrawing] = useState<Drawing | null>(null);
+  const [loading, setLoading] = useState(true);
    
    const [newProjectName, setNewProjectName] = useState("");
-   const [newDrawing, setNewDrawing] = useState<Omit<Drawing, "id">>({
+  const [newDrawing, setNewDrawing] = useState({
      drawingNumber: "",
      drawingName: "",
      revision: "Rev. 0",
@@ -91,37 +65,122 @@
    });
  
    const selectedProject = projects.find((p) => p.id === selectedProjectId);
+  const projectDrawings = drawings.filter((d) => d.projectId === selectedProjectId);
  
-   const handleAddProject = () => {
+  useEffect(() => {
+    fetchProjects();
+    fetchDrawings();
+
+    const projectsChannel = supabase
+      .channel('projects-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'projects' }, () => {
+        fetchProjects();
+      })
+      .subscribe();
+
+    const drawingsChannel = supabase
+      .channel('drawings-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'drawings' }, () => {
+        fetchDrawings();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(projectsChannel);
+      supabase.removeChannel(drawingsChannel);
+    };
+  }, []);
+
+  const fetchProjects = async () => {
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      toast.error('프로젝트 로드 실패');
+      return;
+    }
+
+    const formattedProjects: Project[] = (data || []).map((p) => ({
+      id: p.id,
+      name: p.name,
+      createdDate: p.created_date,
+    }));
+
+    setProjects(formattedProjects);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (projects.length > 0 && !selectedProjectId) {
+      setSelectedProjectId(projects[0].id);
+    }
+  }, [projects, selectedProjectId]);
+
+  const fetchDrawings = async () => {
+    const { data, error } = await supabase
+      .from('drawings')
+      .select('*, projects(name)')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      toast.error('도면 로드 실패');
+      return;
+    }
+
+    const formattedDrawings: Drawing[] = (data || []).map((d) => ({
+      id: d.id,
+      projectId: d.project_id,
+      projectName: (d.projects as { name: string })?.name || '',
+      drawingNumber: d.drawing_number,
+      drawingName: d.drawing_name,
+      revision: d.revision,
+      revisionDate: d.revision_date,
+    }));
+
+    setDrawings(formattedDrawings);
+  };
+
+  const handleAddProject = async () => {
      if (!newProjectName.trim()) return;
-     
-     const newProject: Project = {
-       id: Date.now().toString(),
-       name: newProjectName,
-       createdDate: new Date().toISOString().split("T")[0].replace(/-/g, "."),
-       drawings: [],
-     };
-     
-     setProjects([...projects, newProject]);
-     setSelectedProjectId(newProject.id);
+
+    const { data, error } = await supabase
+      .from('projects')
+      .insert({
+        name: newProjectName,
+        created_date: new Date().toISOString().split("T")[0].replace(/-/g, "."),
+      })
+      .select()
+      .single();
+
+    if (error) {
+      toast.error('프로젝트 추가 실패');
+      return;
+    }
+
+    setSelectedProjectId(data.id);
      setNewProjectName("");
      setIsProjectDialogOpen(false);
+    toast.success('프로젝트가 추가되었습니다');
    };
  
-   const handleAddDrawing = () => {
+  const handleAddDrawing = async () => {
      if (!selectedProjectId || !newDrawing.drawingNumber.trim()) return;
-     
-     const drawing: Drawing = {
-       ...newDrawing,
-       id: Date.now().toString(),
-     };
-     
-     setProjects(projects.map((p) => 
-       p.id === selectedProjectId 
-         ? { ...p, drawings: [...p.drawings, drawing] }
-         : p
-     ));
-     
+
+    const { error } = await supabase.from('drawings').insert({
+      project_id: selectedProjectId,
+      drawing_number: newDrawing.drawingNumber,
+      drawing_name: newDrawing.drawingName,
+      revision: newDrawing.revision,
+      revision_date: newDrawing.revisionDate,
+    });
+
+    if (error) {
+      toast.error('도면 추가 실패');
+      return;
+    }
+
      setNewDrawing({
        drawingNumber: "",
        drawingName: "",
@@ -129,40 +188,65 @@
        revisionDate: new Date().toISOString().split("T")[0].replace(/-/g, "."),
      });
      setIsDrawingDialogOpen(false);
+    toast.success('도면이 추가되었습니다');
    };
  
-   const handleUpdateDrawing = () => {
+  const handleUpdateDrawing = async () => {
      if (!editingDrawing) return;
-     
-     setProjects(projects.map((p) => 
-       p.id === selectedProjectId 
-         ? { 
-             ...p, 
-             drawings: p.drawings.map((d) => 
-               d.id === editingDrawing.id ? editingDrawing : d
-             )
-           }
-         : p
-     ));
-     
+
+    const { error } = await supabase
+      .from('drawings')
+      .update({
+        drawing_number: editingDrawing.drawingNumber,
+        drawing_name: editingDrawing.drawingName,
+        revision: editingDrawing.revision,
+        revision_date: editingDrawing.revisionDate,
+      })
+      .eq('id', editingDrawing.id);
+
+    if (error) {
+      toast.error('도면 수정 실패');
+      return;
+    }
+
      setEditingDrawing(null);
+    toast.success('도면이 수정되었습니다');
    };
  
-   const handleDeleteDrawing = (drawingId: string) => {
-     setProjects(projects.map((p) => 
-       p.id === selectedProjectId 
-         ? { ...p, drawings: p.drawings.filter((d) => d.id !== drawingId) }
-         : p
-     ));
+  const handleDeleteDrawing = async (drawingId: string) => {
+    const { error } = await supabase.from('drawings').delete().eq('id', drawingId);
+
+    if (error) {
+      toast.error('도면 삭제 실패');
+      return;
+    }
+
+    toast.success('도면이 삭제되었습니다');
    };
  
-   const handleDeleteProject = () => {
+  const handleDeleteProject = async () => {
      if (!selectedProjectId) return;
-     const newProjects = projects.filter((p) => p.id !== selectedProjectId);
-     setProjects(newProjects);
-     setSelectedProjectId(newProjects[0]?.id || "");
+
+    const { error } = await supabase.from('projects').delete().eq('id', selectedProjectId);
+
+    if (error) {
+      toast.error('프로젝트 삭제 실패');
+      return;
+    }
+
+    const remaining = projects.filter((p) => p.id !== selectedProjectId);
+    setSelectedProjectId(remaining[0]?.id || "");
+    toast.success('프로젝트가 삭제되었습니다');
    };
  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-muted-foreground">로딩 중...</p>
+      </div>
+    );
+  }
+
    return (
      <div className="min-h-screen bg-background">
        {/* 헤더 */}
@@ -325,6 +409,7 @@
                    <TableHeader>
                      <TableRow>
                        <TableHead>도면 번호</TableHead>
+                        <TableHead>프로젝트명</TableHead>
                        <TableHead>도면명</TableHead>
                        <TableHead>최신 Rev.</TableHead>
                        <TableHead>개정 일자</TableHead>
@@ -332,16 +417,17 @@
                      </TableRow>
                    </TableHeader>
                    <TableBody>
-                     {selectedProject.drawings.length === 0 ? (
+                      {projectDrawings.length === 0 ? (
                        <TableRow>
-                         <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
+                          <TableCell colSpan={6} className="text-center text-muted-foreground py-8">
                            등록된 도면이 없습니다. 도면을 추가해주세요.
                          </TableCell>
                        </TableRow>
                      ) : (
-                       selectedProject.drawings.map((drawing) => (
+                        projectDrawings.map((drawing) => (
                          <TableRow key={drawing.id}>
                            <TableCell className="font-medium">{drawing.drawingNumber}</TableCell>
+                            <TableCell className="text-muted-foreground">{drawing.projectName}</TableCell>
                            <TableCell>{drawing.drawingName}</TableCell>
                            <TableCell>
                              <span className="bg-primary/10 text-primary px-2 py-1 rounded text-sm font-medium">
