@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TankInputForm } from "@/components/TankInputForm";
 import { QuotationResult } from "@/components/QuotationResult";
 import {
@@ -13,13 +14,15 @@ import {
   defaultMaterialPrices,
   defaultLaborPrices,
 } from "@/lib/calculations";
-import { Cylinder, FileSpreadsheet } from "lucide-react";
+import { Cylinder, FileSpreadsheet, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [dimensions, setDimensions] = useState<TankDimensions | null>(null);
   const [materialPrices, setMaterialPrices] = useState<MaterialPrices>(defaultMaterialPrices);
   const [laborPrices, setLaborPrices] = useState<LaborPrices>(defaultLaborPrices);
+  const navigate = useNavigate();
   
   const handleCalculate = (
     dims: TankDimensions,
@@ -51,6 +54,14 @@ const Index = () => {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => navigate("/")}
+                className="text-sidebar-foreground hover:bg-sidebar-accent"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </Button>
               <div className="bg-sidebar-primary p-2 rounded-lg">
                 <Cylinder className="w-8 h-8 text-sidebar-primary-foreground" />
               </div>
