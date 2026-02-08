@@ -181,11 +181,7 @@ import { toast } from "sonner";
       return;
     }
 
-    // 도면번호만 초기화하고 나머지는 유지 (다음 입력 시 수정 가능하도록)
-    setNewDrawing((prev) => ({
-      ...prev,
-      drawingNumber: "",
-    }));
+    // 모든 입력값 유지 (다음 입력 시 수정 가능하도록)
     setIsDrawingDialogOpen(false);
     toast.success('도면이 추가되었습니다');
    };
