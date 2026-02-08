@@ -6,17 +6,21 @@ import {
   TankDimensions,
   MaterialPrices,
   LaborPrices,
+  ThicknessConfig,
   formatCurrency,
   numberToKorean,
+  defaultThickness,
 } from "@/lib/calculations";
 import { FileText, Printer, Download, Package, Users, Layers, DollarSign } from "lucide-react";
 import { FormulaTooltip, formulaData } from "./FormulaTooltip";
+import { CalculationBreakdown } from "./CalculationBreakdown";
 
 interface QuotationResultProps {
   result: CalculationResult;
   dimensions: TankDimensions;
   materialPrices: MaterialPrices;
   laborPrices: LaborPrices;
+  thickness?: ThicknessConfig;
   tankName?: string;
 }
 
@@ -25,6 +29,7 @@ export function QuotationResult({
   dimensions,
   materialPrices,
   laborPrices,
+  thickness = defaultThickness,
   tankName = "FRP TANK",
 }: QuotationResultProps) {
   const today = new Date();
@@ -371,6 +376,13 @@ export function QuotationResult({
           </table>
         </CardContent>
       </Card>
+      
+      {/* 상세 계산 근거 */}
+      <CalculationBreakdown
+        result={result}
+        dimensions={dimensions}
+        thickness={thickness}
+      />
       
       {/* 프린트 버튼 */}
       <div className="flex gap-4 print:hidden">

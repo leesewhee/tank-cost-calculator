@@ -13,6 +13,7 @@ import {
   calculateTank,
   defaultMaterialPrices,
   defaultLaborPrices,
+  defaultThickness,
 } from "@/lib/calculations";
 import { Cylinder, FileSpreadsheet, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ const Index = () => {
   const [dimensions, setDimensions] = useState<TankDimensions | null>(null);
   const [materialPrices, setMaterialPrices] = useState<MaterialPrices>(defaultMaterialPrices);
   const [laborPrices, setLaborPrices] = useState<LaborPrices>(defaultLaborPrices);
+  const [thickness, setThickness] = useState<ThicknessConfig>(defaultThickness);
   const navigate = useNavigate();
   
   const handleCalculate = (
@@ -30,7 +32,7 @@ const Index = () => {
     labPrices: LaborPrices,
     fixedCosts: FixedCosts,
     safetyMargins: SafetyMargins,
-    thickness: ThicknessConfig
+    thicknessConfig: ThicknessConfig
   ) => {
     const calculationResult = calculateTank(
       dims,
@@ -38,13 +40,14 @@ const Index = () => {
       labPrices,
       fixedCosts,
       safetyMargins,
-      thickness
+      thicknessConfig
     );
     
     setResult(calculationResult);
     setDimensions(dims);
     setMaterialPrices(matPrices);
     setLaborPrices(labPrices);
+    setThickness(thicknessConfig);
   };
   
   return (
@@ -96,6 +99,7 @@ const Index = () => {
                 dimensions={dimensions}
                 materialPrices={materialPrices}
                 laborPrices={laborPrices}
+                thickness={thickness}
               />
             ) : (
               <div className="section-card flex flex-col items-center justify-center min-h-[400px] text-center">
