@@ -181,13 +181,12 @@ import { toast } from "sonner";
       return;
     }
 
-     setNewDrawing({
-       drawingNumber: "",
-       drawingName: "",
-       revision: "Rev. 0",
-       revisionDate: new Date().toISOString().split("T")[0].replace(/-/g, "."),
-     });
-     setIsDrawingDialogOpen(false);
+    // 도면번호만 초기화하고 나머지는 유지 (다음 입력 시 수정 가능하도록)
+    setNewDrawing((prev) => ({
+      ...prev,
+      drawingNumber: "",
+    }));
+    setIsDrawingDialogOpen(false);
     toast.success('도면이 추가되었습니다');
    };
  
