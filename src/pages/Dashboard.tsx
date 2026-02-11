@@ -1,5 +1,5 @@
  import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
- import { Cylinder, FileText, Settings } from "lucide-react";
+ import { Cylinder, FileText, Settings, Shield } from "lucide-react";
  import { useNavigate } from "react-router-dom";
  
  const programs = [
@@ -10,14 +10,21 @@
      icon: Cylinder,
      path: "/tank-quotation",
    },
-   {
-     id: "drawing-revision",
-     title: "도면 리비전 관리",
-     description: "프로젝트별 도면 버전 관리",
-     icon: FileText,
-     path: "/drawing-revision",
-   },
- ];
+  {
+    id: "drawing-revision",
+    title: "도면 리비전 관리",
+    description: "프로젝트별 도면 버전 관리",
+    icon: FileText,
+    path: "/drawing-revision",
+  },
+  {
+    id: "ladder-handrail",
+    title: "사다리 · 핸드레일 제작 기준",
+    description: "KOSHA GUIDE 기반 안전 기준 정리",
+    icon: Shield,
+    path: "/ladder-handrail",
+  },
+];
  
  const Dashboard = () => {
    const navigate = useNavigate();

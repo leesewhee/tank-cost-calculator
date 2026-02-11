@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import TankQuotation from "./pages/Index";
 import DrawingRevision from "./pages/DrawingRevision";
+import LadderHandrailStandard from "./pages/LadderHandrailStandard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Dashboard />} />
           <Route path="/tank-quotation" element={<TankQuotation />} />
           <Route path="/drawing-revision" element={<DrawingRevision />} />
+          <Route path="/ladder-handrail" element={<LadderHandrailStandard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
