@@ -55,6 +55,136 @@ export type Database = {
           },
         ]
       }
+      ncr_inspection_items: {
+        Row: {
+          created_at: string
+          drawing_number: string
+          id: string
+          issue_count: string
+          item_no: number
+          item_remarks: string
+          report_id: string
+        }
+        Insert: {
+          created_at?: string
+          drawing_number?: string
+          id?: string
+          issue_count?: string
+          item_no?: number
+          item_remarks?: string
+          report_id: string
+        }
+        Update: {
+          created_at?: string
+          drawing_number?: string
+          id?: string
+          issue_count?: string
+          item_no?: number
+          item_remarks?: string
+          report_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ncr_inspection_items_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "ncr_reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ncr_reports: {
+        Row: {
+          action_department: string
+          action_discard: boolean
+          action_modify: boolean
+          action_return: boolean
+          action_rework: boolean
+          action_sort: boolean
+          actions: string
+          approved_by: string
+          construction_name: string
+          construction_no: string
+          created_at: string
+          equipment_name: string
+          final_result: string
+          id: string
+          inspection_date: string
+          inspection_location: string
+          inspector: string
+          issues: string
+          processing_period: string
+          project_id: string
+          reinspection_result: string
+          remarks: string
+          reviewed_by: string
+          updated_at: string
+          written_by: string
+        }
+        Insert: {
+          action_department?: string
+          action_discard?: boolean
+          action_modify?: boolean
+          action_return?: boolean
+          action_rework?: boolean
+          action_sort?: boolean
+          actions?: string
+          approved_by?: string
+          construction_name?: string
+          construction_no?: string
+          created_at?: string
+          equipment_name?: string
+          final_result?: string
+          id?: string
+          inspection_date?: string
+          inspection_location?: string
+          inspector?: string
+          issues?: string
+          processing_period?: string
+          project_id: string
+          reinspection_result?: string
+          remarks?: string
+          reviewed_by?: string
+          updated_at?: string
+          written_by?: string
+        }
+        Update: {
+          action_department?: string
+          action_discard?: boolean
+          action_modify?: boolean
+          action_return?: boolean
+          action_rework?: boolean
+          action_sort?: boolean
+          actions?: string
+          approved_by?: string
+          construction_name?: string
+          construction_no?: string
+          created_at?: string
+          equipment_name?: string
+          final_result?: string
+          id?: string
+          inspection_date?: string
+          inspection_location?: string
+          inspector?: string
+          issues?: string
+          processing_period?: string
+          project_id?: string
+          reinspection_result?: string
+          remarks?: string
+          reviewed_by?: string
+          updated_at?: string
+          written_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ncr_reports_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           created_at: string
