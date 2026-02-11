@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import TankQuotation from "./pages/Index";
 import DrawingRevision from "./pages/DrawingRevision";
 import LadderHandrailStandard from "./pages/LadderHandrailStandard";
+import NCRReport from "./pages/NCRReport";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/tank-quotation" element={<TankQuotation />} />
           <Route path="/drawing-revision" element={<DrawingRevision />} />
           <Route path="/ladder-handrail" element={<LadderHandrailStandard />} />
+          <Route path="/ncr-report" element={<NCRReport />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
