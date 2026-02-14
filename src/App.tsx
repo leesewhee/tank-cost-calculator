@@ -9,6 +9,13 @@ import DrawingRevision from "./pages/DrawingRevision";
 import LadderHandrailStandard from "./pages/LadderHandrailStandard";
 import NCRReport from "./pages/NCRReport";
 import NotFound from "./pages/NotFound";
+import BoltReferenceTable from "./pages/BoltReferenceTable";
+import {
+  BoltCalculatorPage,
+  FRPCalculatorPage,
+  WeightCalculatorPage,
+  HandrailCalculatorPage,
+} from "./pages/EngineeringTools";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +31,11 @@ const App = () => (
           <Route path="/drawing-revision" element={<DrawingRevision />} />
           <Route path="/ladder-handrail" element={<LadderHandrailStandard />} />
           <Route path="/ncr-report" element={<NCRReport />} />
+          <Route path="/bolt-calculator" element={<BoltCalculatorPage />} />
+          <Route path="/bolt-reference" element={<BoltReferenceTable />} />
+          <Route path="/frp-calculator" element={<FRPCalculatorPage />} />
+          <Route path="/weight-calculator" element={<WeightCalculatorPage />} />
+          <Route path="/handrail-calculator" element={<HandrailCalculatorPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

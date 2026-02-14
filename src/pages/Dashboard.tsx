@@ -1,15 +1,43 @@
- import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
- import { Cylinder, FileText, Settings, Shield, ClipboardList } from "lucide-react";
- import { useNavigate } from "react-router-dom";
- 
- const programs = [
-   {
-     id: "tank-quotation",
-     title: "FRP 탱크 견적 시스템",
-     description: "자동 수량 산출 및 견적 계산",
-     icon: Cylinder,
-     path: "/tank-quotation",
-   },
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Cylinder, FileText, Settings, Shield, ClipboardList, Wrench, Calculator, Scale, Droplets, Table, Settings2, BarChart3, Beaker, Ruler } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+const programs = [
+  {
+    id: "tank-quotation",
+    title: "FRP 탱크 견적 시스템",
+    description: "자동 수량 산출 및 견적 계산",
+    icon: Cylinder,
+    path: "/tank-quotation",
+  },
+  {
+    id: "bolt-calculator",
+    title: "볼트 길이 계산기",
+    description: "플랜지, 와샤, 너트 조건별 볼트 길이 산출",
+    icon: Wrench,
+    path: "/bolt-calculator",
+  },
+  {
+    id: "frp-calculator",
+    title: "FRP 두께 계산기",
+    description: "RTP-1 / ASME Section X 기준 FRP 용기 설계",
+    icon: Calculator,
+    path: "/frp-calculator",
+  },
+  {
+    id: "weight-calculator",
+    title: "FRP 무게 계산기",
+    description: "탱크 또는 파이프 무게 계산",
+    icon: Scale,
+    path: "/weight-calculator",
+  },
+  {
+    id: "handrail-calculator",
+    title: "핸드레일 & 사다리 무게 계산기",
+    description: "철/스테인리스 구조물 무게 계산",
+    icon: Ruler,
+    path: "/handrail-calculator",
+  },
   {
     id: "drawing-revision",
     title: "도면 리비전 관리",
