@@ -63,7 +63,7 @@ export function calculateTankExcel(
   const swBtmThk = Math.max(0, thickness.bottom - cbThk); // BTM SW = 바닥두께 - CB
   const swHeadThk = Math.max(0, thickness.roof - cbThk);  // Head SW = 지붕두께 - CB
   const swJntSWThk = thickness.jointSW;  // Jnt(S.W) SW 두께 (별도 입력)
-  const cbJntCBThk = thickness.jointCB;  // Jnt(C.B) CB 두께 (별도 입력)
+  const cbJntCBThk = swHeadThk;  // Jnt(C.B) CB 두께 = head th'k(s.w) = 지붕두께 - CB
   const swLLThk = thickness.ll;          // L/L SW 두께
   const swHoopThk = thickness.hoop;      // Hoop SW 두께
 
@@ -90,7 +90,7 @@ export function calculateTankExcel(
   const bodyWeight_CB = bodyArea * cbThk * 2;
   const bottomWeight_CB = btmArea * cbThk * 2;
   const headWeight_CB = headArea * cbThk * 2;
-  const jointSW_Weight_CB = 0; // Jnt(S.W)에는 CB층 없음
+  const jointSW_Weight_CB = jntSWArea * cbThk * 2; // Jnt(S.W) CB층: th'k(c.b) 적용
   const jointCB_Weight_CB = jntCBArea * cbJntCBThk * 2;
   const hoopWeight_CB = 0; // Hoop에는 CB층 없음
 
@@ -111,7 +111,7 @@ export function calculateTankExcel(
   const bottomWeight_SW = btmArea * swBtmThk * 2;
   const headWeight_SW = headArea * swHeadThk * 2;
   const jointSW_Weight_SW = jntSWArea * swJntSWThk * 2;
-  const jointCB_Weight_SW = 0; // Jnt(C.B)에는 SW층 없음
+  const jointCB_Weight_SW = jntCBArea * swJntSWThk * 2; // Jnt(C.B) SW층: jnt(s.w) th'k(s.w) 적용
   const ladderWeight_SW = llArea * swLLThk * 2;
   const hoopWeight_SW = hoopArea * swHoopThk * 2;
 
@@ -159,7 +159,7 @@ export function calculateTankExcel(
   const bottomMat450 = (bottomWeight_CB + bottomWeight_SW) * MAT_RATIO;
   const headMat450 = (headWeight_CB + headWeight_SW) * MAT_RATIO;
   const jointSW_Mat450 = jointSW_Weight_SW * MAT_RATIO;
-  const jointCB_Mat450 = (jointCB_Weight_CB + jointCB_Weight_CB) * MAT_RATIO;
+  const jointCB_Mat450 = (jointCB_Weight_CB + jointCB_Weight_SW) * MAT_RATIO;
   const ladderMat450 = ladderWeight_SW * MAT_RATIO;
   const hoopMat450 = hoopWeight_CB * MAT_RATIO;
 
