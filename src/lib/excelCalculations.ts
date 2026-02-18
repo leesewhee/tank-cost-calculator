@@ -1,5 +1,6 @@
 // 엑셀 견적서 기반 계산 로직 (비압력탱크용)
-// 기존 RTP-1/ASME 계산과 병렬로 사용
+// FW = 필라멘트 와인딩, HLU = 핸드레이업
+// S.W = 구조층(Structural Wall), C.B = 내식층(Corrosion Barrier)
 
 import {
   TankDimensions,
@@ -12,32 +13,32 @@ import {
 } from "./calculations";
 
 // ========================================
-// 엑셀 방식 계수 (실무 견적서 역산)
+// 배합비 상수
 // ========================================
+// C.B(내식층) 전 부위: HLU 방식 — 수지 70%, Glass#450 30%
+const CB_RESIN_RATIO = 0.7;
+const CB_GLASS_RATIO = 0.3;
 
-// 면적 여유율 (이음/겹침/곡률 반영)
-const EXCEL_BODY_FACTOR = 1.1;
-const EXCEL_BTM_FACTOR = 1.1;
-const EXCEL_HEAD_FACTOR = 1.25;
+// S.W(구조층) Winding 부위 (Body, Hoop): 수지 45%, Roving 55%
+const SW_WINDING_RESIN_RATIO = 0.45;
+const SW_WINDING_ROVING_RATIO = 0.55;
 
-// S.W Body/Hoop 배합비 (Winding 부위)
-const EXCEL_WINDING_RESIN_RATIO = 0.45;
-const EXCEL_WINDING_ROVING_RATIO = 0.55;
+// S.W(구조층) HLU 부위 (BTM, Head, Joint, L/L): 수지 70%, Glass 30%
+const SW_HLU_RESIN_RATIO = 0.7;
+const SW_HLU_GLASS_RATIO = 0.3;
 
-// HLU 부위 배합비 (Hand Lay-Up)
-const EXCEL_HLU_RESIN_RATIO = 0.7;
-const EXCEL_HLU_GLASS_RATIO = 0.3;
-
-// 소모품 비율 (고정비용 포함 기준)
-const EXCEL_CONSUMABLE_RATE = 0.07;
+// 소모품 비율
+const CONSUMABLE_RATE = 0.07;
 
 // HLU/FW 단가 (원/kg)
 const HLU_UNIT_PRICE = 4500;
 const FW_UNIT_PRICE = 1500;
 
+// 밀도 (엑셀 고정값)
+const DENSITY = 2;
+
 // 서피스매트 계수
-const SM_MAIN_FACTOR = 2.2;   // 주요 면적 (body, BTM, head, hoop)
-const SM_JOINT_FACTOR = 1.1;  // 이음부/L/L
+const SM_FACTOR = 1.1;
 
 export interface ExcelLaborResult {
   hluWeight: number;
@@ -61,112 +62,130 @@ export function calculateTankExcel(
 ): ExcelCalculationResult {
   const { diameter, height } = dimensions;
   const PI = Math.PI;
+  const D = diameter;
+  const L = height;
 
-  // 용량 (동일)
-  const capacity = PI * Math.pow(diameter / 2, 2) * height;
-
-  // ========================================
-  // 엑셀 방식 면적 계산 (여유율 적용)
-  // ========================================
-  const bodyArea = PI * diameter * height * EXCEL_BODY_FACTOR;
-  const bottomArea = PI * Math.pow(diameter / 2, 2) * EXCEL_BTM_FACTOR;
-  const headArea = PI * Math.pow(diameter / 2, 2) * EXCEL_HEAD_FACTOR;
-
-  // 이음부 면적 (동일)
-  const jointSWArea = 0.6 * PI * diameter;
-  const jointCBArea = 0.5 * PI * diameter;
-
-  // 후프 면적: 0.12 × π × D² (D ≥ 2 이상만 적용)
-  const hoopArea = diameter >= 2 ? 0.12 * PI * Math.pow(diameter, 2) : 0;
-  const llArea = 1.4;
-
-  const totalArea = bodyArea + bottomArea + headArea + jointSWArea + jointCBArea + llArea + hoopArea;
+  // 용량
+  const capacity = PI * Math.pow(D / 2, 2) * L;
 
   // ========================================
-  // 중량 계산
-  // 핵심 차이: 사용자 입력 = 전체 두께(TOTAL)
-  // → S.W 두께 = 전체 두께 - C.B 두께
+  // 두께 (mm → 그대로 사용, 밀도와 곱해서 kg/m² 산출)
   // ========================================
-  const frpDensity = thickness.frpDensity || 2.0;
   const cbThk = thickness.cbThickness;
-
-  // 내식층(C.B) — 두께는 cbThickness 그대로
-  const cbBody = bodyArea * cbThk * frpDensity;
-  const cbBottom = bottomArea * cbThk * frpDensity;
-  const cbHead = headArea * cbThk * frpDensity;
-  const cbJoint = jointCBArea * thickness.jointCB * frpDensity;
-  const cbTotal = cbBody + cbBottom + cbHead + cbJoint;
-
-  // 구조층(S.W) — 전체 두께에서 C.B 두께를 뺀 값
-  const shellSWThk = Math.max(0, ((thickness.shellTop + thickness.shellBottom) / 2) - cbThk);
-  const bottomSWThk = Math.max(0, thickness.bottom - cbThk);
+  // S.W 두께: 전체 입력 두께 - C.B 두께
+  const bodySWThk = Math.max(0, ((thickness.shellTop + thickness.shellBottom) / 2) - cbThk);
+  const btmSWThk = Math.max(0, thickness.bottom - cbThk);
   const headSWThk = Math.max(0, thickness.roof - cbThk);
-  // Joint S.W와 L/L, Hoop은 S.W 전용이므로 그대로 사용
-  const jointSWThk = thickness.jointSW;
-  const llThk = thickness.ll;
-  const hoopThk = thickness.hoop;
-
-  const swBody = bodyArea * shellSWThk * frpDensity;
-  const swBottom = bottomArea * bottomSWThk * frpDensity;
-  const swHead = headArea * headSWThk * frpDensity;
-  const swJoint = jointSWArea * jointSWThk * frpDensity;
-  const swLL = llArea * llThk * frpDensity;
-  const swHoop = hoopArea * hoopThk * frpDensity;
-  const swTotal = swBody + swBottom + swHead + swJoint + swLL + swHoop;
+  const jntSWThk = thickness.jointSW;
+  const llSWThk = thickness.ll;
+  const hoopSWThk = thickness.hoop;
 
   // ========================================
-  // 자재 소요량 (엑셀 배합비 적용)
+  // 면적 (엑셀 공식 그대로)
   // ========================================
+  const bodyArea = D * L * PI * 1.1;
+  const btmArea = D * D * 0.785 * 1.1;
+  const headArea = D * D * 0.785 * 1.25;
+  const jntSWArea = D * PI * 0.3 * 2;
+  const jntCBArea = D * PI * 0.25 * 2;
+  const llArea = 0.6 * 0.6 * 4; // 1.44 m²
+  const hoopArea = D * PI * 0.12 * 3;
 
-  // A. 내식층(C.B): 수지 70%, Glass#450 30% (전 부위 동일)
-  const cbResin = cbTotal * EXCEL_HLU_RESIN_RATIO;
-  const cbMat450 = cbTotal * EXCEL_HLU_GLASS_RATIO;
+  const totalArea = bodyArea + btmArea + headArea + jntSWArea + jntCBArea + llArea + hoopArea;
 
-  // B. 구조층(S.W)
-  // Body: Winding — 수지 45%, Roving 55%
-  const swBodyResin = swBody * EXCEL_WINDING_RESIN_RATIO;
-  const swBodyRoving = swBody * EXCEL_WINDING_ROVING_RATIO;
+  // ========================================
+  // C.B(내식층) 중량: 면적 × th'k(c.b) × 2
+  // ========================================
+  const cbBodyWt = bodyArea * cbThk * DENSITY;
+  const cbBtmWt = btmArea * cbThk * DENSITY;
+  const cbHeadWt = headArea * cbThk * DENSITY;
+  const cbJntSWWt = jntSWArea * cbThk * DENSITY;
+  const cbJntCBWt = jntCBArea * cbThk * DENSITY;
+  const cbHoopWt = hoopArea * cbThk * DENSITY;
+  const cbTotal = cbBodyWt + cbBtmWt + cbHeadWt + cbJntSWWt + cbJntCBWt + cbHoopWt;
 
-  // Hoop: Winding — 수지 45%, Roving 55% (Body와 동일)
-  const swHoopResin = swHoop * EXCEL_WINDING_RESIN_RATIO;
-  const swHoopRoving = swHoop * EXCEL_WINDING_ROVING_RATIO;
+  // ========================================
+  // S.W(구조층) 중량: 면적 × th'k(s.w) × 2
+  // ========================================
+  const swBodyWt = bodyArea * bodySWThk * DENSITY;
+  const swBtmWt = btmArea * btmSWThk * DENSITY;
+  const swHeadWt = headArea * headSWThk * DENSITY;
+  const swJntSWWt = jntSWArea * jntSWThk * DENSITY;
+  const swJntCBWt = jntCBArea * jntSWThk * DENSITY;
+  const swLLWt = llArea * llSWThk * DENSITY;
+  const swHoopWt = hoopArea * hoopSWThk * DENSITY;
+  const swTotal = swBodyWt + swBtmWt + swHeadWt + swJntSWWt + swJntCBWt + swLLWt + swHoopWt;
 
-  // BTM/Head/Joint/L/L: HLU — 수지 70%, Glass#450 30%
-  const swBottomResin = swBottom * EXCEL_HLU_RESIN_RATIO;
-  const swBottomMat450 = swBottom * EXCEL_HLU_GLASS_RATIO;
-  const swHeadResin = swHead * EXCEL_HLU_RESIN_RATIO;
-  const swHeadMat450 = swHead * EXCEL_HLU_GLASS_RATIO;
-  const swJointResin = swJoint * EXCEL_HLU_RESIN_RATIO;
-  const swJointMat450 = swJoint * EXCEL_HLU_GLASS_RATIO;
-  const swLLResin = swLL * EXCEL_HLU_RESIN_RATIO;
-  const swLLMat450 = swLL * EXCEL_HLU_GLASS_RATIO;
+  // ========================================
+  // RESIN (수지) 소요량
+  // ========================================
+  // C.B 수지: 전 부위 × 0.7
+  const cbResinTotal = cbTotal * CB_RESIN_RATIO;
 
-  // 총 수지량
-  const resinWeight = cbResin + swBodyResin + swHoopResin +
-    swBottomResin + swHeadResin + swJointResin + swLLResin;
+  // S.W 수지: Body/Hoop → 0.45, 나머지 → 0.7
+  const swResinBody = swBodyWt * SW_WINDING_RESIN_RATIO;
+  const swResinBtm = swBtmWt * SW_HLU_RESIN_RATIO;
+  const swResinHead = swHeadWt * SW_HLU_RESIN_RATIO;
+  const swResinJntSW = swJntSWWt * SW_HLU_RESIN_RATIO;
+  const swResinJntCB = swJntCBWt * SW_HLU_RESIN_RATIO;
+  const swResinLL = swLLWt * SW_HLU_RESIN_RATIO;
+  const swResinHoop = swHoopWt * SW_WINDING_RESIN_RATIO;
+  const swResinTotal = swResinBody + swResinBtm + swResinHead +
+    swResinJntSW + swResinJntCB + swResinLL + swResinHoop;
 
-  // Mat#450: C.B 전체 + S.W HLU 부위 (Hoop 제외 — Hoop은 Roving으로 감)
+  const resinWeight = cbResinTotal + swResinTotal;
+
+  // ========================================
+  // CHOPPED STRAND MAT #450 (유리섬유 매트)
+  // ========================================
+  // Body: C.B만 (S.W Body는 Roving 사용)
+  const mat450Body = cbBodyWt * CB_GLASS_RATIO;
+  // BTM: C.B + S.W (둘 다 HLU)
+  const mat450Btm = (cbBtmWt + swBtmWt) * CB_GLASS_RATIO;
+  // Head: C.B + S.W (둘 다 HLU)
+  const mat450Head = (cbHeadWt + swHeadWt) * CB_GLASS_RATIO;
+  // Jnt(S.W): C.B만 (S.W는 Roving Cloth)
+  const mat450JntSW = cbJntSWWt * CB_GLASS_RATIO;
+  // Jnt(C.B): C.B + S.W
+  const mat450JntCB = (cbJntCBWt + swJntCBWt) * CB_GLASS_RATIO;
+  // L/L: S.W만
+  const mat450LL = swLLWt * SW_HLU_GLASS_RATIO;
+  // Hoop: C.B만 (S.W Hoop은 Roving)
+  const mat450Hoop = cbHoopWt * CB_GLASS_RATIO;
+
   const mat450Weight = Math.round(
-    cbMat450 + swBottomMat450 + swHeadMat450 + swJointMat450 + swLLMat450
+    mat450Body + mat450Btm + mat450Head + mat450JntSW + mat450JntCB + mat450LL + mat450Hoop
   );
 
-  // Roving#2200: Body(Winding) + Hoop(Winding)의 유리섬유
-  const roving2200Weight = Math.round(swBodyRoving + swHoopRoving);
+  // ========================================
+  // ROVING CLOTH #570 (Joint S.W 보강용)
+  // ========================================
+  const rovingClothJntSW = swJntSWWt * SW_WINDING_ROVING_RATIO;
+  const rovingClothJntCB = swJntCBWt * SW_WINDING_ROVING_RATIO;
+  const rovingClothWeight = Math.round(rovingClothJntSW + rovingClothJntCB);
 
-  // Roving Cloth (용량 기반 보강용)
-  const rovingClothWeight = capacity > 10 ? Math.round(capacity * 2.08) : Math.round(capacity * 1.7);
+  // ========================================
+  // ROVING #2200 (Body/Hoop FW용)
+  // ========================================
+  const roving2200Body = swBodyWt * SW_WINDING_ROVING_RATIO;
+  const roving2200Hoop = swHoopWt * SW_WINDING_ROVING_RATIO;
+  const roving2200Weight = Math.round(roving2200Body + roving2200Hoop);
 
-  // 서피스매트: 주요 면적 ×2.2, 이음부/L/L ×1.1
-  const surfaceMatArea = Math.round(
-    (bodyArea + bottomArea + headArea + hoopArea) * SM_MAIN_FACTOR +
-    (jointSWArea + jointCBArea + llArea) * SM_JOINT_FACTOR
-  );
+  // ========================================
+  // SURFACE MAT #30
+  // ========================================
+  const smBody = bodyArea * SM_FACTOR * 2;
+  const smBtm = btmArea * SM_FACTOR * 2;
+  const smHead = headArea * SM_FACTOR * 2;
+  const smJntSW = jntSWArea * SM_FACTOR;
+  const smJntCB = jntCBArea * SM_FACTOR;
+  const smLL = llArea * SM_FACTOR;
+  const smHoop = hoopArea * SM_FACTOR * 2;
+  const surfaceMatArea = Math.round(smBody + smBtm + smHead + smJntSW + smJntCB + smLL + smHoop);
 
   // ========================================
   // 비용 계산
   // ========================================
-
-  // 원자재 비용
   const rawMaterialCost =
     Math.round(resinWeight) * materialPrices.resin +
     mat450Weight * materialPrices.mat450 +
@@ -185,14 +204,13 @@ export function calculateTankExcel(
     fixedCosts.ladder;
 
   // 소모품비 = 7% × (원자재 + 고정비용)
-  const consumableBase = rawMaterialCost + fixedItemCost;
-  const consumable = Math.round(consumableBase * EXCEL_CONSUMABLE_RATE);
+  const consumable = Math.round((rawMaterialCost + fixedItemCost) * CONSUMABLE_RATE);
 
   // 재료비 총계
   const materialCost = rawMaterialCost + fixedItemCost + consumable;
 
   // ========================================
-  // 인건비 (M/D 기반 — 기존 방식 유지)
+  // 인건비 (M/D 기반)
   // ========================================
   const baseLabor = Math.max(1, Math.sqrt(capacity) * 1.5);
   const windingDays = Math.round(baseLabor * 1.0);
@@ -208,10 +226,14 @@ export function calculateTankExcel(
     specialDays * laborPrices.special;
 
   // ========================================
-  // HLU/FW 대체 인건비 (엑셀 중량 기반)
+  // HLU/FW 중량 기반 인건비 (참고용)
+  // HLU = BTM(S.W) + Head(S.W) + Jnt(S.W) S.W + L/L(S.W) + C.B 전체
+  // FW = Body(S.W) + Hoop(S.W)
   // ========================================
-  const fwWeight = Math.round(swBody + swHoop); // Winding 부위
-  const hluWeight = Math.round(cbTotal + swTotal - swBody - swHoop); // HLU 부위
+  const hluWeight = Math.round(
+    swBtmWt + swHeadWt + swJntSWWt + swLLWt + cbTotal
+  );
+  const fwWeight = Math.round(swBodyWt + swHoopWt);
   const hluCost = hluWeight * HLU_UNIT_PRICE;
   const fwCost = fwWeight * FW_UNIT_PRICE;
   const totalWeightCost = hluCost + fwCost;
@@ -232,26 +254,26 @@ export function calculateTankExcel(
     capacity: Math.round(capacity * 10) / 10,
     areas: {
       body: Math.round(bodyArea * 10) / 10,
-      bottom: Math.round(bottomArea * 10) / 10,
+      bottom: Math.round(btmArea * 10) / 10,
       head: Math.round(headArea * 10) / 10,
-      jointSW: Math.round(jointSWArea * 10) / 10,
-      jointCB: Math.round(jointCBArea * 10) / 10,
+      jointSW: Math.round(jntSWArea * 10) / 10,
+      jointCB: Math.round(jntCBArea * 10) / 10,
       ll: Math.round(llArea * 10) / 10,
       hoop: Math.round(hoopArea * 10) / 10,
       total: Math.round(totalArea * 10) / 10,
     },
     weights: {
-      cbBody: Math.round(cbBody),
-      cbBottom: Math.round(cbBottom),
-      cbHead: Math.round(cbHead),
-      cbJoint: Math.round(cbJoint),
+      cbBody: Math.round(cbBodyWt),
+      cbBottom: Math.round(cbBtmWt),
+      cbHead: Math.round(cbHeadWt),
+      cbJoint: Math.round(cbJntSWWt + cbJntCBWt),
       cbTotal: Math.round(cbTotal),
-      swBody: Math.round(swBody),
-      swBottom: Math.round(swBottom),
-      swHead: Math.round(swHead),
-      swJoint: Math.round(swJoint),
-      swLL: Math.round(swLL),
-      swHoop: Math.round(swHoop),
+      swBody: Math.round(swBodyWt),
+      swBottom: Math.round(swBtmWt),
+      swHead: Math.round(swHeadWt),
+      swJoint: Math.round(swJntSWWt + swJntCBWt),
+      swLL: Math.round(swLLWt),
+      swHoop: Math.round(swHoopWt),
       swTotal: Math.round(swTotal),
     },
     materials: {
