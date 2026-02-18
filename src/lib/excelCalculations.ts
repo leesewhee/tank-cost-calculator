@@ -61,35 +61,26 @@ export function calculateTankExcel(
   thickness: ThicknessConfig
 ): ExcelCalculationResult {
   const { diameter, height } = dimensions;
-  const PI = Math.PI;
   const D = diameter;
   const L = height;
 
   // 용량
-  const capacity = PI * Math.pow(D / 2, 2) * L;
+  const capacity = 3.14 * Math.pow(D / 2, 2) * L;
 
-  // ========================================
-  // 두께 (mm → 그대로 사용, 밀도와 곱해서 kg/m² 산출)
-  // ========================================
+  // 두께
   const cbThk = thickness.cbThickness;
-  // S.W 두께: 전체 입력 두께 - C.B 두께
-  const bodySWThk = Math.max(0, ((thickness.shellTop + thickness.shellBottom) / 2) - cbThk);
-  const btmSWThk = Math.max(0, thickness.bottom - cbThk);
-  const headSWThk = Math.max(0, thickness.roof - cbThk);
-  const jntSWThk = thickness.jointSW;
-  const llSWThk = thickness.ll;
-  const hoopSWThk = thickness.hoop;
+  const swThk = thickness.ll; // L/L용 S.W 두께
 
   // ========================================
-  // 면적 (엑셀 공식 그대로)
+  // 면적 (엑셀 공식: π=3.14 고정)
   // ========================================
-  const bodyArea = D * L * PI * 1.1;
+  const bodyArea = D * L * 3.14 * 1.1;
   const btmArea = D * D * 0.785 * 1.1;
   const headArea = D * D * 0.785 * 1.25;
-  const jntSWArea = D * PI * 0.3 * 2;
-  const jntCBArea = D * PI * 0.25 * 2;
+  const jntSWArea = D * 3.14 * 0.3 * 2;
+  const jntCBArea = D * 3.14 * 0.25 * 2;
   const llArea = 0.6 * 0.6 * 4; // 1.44 m²
-  const hoopArea = D * PI * 0.12 * 3;
+  const hoopArea = D * 3.14 * 0.12 * 3;
 
   const totalArea = bodyArea + btmArea + headArea + jntSWArea + jntCBArea + llArea + hoopArea;
 
@@ -105,15 +96,15 @@ export function calculateTankExcel(
   const cbTotal = cbBodyWt + cbBtmWt + cbHeadWt + cbJntSWWt + cbJntCBWt + cbHoopWt;
 
   // ========================================
-  // S.W(구조층) 중량: 면적 × th'k(s.w) × 2
+  // S.W(구조층) 중량: 면적 × th'k(c.b) × 2 (L/L만 th'k(s.w) × 2)
   // ========================================
-  const swBodyWt = bodyArea * bodySWThk * DENSITY;
-  const swBtmWt = btmArea * btmSWThk * DENSITY;
-  const swHeadWt = headArea * headSWThk * DENSITY;
-  const swJntSWWt = jntSWArea * jntSWThk * DENSITY;
-  const swJntCBWt = jntCBArea * jntSWThk * DENSITY;
-  const swLLWt = llArea * llSWThk * DENSITY;
-  const swHoopWt = hoopArea * hoopSWThk * DENSITY;
+  const swBodyWt = bodyArea * cbThk * DENSITY;
+  const swBtmWt = btmArea * cbThk * DENSITY;
+  const swHeadWt = headArea * cbThk * DENSITY;
+  const swJntSWWt = jntSWArea * cbThk * DENSITY;
+  const swJntCBWt = jntCBArea * cbThk * DENSITY;
+  const swLLWt = llArea * swThk * DENSITY;
+  const swHoopWt = hoopArea * cbThk * DENSITY;
   const swTotal = swBodyWt + swBtmWt + swHeadWt + swJntSWWt + swJntCBWt + swLLWt + swHoopWt;
 
   // ========================================
