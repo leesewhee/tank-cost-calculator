@@ -359,41 +359,27 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                     className="input-field number-input"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label>이음부 S.W (mm)</Label>
-                  <Input
-                    type="number"
-                    value={thickness.jointSW}
-                    onChange={(e) => setThickness({...thickness, jointSW: parseFloat(e.target.value) || 0})}
-                    className="input-field number-input"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>이음부 C.B (mm)</Label>
-                  <Input
-                    type="number"
-                    value={thickness.jointCB}
-                    onChange={(e) => setThickness({...thickness, jointCB: parseFloat(e.target.value) || 0})}
-                    className="input-field number-input"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>L/L (mm)</Label>
-                  <Input
-                    type="number"
-                    value={thickness.ll}
-                    onChange={(e) => setThickness({...thickness, ll: parseFloat(e.target.value) || 0})}
-                    className="input-field number-input"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label>후프 (mm)</Label>
-                  <Input
-                    type="number"
-                    value={thickness.hoop}
-                    onChange={(e) => setThickness({...thickness, hoop: parseFloat(e.target.value) || 0})}
-                    className="input-field number-input"
-                  />
+                {/* 자동 계산 영역 표시 */}
+                <div className="col-span-3 bg-muted/50 rounded-lg p-3 space-y-2">
+                  <Label className="text-sm font-medium text-muted-foreground">자동 계산 항목</Label>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">이음부 S.W</span>
+                      <span className="font-mono">{(3.14 * (parseFloat(diameter) || 0) * 0.3 * 2).toFixed(2)} m²</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">이음부 C.B</span>
+                      <span className="font-mono">{(3.14 * (parseFloat(diameter) || 0) * 0.25 * 2).toFixed(2)} m²</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">L/L</span>
+                      <span className="font-mono">{(0.6 * 0.6 * 4).toFixed(2)} m²</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">후프</span>
+                      <span className="font-mono">{((parseFloat(diameter) || 0) * 3.14 * 0.12 * 3).toFixed(2)} m²</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label className="flex items-center gap-1">
