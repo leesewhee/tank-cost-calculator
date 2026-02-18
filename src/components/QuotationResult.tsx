@@ -30,30 +30,6 @@ interface QuotationResultProps {
   onTogglePrimary?: (value: boolean) => void;
 }
 
-// 이중 값 표시 헬퍼: primary 값과 secondary 값이 다르면 (secondary) 표시
-function DualValue({ primary, secondary, format = "currency" }: { 
-  primary: number; 
-  secondary?: number; 
-  format?: "currency" | "number" | "decimal";
-}) {
-  const fmt = (v: number) => {
-    if (format === "decimal") return (Math.round(v * 10) / 10).toString();
-    if (format === "number") return v.toString();
-    return formatCurrency(v);
-  };
-  
-  if (secondary === undefined || Math.abs(primary - secondary) < 1) {
-    return <span>{fmt(primary)}</span>;
-  }
-  
-  return (
-    <span>
-      {fmt(primary)}
-      <span className="text-xs text-muted-foreground ml-1">({fmt(secondary)})</span>
-    </span>
-  );
-}
-
 export function QuotationResult({
   result,
   excelResult,
@@ -68,9 +44,8 @@ export function QuotationResult({
   const today = new Date();
   const dateStr = `${today.getFullYear()}년 ${String(today.getMonth() + 1).padStart(2, '0')}월 ${String(today.getDate()).padStart(2, '0')}일`;
   
-  // primary/secondary 결정
-  const pri: CalculationResult = useExcelPrimary && excelResult ? excelResult : result;
-  const sec: CalculationResult | undefined = useExcelPrimary ? result : excelResult;
+  // 토글에 따라 표시할 결과 선택
+  const r: CalculationResult = useExcelPrimary && excelResult ? excelResult : result;
   
   const handlePrint = () => {
     window.print();
@@ -105,8 +80,8 @@ export function QuotationResult({
             </div>
             <p className="text-xs text-muted-foreground mt-1">
               {useExcelPrimary 
-                ? "엑셀 실무 기준 (면적 여유율, HLU/FW 인건비 적용) — 괄호 안은 RTP-1/ASME 값"
-                : "RTP-1/ASME 기준 (압력탱크 설계) — 괄호 안은 엑셀 실무 값"
+                ? "엑셀 실무 기준: 면적 여유율(×1.1/1.25), S.W=전체두께-C.B, 소모품 7%"
+                : "RTP-1/ASME 기준: 압력탱크 설계 계산"
               }
             </p>
           </CardContent>
@@ -130,15 +105,15 @@ export function QuotationResult({
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-2">
               <h3 className="text-xl font-bold">
-                {tankName} {pri.capacity}㎥
+                {tankName} {r.capacity}㎥
               </h3>
               <p className="text-muted-foreground">
                 (∅{dimensions.diameter * 1000} x {dimensions.height * 1000}H)
               </p>
               <Badge variant="secondary" className="mt-2">
-                TH'K : SHELL {pri.weights.swBody > 1000 ? '15t,13t' : '6t'}, 
-                BTM {pri.weights.swBottom > 200 ? '15t' : '6t'}, 
-                ROOF {pri.weights.swHead > 200 ? '12t' : '6t'}
+                TH'K : SHELL {r.weights.swBody > 1000 ? '15t,13t' : '6t'}, 
+                BTM {r.weights.swBottom > 200 ? '15t' : '6t'}, 
+                ROOF {r.weights.swHead > 200 ? '12t' : '6t'}
               </Badge>
               {useExcelPrimary && (
                 <Badge variant="outline" className="mt-1 text-xs">엑셀 실무 기준</Badge>
@@ -148,10 +123,10 @@ export function QuotationResult({
               <div className="result-highlight">
                 <p className="text-sm text-muted-foreground mb-1">공사금액</p>
                 <p className="text-3xl font-bold text-primary">
-                  ₩<DualValue primary={pri.costs.total} secondary={sec?.costs.total} />
+                  ₩{formatCurrency(r.costs.total)}
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {numberToKorean(pri.costs.total)}
+                  {numberToKorean(r.costs.total)}
                 </p>
                 <p className="text-xs text-muted-foreground">(부가세 별도)</p>
               </div>
@@ -186,17 +161,10 @@ export function QuotationResult({
                     RESIN (RF-1001 or EQ)
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.materials.resin} secondary={sec?.materials.resin} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.materials.resin)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.resin)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue 
-                    primary={pri.materials.resin * materialPrices.resin} 
-                    secondary={sec ? sec.materials.resin * materialPrices.resin : undefined} 
-                  />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.materials.resin * materialPrices.resin)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -204,17 +172,10 @@ export function QuotationResult({
                     CHOPPED STRAND MAT#450
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.materials.mat450} secondary={sec?.materials.mat450} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.materials.mat450)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.mat450)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue 
-                    primary={pri.materials.mat450 * materialPrices.mat450} 
-                    secondary={sec ? sec.materials.mat450 * materialPrices.mat450 : undefined} 
-                  />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.materials.mat450 * materialPrices.mat450)}</td>
               </tr>
               <tr className="table-row-hover border-b">
                 <td className="p-3">
@@ -228,17 +189,10 @@ export function QuotationResult({
                     ROVING CLOTH#570
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.materials.rovingCloth} secondary={sec?.materials.rovingCloth} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.materials.rovingCloth)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.rovingCloth)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue 
-                    primary={pri.materials.rovingCloth * materialPrices.rovingCloth} 
-                    secondary={sec ? sec.materials.rovingCloth * materialPrices.rovingCloth : undefined} 
-                  />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.materials.rovingCloth * materialPrices.rovingCloth)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -246,17 +200,10 @@ export function QuotationResult({
                     ROVING #2200
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.materials.roving2200} secondary={sec?.materials.roving2200} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.materials.roving2200)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.roving2200)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue 
-                    primary={pri.materials.roving2200 * materialPrices.roving2200} 
-                    secondary={sec ? sec.materials.roving2200 * materialPrices.roving2200 : undefined} 
-                  />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.materials.roving2200 * materialPrices.roving2200)}</td>
               </tr>
               <tr className="table-row-hover border-b">
                 <td className="p-3">
@@ -264,17 +211,10 @@ export function QuotationResult({
                     SURFACE MAT#30
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.materials.surfaceMat} secondary={sec?.materials.surfaceMat} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.materials.surfaceMat)}</td>
                 <td className="p-3 text-right">M²</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.surfaceMat)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue 
-                    primary={pri.materials.surfaceMat * materialPrices.surfaceMat} 
-                    secondary={sec ? sec.materials.surfaceMat * materialPrices.surfaceMat : undefined} 
-                  />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.materials.surfaceMat * materialPrices.surfaceMat)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -285,15 +225,11 @@ export function QuotationResult({
                 <td className="p-3 text-right">1</td>
                 <td className="p-3 text-right">LOT</td>
                 <td className="p-3 text-right">-</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue primary={pri.materials.consumable} secondary={sec?.materials.consumable} />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.materials.consumable)}</td>
               </tr>
               <tr className="bg-primary/10 font-semibold">
                 <td colSpan={4} className="p-3 text-right">SUB TOTAL 1)</td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.costs.material} secondary={sec?.costs.material} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.costs.material)}</td>
               </tr>
             </tbody>
           </table>
@@ -326,10 +262,10 @@ export function QuotationResult({
                     WINDING LABOR
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">{pri.labor.winding}</td>
+                <td className="p-3 text-right tabular-nums">{r.labor.winding}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.winding)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(pri.labor.winding * laborPrices.winding)}</td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.winding * laborPrices.winding)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -337,10 +273,10 @@ export function QuotationResult({
                     ASSEMBLY LABOR
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">{pri.labor.assembly}</td>
+                <td className="p-3 text-right tabular-nums">{r.labor.assembly}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.assembly)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(pri.labor.assembly * laborPrices.assembly)}</td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.assembly * laborPrices.assembly)}</td>
               </tr>
               <tr className="table-row-hover border-b">
                 <td className="p-3">
@@ -348,10 +284,10 @@ export function QuotationResult({
                     CHEMICAL LABOR
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">{pri.labor.chemical}</td>
+                <td className="p-3 text-right tabular-nums">{r.labor.chemical}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.chemical)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(pri.labor.chemical * laborPrices.chemical)}</td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.chemical * laborPrices.chemical)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -359,45 +295,40 @@ export function QuotationResult({
                     SPECIAL LABOR
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums">{pri.labor.special}</td>
+                <td className="p-3 text-right tabular-nums">{r.labor.special}</td>
                 <td className="p-3 text-right">M/D</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.special)}</td>
-                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(pri.labor.special * laborPrices.special)}</td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.special * laborPrices.special)}</td>
               </tr>
               <tr className="bg-primary/10 font-semibold">
                 <td colSpan={4} className="p-3 text-right">SUB TOTAL 2)</td>
-                <td className="p-3 text-right tabular-nums">
-                  <DualValue primary={pri.costs.labor} secondary={sec?.costs.labor} />
-                </td>
+                <td className="p-3 text-right tabular-nums">{formatCurrency(r.costs.labor)}</td>
               </tr>
             </tbody>
           </table>
           
-          {/* HLU/FW 대체 인건비 (엑셀 방식) */}
-          {excelResult && (
+          {/* HLU/FW 참고 (엑셀 모드일 때만) */}
+          {useExcelPrimary && excelResult && (
             <div className="border-t bg-accent/20 p-3">
               <p className="text-xs font-semibold text-muted-foreground mb-2">
-                📊 중량 기반 인건비 (엑셀 실무 방식)
+                📊 중량 기반 인건비 참고 (HLU/FW)
               </p>
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-muted-foreground">HLU (Hand Lay-Up):</span>
+                  <span className="text-muted-foreground">HLU:</span>
                   <span className="ml-1 font-mono font-medium">
                     {formatCurrency(excelResult.excelLabor.hluWeight)}kg × 4,500 = ₩{formatCurrency(excelResult.excelLabor.hluCost)}
                   </span>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">FW (Filament Winding):</span>
+                  <span className="text-muted-foreground">FW:</span>
                   <span className="ml-1 font-mono font-medium">
                     {formatCurrency(excelResult.excelLabor.fwWeight)}kg × 1,500 = ₩{formatCurrency(excelResult.excelLabor.fwCost)}
                   </span>
                 </div>
               </div>
               <div className="mt-2 text-xs font-semibold">
-                중량 기반 합계: ₩{formatCurrency(excelResult.excelLabor.totalWeightCost)}
-                <span className="text-muted-foreground font-normal ml-2">
-                  (M/D 기준 대비 {((excelResult.excelLabor.totalWeightCost / pri.costs.labor - 1) * 100).toFixed(0)}%)
-                </span>
+                합계: ₩{formatCurrency(excelResult.excelLabor.totalWeightCost)}
               </div>
             </div>
           )}
@@ -422,47 +353,35 @@ export function QuotationResult({
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.bodyArea}>Body</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.areas.body} secondary={sec?.areas.body} format="decimal" />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{r.areas.body}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.bottomArea}>Bottom</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.areas.bottom} secondary={sec?.areas.bottom} format="decimal" />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{r.areas.bottom}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.headArea}>Head</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.areas.head} secondary={sec?.areas.head} format="decimal" />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{r.areas.head}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.jointSW}>Joint (S.W)</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.areas.jointSW} secondary={sec?.areas.jointSW} format="decimal" />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{r.areas.jointSW}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.jointCB}>Joint (C.B)</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.areas.jointCB} secondary={sec?.areas.jointCB} format="decimal" />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{r.areas.jointCB}</td>
                   </tr>
                   <tr className="font-semibold bg-secondary">
                     <td className="py-2 px-2">Total</td>
-                    <td className="py-2 px-2 text-right tabular-nums">
-                      <DualValue primary={pri.areas.total} secondary={sec?.areas.total} format="decimal" />
-                    </td>
+                    <td className="py-2 px-2 text-right tabular-nums">{r.areas.total}</td>
                   </tr>
                 </tbody>
               </table>
@@ -477,26 +396,17 @@ export function QuotationResult({
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.cbRatio}>내식층 (C.B) Total</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.weights.cbTotal} secondary={sec?.weights.cbTotal} />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{formatCurrency(r.weights.cbTotal)}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-2">
                       <FormulaTooltip info={formulaData.swBodyRatio}>구조층 (S.W) Total</FormulaTooltip>
                     </td>
-                    <td className="py-2 text-right tabular-nums">
-                      <DualValue primary={pri.weights.swTotal} secondary={sec?.weights.swTotal} />
-                    </td>
+                    <td className="py-2 text-right tabular-nums">{formatCurrency(r.weights.swTotal)}</td>
                   </tr>
                   <tr className="font-semibold bg-secondary">
                     <td className="py-2 px-2">Total Weight</td>
-                    <td className="py-2 px-2 text-right tabular-nums">
-                      <DualValue 
-                        primary={pri.weights.cbTotal + pri.weights.swTotal} 
-                        secondary={sec ? sec.weights.cbTotal + sec.weights.swTotal : undefined} 
-                      />
-                    </td>
+                    <td className="py-2 px-2 text-right tabular-nums">{formatCurrency(r.weights.cbTotal + r.weights.swTotal)}</td>
                   </tr>
                 </tbody>
               </table>
@@ -518,9 +428,7 @@ export function QuotationResult({
             <tbody>
               <tr className="table-row-hover border-b">
                 <td className="p-3">SUB TOTAL 1) + 2)</td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue primary={pri.costs.subtotal} secondary={sec?.costs.subtotal} />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.costs.subtotal)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -528,7 +436,7 @@ export function QuotationResult({
                     3) INSPECTION & TEST
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(pri.costs.inspection)}</td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.costs.inspection)}</td>
               </tr>
               <tr className="table-row-hover border-b">
                 <td className="p-3">
@@ -536,7 +444,7 @@ export function QuotationResult({
                     4) TRANSPORTATION
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(pri.costs.transportation)}</td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.costs.transportation)}</td>
               </tr>
               <tr className="table-row-hover border-b table-row-alt">
                 <td className="p-3">
@@ -544,15 +452,11 @@ export function QuotationResult({
                     5) 일반관리비 및 이익
                   </FormulaTooltip>
                 </td>
-                <td className="p-3 text-right tabular-nums font-medium">
-                  <DualValue primary={pri.costs.profit} secondary={sec?.costs.profit} />
-                </td>
+                <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.costs.profit)}</td>
               </tr>
               <tr className="bg-primary text-primary-foreground font-bold text-lg">
                 <td className="p-4">TOTAL</td>
-                <td className="p-4 text-right tabular-nums">
-                  ₩<DualValue primary={pri.costs.total} secondary={sec?.costs.total} />
-                </td>
+                <td className="p-4 text-right tabular-nums">₩{formatCurrency(r.costs.total)}</td>
               </tr>
             </tbody>
           </table>
@@ -561,7 +465,7 @@ export function QuotationResult({
       
       {/* 상세 계산 근거 */}
       <CalculationBreakdown
-        result={pri}
+        result={r}
         dimensions={dimensions}
         thickness={thickness}
       />
