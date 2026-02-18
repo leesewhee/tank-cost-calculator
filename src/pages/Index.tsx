@@ -15,15 +15,18 @@ import {
   defaultLaborPrices,
   defaultThickness,
 } from "@/lib/calculations";
+import { calculateTankExcel, ExcelCalculationResult } from "@/lib/excelCalculations";
 import { Cylinder, FileSpreadsheet, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [result, setResult] = useState<CalculationResult | null>(null);
+  const [excelResult, setExcelResult] = useState<ExcelCalculationResult | null>(null);
   const [dimensions, setDimensions] = useState<TankDimensions | null>(null);
   const [materialPrices, setMaterialPrices] = useState<MaterialPrices>(defaultMaterialPrices);
   const [laborPrices, setLaborPrices] = useState<LaborPrices>(defaultLaborPrices);
   const [thickness, setThickness] = useState<ThicknessConfig>(defaultThickness);
+  const [useExcelPrimary, setUseExcelPrimary] = useState(false);
   const navigate = useNavigate();
   
   const handleCalculate = (
@@ -35,15 +38,14 @@ const Index = () => {
     thicknessConfig: ThicknessConfig
   ) => {
     const calculationResult = calculateTank(
-      dims,
-      matPrices,
-      labPrices,
-      fixedCosts,
-      safetyMargins,
-      thicknessConfig
+      dims, matPrices, labPrices, fixedCosts, safetyMargins, thicknessConfig
+    );
+    const excelCalcResult = calculateTankExcel(
+      dims, matPrices, labPrices, fixedCosts, safetyMargins, thicknessConfig
     );
     
     setResult(calculationResult);
+    setExcelResult(excelCalcResult);
     setDimensions(dims);
     setMaterialPrices(matPrices);
     setLaborPrices(labPrices);
@@ -93,13 +95,16 @@ const Index = () => {
           
           {/* 결과 */}
           <div className="lg:col-span-1 print:col-span-full">
-            {result && dimensions ? (
+            {result && excelResult && dimensions ? (
               <QuotationResult
                 result={result}
+                excelResult={excelResult}
                 dimensions={dimensions}
                 materialPrices={materialPrices}
                 laborPrices={laborPrices}
                 thickness={thickness}
+                useExcelPrimary={useExcelPrimary}
+                onTogglePrimary={setUseExcelPrimary}
               />
             ) : (
               <div className="section-card flex flex-col items-center justify-center min-h-[400px] text-center">
