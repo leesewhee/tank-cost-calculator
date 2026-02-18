@@ -128,7 +128,17 @@ export function QuotationResult({
                 <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(result.materials.mat450 * materialPrices.mat450)}</td>
               </tr>
               <tr className="table-row-hover border-b">
-                <td className="p-3">ROVING CLOTH#570</td>
+                <td className="p-3">
+                  <FormulaTooltip info={{
+                    title: "Roving Cloth #570 (보강용)",
+                    formula: "용량 > 10㎥: 용량 × 2.08 / 용량 ≤ 10㎥: 용량 × 1.7",
+                    description: "탱크 용량(㎥)에 비례하여 산출되는 구조 보강용 로빙 클로스입니다. 대형 탱크(10㎥ 초과)는 하중 증가에 따라 계수 2.08을, 소형 탱크는 1.7을 적용합니다.",
+                    source: "업계 실적 데이터 기반 경험 계수",
+                    note: "Hand Lay-up 부위 추가 보강재",
+                  }}>
+                    ROVING CLOTH#570
+                  </FormulaTooltip>
+                </td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(result.materials.rovingCloth)}</td>
                 <td className="p-3 text-right">KG</td>
                 <td className="p-3 text-right tabular-nums">{formatCurrency(materialPrices.rovingCloth)}</td>

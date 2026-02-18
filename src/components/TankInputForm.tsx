@@ -395,6 +395,22 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                     className="input-field number-input"
                   />
                 </div>
+                <div className="space-y-2">
+                  <Label className="flex items-center gap-1">
+                    비중
+                    <span className="text-xs text-muted-foreground">(견적용)</span>
+                  </Label>
+                  <Input
+                    type="number"
+                    step="0.1"
+                    min="1.0"
+                    max="3.0"
+                    value={thickness.frpDensity}
+                    onChange={(e) => setThickness({...thickness, frpDensity: parseFloat(e.target.value) || 2.0})}
+                    className="input-field number-input"
+                  />
+                  <p className="text-xs text-muted-foreground">순수 비중 1.6~1.8, 견적용 통상 2.0</p>
+                </div>
               </div>
               <Separator className="my-4" />
               <div>

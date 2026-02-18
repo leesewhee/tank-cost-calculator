@@ -118,9 +118,10 @@ export const formulaData = {
   jointSW: {
     title: "Joint S.W (용접부 구조층)",
     formula: "0.6 × π × D",
-    description: "이음부의 구조층 면적입니다. 유효 폭 0.6m를 가정한 원주 면적입니다.",
+    description: "이음부의 구조층 면적입니다. 유효 폭 0.6m를 가정한 원주 면적입니다. 0.6m = 이음부 양쪽 각 300mm 오버랩(300mm × 2)으로, ASME RTP-1 Section 4A 및 ASTM D 4097의 최소 오버랩 요건에 기반한 실무 적용 폭입니다.",
     source: "업계 통상 경험치",
-    note: "상세 설계 전 물량 산출용",
+    standard: "ASME RTP-1 Section 4A, ASTM D 4097",
+    note: "양쪽 300mm 오버랩 = 0.6m 유효 보강 폭",
   },
   jointCB: {
     title: "Joint C.B (용접부 내식층)",
@@ -145,11 +146,11 @@ export const formulaData = {
   // 중량 계산
   weight: {
     title: "FRP 중량 계산",
-    formula: "면적(m²) × 두께(mm) × 비중(2.0)",
-    description: "FRP의 순수 물리적 비중은 1.6~1.8이나, 자재 로스(10~20%), 연결부위, 오차 등을 포함한 '견적용 할증 계수'로 2.0을 적용합니다.",
+    formula: "면적(m²) × 두께(mm) × 비중(조절 가능)",
+    description: "FRP의 순수 물리적 비중은 1.6~1.8이나, 자재 로스(10~20%), 연결부위, 오차 등을 포함한 '견적용 할증 계수'로 통상 2.0을 적용합니다. 상세 설정 > 두께 탭에서 비중을 조절할 수 있습니다.",
     source: "영업용 원가 계산 방식",
     standard: "순수 비중: 1.6~1.8 (Filament Winding)",
-    note: "상업적 비중으로 Loss 포함",
+    note: "비중 조절 가능 (두께 탭)",
   },
 
   // 재료 배합비
