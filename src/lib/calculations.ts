@@ -129,18 +129,18 @@ export interface CalculationResult {
 
 // 기본값
 export const defaultMaterialPrices: MaterialPrices = {
-  resin: 4300,
-  mat450: 2500,
-  rovingCloth: 2500,
-  roving2200: 2000,
+  resin: 4700,
+  mat450: 2700,
+  rovingCloth: 2700,
+  roving2200: 2300,
   surfaceMat: 1300,
 };
 
 export const defaultLaborPrices: LaborPrices = {
-  winding: 140000,
-  assembly: 140000,
-  chemical: 140000,
-  special: 140000,
+  winding: 210000,
+  assembly: 210000,
+  chemical: 210000,
+  special: 210000,
 };
 
 export const defaultFixedCosts: FixedCosts = {
