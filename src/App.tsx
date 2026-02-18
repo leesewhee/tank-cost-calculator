@@ -15,6 +15,11 @@ import {
   FRPCalculatorPage,
   WeightCalculatorPage,
   HandrailCalculatorPage,
+  TankVolumeCalculatorPage,
+  FlangeSpecPage,
+  FlangeTorquePage,
+  MaterialPropertiesPage,
+  ChemicalResistancePage,
 } from "./pages/EngineeringTools";
 
 const queryClient = new QueryClient();
@@ -36,6 +41,11 @@ const App = () => (
           <Route path="/frp-calculator" element={<FRPCalculatorPage />} />
           <Route path="/weight-calculator" element={<WeightCalculatorPage />} />
           <Route path="/handrail-calculator" element={<HandrailCalculatorPage />} />
+          <Route path="/tank-volume-calculator" element={<TankVolumeCalculatorPage />} />
+          <Route path="/flange-spec" element={<FlangeSpecPage />} />
+          <Route path="/flange-torque" element={<FlangeTorquePage />} />
+          <Route path="/material-properties" element={<MaterialPropertiesPage />} />
+          <Route path="/chemical-resistance" element={<ChemicalResistancePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
