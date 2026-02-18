@@ -1,6 +1,13 @@
 // 엑셀 견적서 기반 계산 로직 (비압력탱크용)
 // FW = 필라멘트 와인딩, HLU = 핸드레이업
 // S.W = 구조층(Structural Wall), C.B = 내식층(Corrosion Barrier)
+//
+// 핵심: 부위별로 CB/SW 두께가 다르게 적용됨
+// - Body/BTM/Head: CB층 있음 (cbThickness), SW층 있음 (총두께 - cbThickness)
+// - Jnt(S.W): CB층 없음, SW층만 있음 (jointSW 두께)
+// - Jnt(C.B): CB층만 있음 (jointCB 두께), SW층 없음
+// - L/L: CB층 없음, SW층만 있음 (ll 두께)
+// - Hoop: CB층 없음, SW층만 있음 (hoop 두께)
 
 import {
   TankDimensions,
@@ -48,35 +55,65 @@ export function calculateTankExcel(
 ): ExcelCalculationResult {
   const diameter = dimensions.diameter;
   const length = dimensions.height;
-  const thickness_CB = thickness.cbThickness;
-  const thickness_SW = thickness.ll; // 구조층 두께 (L/L 두께 입력값 사용)
+
+  // 부위별 두께 산출 (mm 단위)
+  const cbThk = thickness.cbThickness; // 내식층 공통 두께
+  const avgShell = (thickness.shellTop + thickness.shellBottom) / 2;
+  const swBodyThk = Math.max(0, avgShell - cbThk);   // Body SW = 쉘두께 - CB
+  const swBtmThk = Math.max(0, thickness.bottom - cbThk); // BTM SW = 바닥두께 - CB
+  const swHeadThk = Math.max(0, thickness.roof - cbThk);  // Head SW = 지붕두께 - CB
+  const swJntSWThk = thickness.jointSW;  // Jnt(S.W) SW 두께 (별도 입력)
+  const cbJntCBThk = thickness.jointCB;  // Jnt(C.B) CB 두께 (별도 입력)
+  const swLLThk = thickness.ll;          // L/L SW 두께
+  const swHoopThk = thickness.hoop;      // Hoop SW 두께
 
   // 용량
   const capacity = PI * Math.pow(diameter / 2, 2) * length;
 
   // ========================================
-  // 1단계: 방식층(CB) 무게 계산
+  // 면적 계산 (m²)
   // ========================================
-  const bodyWeight_CB = (diameter * length * PI * 1.1) * thickness_CB * 2;
-  const bottomWeight_CB = (diameter * diameter * 0.785 * 1.1) * thickness_CB * 2;
-  const headWeight_CB = (diameter * diameter * 0.785 * 1.25) * thickness_CB * 2;
-  const jointSW_Weight_CB = (diameter * PI * 0.3 * 2) * thickness_CB * 2;
-  const jointCB_Weight_CB = (diameter * PI * 0.25 * 2) * thickness_CB * 2;
-  const hoopWeight_CB = (diameter * PI * 0.12 * 3) * thickness_CB * 2;
+  const bodyArea = diameter * length * PI * 1.1;
+  const btmArea = diameter * diameter * 0.785 * 1.1;
+  const headArea = diameter * diameter * 0.785 * 1.25;
+  const jntSWArea = diameter * PI * 0.3 * 2;
+  const jntCBArea = diameter * PI * 0.25 * 2;
+  const llArea = 0.6 * 0.6 * 4;
+  const hoopArea = diameter * PI * 0.12 * 3;
+
+  // ========================================
+  // 1단계: 방식층(CB) 무게 계산
+  // Body, BTM, Head → cbThk 적용
+  // Jnt(C.B) → cbJntCBThk 적용
+  // Jnt(S.W), L/L, Hoop → CB층 없음 (0)
+  // ========================================
+  const bodyWeight_CB = bodyArea * cbThk * 2;
+  const bottomWeight_CB = btmArea * cbThk * 2;
+  const headWeight_CB = headArea * cbThk * 2;
+  const jointSW_Weight_CB = 0; // Jnt(S.W)에는 CB층 없음
+  const jointCB_Weight_CB = jntCBArea * cbJntCBThk * 2;
+  const hoopWeight_CB = 0; // Hoop에는 CB층 없음
 
   const totalWeight_CB = bodyWeight_CB + bottomWeight_CB + headWeight_CB
     + jointSW_Weight_CB + jointCB_Weight_CB + hoopWeight_CB;
 
   // ========================================
   // 2단계: 구조층(SW) 무게 계산
+  // Body → swBodyThk (쉘-CB)
+  // BTM → swBtmThk (바닥-CB)
+  // Head → swHeadThk (지붕-CB)
+  // Jnt(S.W) → swJntSWThk
+  // Jnt(C.B) → SW층 없음 (0)
+  // L/L → swLLThk
+  // Hoop → swHoopThk
   // ========================================
-  const bodyWeight_SW = (diameter * length * PI * 1.1) * thickness_CB * 2;
-  const bottomWeight_SW = (diameter * diameter * 0.785 * 1.1) * thickness_CB * 2;
-  const headWeight_SW = (diameter * diameter * 0.785 * 1.25) * thickness_CB * 2;
-  const jointSW_Weight_SW = (diameter * PI * 0.3 * 2) * thickness_CB * 2;
-  const jointCB_Weight_SW = (diameter * PI * 0.25 * 2) * thickness_CB * 2;
-  const ladderWeight_SW = (0.6 * 0.6 * 4) * thickness_SW * 2;
-  const hoopWeight_SW = (diameter * PI * 0.12 * 3) * thickness_CB * 2;
+  const bodyWeight_SW = bodyArea * swBodyThk * 2;
+  const bottomWeight_SW = btmArea * swBtmThk * 2;
+  const headWeight_SW = headArea * swHeadThk * 2;
+  const jointSW_Weight_SW = jntSWArea * swJntSWThk * 2;
+  const jointCB_Weight_SW = 0; // Jnt(C.B)에는 SW층 없음
+  const ladderWeight_SW = llArea * swLLThk * 2;
+  const hoopWeight_SW = hoopArea * swHoopThk * 2;
 
   const totalWeight_SW = bodyWeight_SW + bottomWeight_SW + headWeight_SW
     + jointSW_Weight_SW + jointCB_Weight_SW
@@ -85,7 +122,7 @@ export function calculateTankExcel(
   // ========================================
   // 3단계: 수지(RESIN) 계산
   // ========================================
-  // 3.1 방식층 수지
+  // 3.1 방식층 수지 (CB 무게 × 0.7)
   const bodyResin_CB = bodyWeight_CB * RESIN_RATIO_CB;
   const bottomResin_CB = bottomWeight_CB * RESIN_RATIO_CB;
   const headResin_CB = headWeight_CB * RESIN_RATIO_CB;
@@ -97,6 +134,8 @@ export function calculateTankExcel(
     + jointSW_Resin_CB + jointCB_Resin_CB + hoopResin_CB;
 
   // 3.2 구조층 수지
+  // Body, Hoop: SW무게 × 0.45 (FW 부위)
+  // 나머지: SW무게 × 0.7 (HLU 부위)
   const bodyResin_SW = bodyWeight_SW * RESIN_RATIO_SW_BODY;
   const bottomResin_SW = bottomWeight_SW * RESIN_RATIO_SW_OTHER;
   const headResin_SW = headWeight_SW * RESIN_RATIO_SW_OTHER;
@@ -113,11 +152,13 @@ export function calculateTankExcel(
 
   // ========================================
   // 4단계: CHOPPED STRAND MAT #450
+  // CB무게 × 0.3 (BTM, Head, Jnt(C.B)는 2배)
+  // L/L은 SW무게 × 0.3
   // ========================================
   const bodyMat450 = bodyWeight_CB * MAT_RATIO;
-  const bottomMat450 = (bottomWeight_CB + bottomWeight_CB) * MAT_RATIO;
-  const headMat450 = (headWeight_CB + headWeight_CB) * MAT_RATIO;
-  const jointSW_Mat450 = jointSW_Weight_CB * MAT_RATIO;
+  const bottomMat450 = (bottomWeight_CB + bottomWeight_SW) * MAT_RATIO;
+  const headMat450 = (headWeight_CB + headWeight_SW) * MAT_RATIO;
+  const jointSW_Mat450 = jointSW_Weight_SW * MAT_RATIO;
   const jointCB_Mat450 = (jointCB_Weight_CB + jointCB_Weight_CB) * MAT_RATIO;
   const ladderMat450 = ladderWeight_SW * MAT_RATIO;
   const hoopMat450 = hoopWeight_CB * MAT_RATIO;
@@ -128,6 +169,7 @@ export function calculateTankExcel(
 
   // ========================================
   // 5단계: ROVING CLOTH #570
+  // Jnt(S.W), Jnt(C.B)의 SW무게 × 0.55
   // ========================================
   const jointSW_RovingCloth570 = jointSW_Weight_SW * ROVING_RATIO;
   const jointCB_RovingCloth570 = jointCB_Weight_SW * ROVING_RATIO;
@@ -136,6 +178,7 @@ export function calculateTankExcel(
 
   // ========================================
   // 6단계: ROVING #2200
+  // Body, Hoop SW무게 × 0.55
   // ========================================
   const bodyRoving2200 = bodyWeight_SW * ROVING_RATIO;
   const hoopRoving2200 = hoopWeight_SW * ROVING_RATIO;
@@ -144,14 +187,16 @@ export function calculateTankExcel(
 
   // ========================================
   // 7단계: SURFACE MAT #30
+  // 주요 부위: 면적 × 1.1 × 2
+  // 조인트/L/L: 면적 × 1.1
   // ========================================
-  const bodySurfaceMat30 = (diameter * length * PI * 1.1) * SURFACE_MAT_FACTOR * 2;
-  const bottomSurfaceMat30 = (diameter * diameter * 0.785 * 1.1) * SURFACE_MAT_FACTOR * 2;
-  const headSurfaceMat30 = (diameter * diameter * 0.785 * 1.25) * SURFACE_MAT_FACTOR * 2;
-  const jointSW_SurfaceMat30 = (diameter * PI * 0.3 * 2) * SURFACE_MAT_FACTOR;
-  const jointCB_SurfaceMat30 = (diameter * PI * 0.25 * 2) * SURFACE_MAT_FACTOR;
-  const ladderSurfaceMat30 = (0.6 * 0.6 * 4) * SURFACE_MAT_FACTOR;
-  const hoopSurfaceMat30 = (diameter * PI * 0.12 * 3) * SURFACE_MAT_FACTOR * 2;
+  const bodySurfaceMat30 = bodyArea * SURFACE_MAT_FACTOR * 2;
+  const bottomSurfaceMat30 = btmArea * SURFACE_MAT_FACTOR * 2;
+  const headSurfaceMat30 = headArea * SURFACE_MAT_FACTOR * 2;
+  const jointSW_SurfaceMat30 = jntSWArea * SURFACE_MAT_FACTOR;
+  const jointCB_SurfaceMat30 = jntCBArea * SURFACE_MAT_FACTOR;
+  const ladderSurfaceMat30 = llArea * SURFACE_MAT_FACTOR;
+  const hoopSurfaceMat30 = hoopArea * SURFACE_MAT_FACTOR * 2;
 
   const TOTAL_SURFACE_MAT30 = bodySurfaceMat30 + bottomSurfaceMat30 + headSurfaceMat30
     + jointSW_SurfaceMat30 + jointCB_SurfaceMat30
@@ -159,6 +204,8 @@ export function calculateTankExcel(
 
   // ========================================
   // 8단계: 총 무게 및 HLU/FW 비용
+  // HLU: BTM(SW) + Head(SW) + Jnt(S.W)(SW) + L/L(SW) + 전체 CB
+  // FW: Body(SW) + Hoop(SW)
   // ========================================
   const TOTAL_WEIGHT = totalWeight_CB + totalWeight_SW;
 
@@ -170,15 +217,8 @@ export function calculateTankExcel(
   const totalWeightCost = hluCost + fwCost;
 
   // ========================================
-  // 면적 (표시용)
+  // 면적 합계
   // ========================================
-  const bodyArea = diameter * length * PI * 1.1;
-  const btmArea = diameter * diameter * 0.785 * 1.1;
-  const headArea = diameter * diameter * 0.785 * 1.25;
-  const jntSWArea = diameter * PI * 0.3 * 2;
-  const jntCBArea = diameter * PI * 0.25 * 2;
-  const llArea = 0.6 * 0.6 * 4;
-  const hoopArea = diameter * PI * 0.12 * 3;
   const totalArea = bodyArea + btmArea + headArea + jntSWArea + jntCBArea + llArea + hoopArea;
 
   // ========================================
