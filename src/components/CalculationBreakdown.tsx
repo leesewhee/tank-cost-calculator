@@ -49,7 +49,7 @@ export function CalculationBreakdown({
   const hoopArea = 0.2 * PI * diameter;
   const llArea = 1.44;
   
-  const frpDensity = 2.0;
+  const frpDensity = thickness.frpDensity || 2.0;
   
   // 내식층 중량
   const cbBody = bodyArea * thickness.cbThickness * frpDensity;
@@ -118,6 +118,13 @@ export function CalculationBreakdown({
                 <td className="p-2 text-right font-semibold">{jointSWArea.toFixed(2)}</td>
               </tr>
               <tr className="border-b">
+                <td colSpan={4} className="p-2 text-xs text-muted-foreground bg-accent/30">
+                  💡 <strong>0.6m 근거:</strong> FRP 탱크 Shell 이음부(Joint)의 구조층(S.W) 보강 폭은 통상 양쪽 각 300mm(0.3m)를 겹쳐 적층합니다.
+                  이음 한 개소당 유효 보강 폭 = 300mm × 2(양쪽) = 600mm = <strong>0.6m</strong>.
+                  이는 ASME RTP-1 Section 4A 및 ASTM D 4097의 이음부 최소 오버랩 요건(각 방향 최소 2인치~50mm, 실무 300mm 적용)에 근거합니다.
+                </td>
+              </tr>
+              <tr className="border-b">
                 <td className="p-2">Joint C.B</td>
                 <td className="p-2">0.5 × π × D</td>
                 <td className="p-2">0.5 × {PI.toFixed(4)} × {diameter}</td>
@@ -156,14 +163,15 @@ export function CalculationBreakdown({
         <div className="space-y-4">
           <div className="bg-secondary/30 p-3 rounded-lg">
             <p className="text-xs text-muted-foreground mb-2">기본 공식</p>
-            <p className="font-mono text-sm font-semibold">중량(kg) = 면적(m²) × 두께(mm) × 비중(2.0)</p>
+            <p className="font-mono text-sm font-semibold">중량(kg) = 면적(m²) × 두께(mm) × 비중({frpDensity})</p>
           </div>
           
           <div className="bg-warning/10 border border-warning/30 p-3 rounded-lg">
-            <p className="text-xs font-semibold text-warning-foreground">⚠️ 비중 2.0 적용 이유</p>
+            <p className="text-xs font-semibold text-warning-foreground">⚠️ 현재 적용 비중: {frpDensity}</p>
             <p className="text-xs text-muted-foreground mt-1">
               FRP 순수 비중은 1.6~1.8이나, <strong>자재 로스율(10~20%)</strong>, 연결부위 보강, 
-              시공 오차 등을 포함한 <strong>'견적용 할증 계수'</strong>로 2.0을 업계 통상 적용합니다.
+              시공 오차 등을 포함한 <strong>'견적용 할증 계수'</strong>로 통상 2.0을 적용합니다.
+              상세 설정 &gt; 두께 탭에서 조절 가능합니다.
             </p>
           </div>
           
@@ -179,22 +187,22 @@ export function CalculationBreakdown({
             <tbody className="font-mono text-xs">
               <tr className="border-b">
                 <td className="p-2">Body</td>
-                <td className="p-2">{bodyArea.toFixed(2)} × {thickness.cbThickness} × 2.0</td>
+                <td className="p-2">{bodyArea.toFixed(2)} × {thickness.cbThickness} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{cbBody.toFixed(1)}</td>
               </tr>
               <tr className="border-b bg-secondary/20">
                 <td className="p-2">Bottom</td>
-                <td className="p-2">{bottomArea.toFixed(2)} × {thickness.cbThickness} × 2.0</td>
+                <td className="p-2">{bottomArea.toFixed(2)} × {thickness.cbThickness} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{cbBottom.toFixed(1)}</td>
               </tr>
               <tr className="border-b">
                 <td className="p-2">Head</td>
-                <td className="p-2">{headArea.toFixed(2)} × {thickness.cbThickness} × 2.0</td>
+                <td className="p-2">{headArea.toFixed(2)} × {thickness.cbThickness} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{cbHead.toFixed(1)}</td>
               </tr>
               <tr className="border-b bg-secondary/20">
                 <td className="p-2">Joint</td>
-                <td className="p-2">{jointCBArea.toFixed(2)} × {thickness.jointCB} × 2.0</td>
+                <td className="p-2">{jointCBArea.toFixed(2)} × {thickness.jointCB} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{cbJoint.toFixed(1)}</td>
               </tr>
               <tr className="bg-primary/10 font-semibold">
@@ -216,32 +224,32 @@ export function CalculationBreakdown({
             <tbody className="font-mono text-xs">
               <tr className="border-b">
                 <td className="p-2">Body</td>
-                <td className="p-2">{bodyArea.toFixed(2)} × {avgShellThickness.toFixed(1)} × 2.0</td>
+                <td className="p-2">{bodyArea.toFixed(2)} × {avgShellThickness.toFixed(1)} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{swBody.toFixed(1)}</td>
               </tr>
               <tr className="border-b bg-secondary/20">
                 <td className="p-2">Bottom</td>
-                <td className="p-2">{bottomArea.toFixed(2)} × {thickness.bottom} × 2.0</td>
+                <td className="p-2">{bottomArea.toFixed(2)} × {thickness.bottom} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{swBottom.toFixed(1)}</td>
               </tr>
               <tr className="border-b">
                 <td className="p-2">Head</td>
-                <td className="p-2">{headArea.toFixed(2)} × {thickness.roof} × 2.0</td>
+                <td className="p-2">{headArea.toFixed(2)} × {thickness.roof} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{swHead.toFixed(1)}</td>
               </tr>
               <tr className="border-b bg-secondary/20">
                 <td className="p-2">Joint</td>
-                <td className="p-2">{jointSWArea.toFixed(2)} × {thickness.jointSW} × 2.0</td>
+                <td className="p-2">{jointSWArea.toFixed(2)} × {thickness.jointSW} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{swJoint.toFixed(1)}</td>
               </tr>
               <tr className="border-b">
                 <td className="p-2">L/L</td>
-                <td className="p-2">{llArea} × {thickness.ll} × 2.0</td>
+                <td className="p-2">{llArea} × {thickness.ll} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{swLL.toFixed(1)}</td>
               </tr>
               <tr className="border-b bg-secondary/20">
                 <td className="p-2">Hoop</td>
-                <td className="p-2">{hoopArea.toFixed(2)} × {thickness.hoop} × 2.0</td>
+                <td className="p-2">{hoopArea.toFixed(2)} × {thickness.hoop} × {frpDensity}</td>
                 <td className="p-2 text-right font-semibold">{swHoop.toFixed(1)}</td>
               </tr>
               <tr className="bg-primary/10 font-semibold">
@@ -331,8 +339,20 @@ export function CalculationBreakdown({
               </tr>
               <tr className="border-b">
                 <td className="p-2">Roving Cloth</td>
-                <td className="p-2">용량 기반 (보강용)</td>
+                <td className="p-2">
+                  {result.capacity > 10 
+                    ? `용량(${result.capacity}㎥) × 2.08` 
+                    : `용량(${result.capacity}㎥) × 1.7`}
+                </td>
                 <td className="p-2 text-right font-semibold">{result.materials.rovingCloth} kg</td>
+              </tr>
+              <tr className="border-b">
+                <td colSpan={3} className="p-2 text-xs text-muted-foreground bg-accent/30">
+                  💡 <strong>Roving Cloth 산출 근거:</strong> FRP 탱크의 구조 보강용 로빙 클로스는 탱크 용량(㎥)에 비례하여 산출합니다.
+                  <br/>• 용량 10㎥ 초과: <strong>용량 × 2.08 kg/㎥</strong> (대형 탱크 — 하중 증가에 따른 보강량 할증)
+                  <br/>• 용량 10㎥ 이하: <strong>용량 × 1.7 kg/㎥</strong> (소형 탱크 — 기본 보강)
+                  <br/>이는 Filament Winding Body 외에 Hand Lay-up 부위(바닥, 경판, 노즐부 등)에 추가로 적용하는 보강재로, 업계 실적 데이터 기반 경험 계수입니다.
+                </td>
               </tr>
               <tr className="border-b bg-secondary/20">
                 <td className="p-2">Surface Mat</td>

@@ -60,6 +60,7 @@ export interface ThicknessConfig {
   jointCB: number;         // 이음부(c.b) 두께 (mm)
   ll: number;              // L/L 두께 (mm)
   hoop: number;            // 후프 두께 (mm)
+  frpDensity: number;      // FRP 비중 (견적용)
   custom?: CustomItem[];   // 사용자 정의 두께
 }
 
@@ -170,6 +171,7 @@ export const defaultThickness: ThicknessConfig = {
   jointCB: 10,
   ll: 6,
   hoop: 15,
+  frpDensity: 2.0,
 };
 
 // 소형 탱크용 기본값 (직경 2m 미만)
@@ -185,6 +187,7 @@ export const smallTankDefaults = {
     jointCB: 4,
     ll: 6,
     hoop: 15,
+    frpDensity: 2.0,
   },
   fixedCosts: {
     flange: 300000,
@@ -212,6 +215,7 @@ export const mediumTankDefaults = {
     shellBottom: 6,
     bottom: 6,
     roof: 6,
+    frpDensity: 2.0,
   },
   fixedCosts: {
     flange: 400000,
@@ -278,7 +282,7 @@ export function calculateTank(
   const totalArea = bodyArea + bottomArea + headArea + jointSWArea + jointCBArea + llArea + hoopArea;
   
   // 단위 면적당 FRP 무게 계산 (kg/m2, 두께 1mm 기준)
-  const frpDensity = 2.0; // FRP 밀도 (약 2.0 g/cm3 = 2 kg/m2/mm)
+  const frpDensity = thickness.frpDensity || 2.0; // FRP 견적용 비중
   
   // 내식층(C.B) 무게 계산
   const cbBody = bodyArea * thickness.cbThickness * frpDensity;
