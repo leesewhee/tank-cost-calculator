@@ -26,7 +26,7 @@ const Index = () => {
   const [materialPrices, setMaterialPrices] = useState<MaterialPrices>(defaultMaterialPrices);
   const [laborPrices, setLaborPrices] = useState<LaborPrices>(defaultLaborPrices);
   const [thickness, setThickness] = useState<ThicknessConfig>(defaultThickness);
-  const [useExcelPrimary, setUseExcelPrimary] = useState(false);
+  const [useExcelPrimary, setUseExcelPrimary] = useState(true);
   const navigate = useNavigate();
   
   const handleCalculate = (

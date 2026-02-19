@@ -249,19 +249,15 @@ export function calculateTankExcel(
   const consumable = Math.round((rawMaterialCost + fixedItemCost) * CONSUMABLE_RATE);
   const materialCost = rawMaterialCost + fixedItemCost + consumable;
 
-  // 인건비 (M/D 기반)
-  const baseLabor = Math.max(1, Math.sqrt(capacity) * 1.5);
-  const windingDays = Math.round(baseLabor * 1.0);
-  const assemblyDays = Math.round(baseLabor * 1.0);
-  const chemicalDays = Math.round(baseLabor * 0.97);
-  const specialDays = Math.round(baseLabor * 0.97);
+  // 인건비 - 엑셀 실무: HLU/FW 중량 기반
+  const windingDays = Math.round(Math.max(1, Math.sqrt(capacity) * 1.5) * 1.0);
+  const assemblyDays = Math.round(Math.max(1, Math.sqrt(capacity) * 1.5) * 1.0);
+  const chemicalDays = Math.round(Math.max(1, Math.sqrt(capacity) * 1.5) * 0.97);
+  const specialDays = Math.round(Math.max(1, Math.sqrt(capacity) * 1.5) * 0.97);
   const totalLaborDays = windingDays + assemblyDays + chemicalDays + specialDays;
 
-  const laborCost =
-    windingDays * laborPrices.winding +
-    assemblyDays * laborPrices.assembly +
-    chemicalDays * laborPrices.chemical +
-    specialDays * laborPrices.special;
+  // 엑셀 실무에서는 HLU/FW 기반 인건비를 메인으로 사용
+  const laborCost = totalWeightCost;
 
   // 최종 비용
   const subtotal = materialCost + laborCost;
