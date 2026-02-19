@@ -56,16 +56,16 @@ export function calculateTankExcel(
   const diameter = dimensions.diameter;
   const length = dimensions.height;
 
-  // 부위별 두께 산출 (mm 단위)
-  const cbThk = thickness.cbThickness; // 내식층 공통 두께
+  // 부위별 두께 산출 (mm 단위) - Genspark 계산기 기준
+  const cbThk = thickness.cbThickness; // 내식층 공통 두께 (기본 3mm)
   const avgShell = (thickness.shellTop + thickness.shellBottom) / 2;
-  const swBodyThk = Math.max(0, avgShell - cbThk);   // Body SW = 쉘두께 - CB
-  const swBtmThk = Math.max(0, thickness.bottom - cbThk); // BTM SW = 바닥두께 - CB
-  const swHeadThk = Math.max(0, thickness.roof - cbThk);  // Head SW = 지붕두께 - CB
-  const swJntSWThk = thickness.jointSW;  // Jnt(S.W) SW 두께 (별도 입력)
-  const cbJntCBThk = cbThk;  // Jnt(C.B) CB 두께 = th'k(c.b) = 3mm (모든 CB층 동일)
-  const swLLThk = thickness.ll;          // L/L SW 두께
-  const swHoopThk = thickness.hoop;      // Hoop SW 두께
+  const swBodyThk = Math.max(0, avgShell - cbThk);          // Body SW = 쉘두께 - CB
+  const swBtmThk = Math.max(0, thickness.bottom - cbThk);   // BTM SW = 바닥두께 - CB
+  const swHeadThk = Math.max(0, thickness.roof - cbThk);    // Head SW = 지붕두께 - CB
+  const cbJntCBThk = Math.max(0, thickness.roof - cbThk);   // Jnt(C.B) CB 두께 = headThickness - CB
+  const swJntSWThk = avgShell;                               // Jnt(S.W) SW 두께 = shellThickness
+  const swLLThk = thickness.ll;                              // L/L SW 두께 (기본 6)
+  const swHoopThk = thickness.hoop;                          // Hoop SW 두께 (기본 15)
 
   // 용량
   const capacity = PI * Math.pow(diameter / 2, 2) * length;
@@ -84,15 +84,15 @@ export function calculateTankExcel(
   // ========================================
   // 1단계: 방식층(CB) 무게 계산
   // Body, BTM, Head → cbThk 적용
-  // Jnt(C.B) → cbJntCBThk 적용
+  // Jnt(C.B) → cbJntCBThk 적용 (headThickness - CB)
   // Jnt(S.W), L/L, Hoop → CB층 없음 (0)
   // ========================================
   const bodyWeight_CB = bodyArea * cbThk * 2;
   const bottomWeight_CB = btmArea * cbThk * 2;
   const headWeight_CB = headArea * cbThk * 2;
-  const jointSW_Weight_CB = jntSWArea * cbThk * 2; // Jnt(S.W) CB층: th'k(c.b) 적용
+  const jointSW_Weight_CB = 0; // Jnt(S.W)에는 CB층 없음
   const jointCB_Weight_CB = jntCBArea * cbJntCBThk * 2;
-  const hoopWeight_CB = hoopArea * cbThk * 2; // Hoop CB층: th'k(c.b) 적용
+  const hoopWeight_CB = 0; // Hoop에는 CB층 없음
 
   const totalWeight_CB = bodyWeight_CB + bottomWeight_CB + headWeight_CB
     + jointSW_Weight_CB + jointCB_Weight_CB + hoopWeight_CB;
@@ -110,8 +110,8 @@ export function calculateTankExcel(
   const bodyWeight_SW = bodyArea * swBodyThk * 2;
   const bottomWeight_SW = btmArea * swBtmThk * 2;
   const headWeight_SW = headArea * swHeadThk * 2;
-  const jointSW_Weight_SW = jntSWArea * cbThk * 2; // Jnt(S.W) SW층: th'k(c.b) 적용
-  const jointCB_Weight_SW = jntCBArea * cbThk * 2; // Jnt(C.B) SW층: th'k(c.b) 적용
+  const jointSW_Weight_SW = jntSWArea * swJntSWThk * 2; // Jnt(S.W) SW층: shellThickness 적용
+  const jointCB_Weight_SW = 0; // Jnt(C.B)에는 SW층 없음
   const ladderWeight_SW = llArea * swLLThk * 2;
   const hoopWeight_SW = hoopArea * swHoopThk * 2;
 
@@ -152,16 +152,15 @@ export function calculateTankExcel(
 
   // ========================================
   // 4단계: CHOPPED STRAND MAT #450
-  // CB무게 × 0.3 (BTM, Head, Jnt(C.B)는 2배)
-  // L/L은 SW무게 × 0.3
+  // Body CB만, BTM/Head는 CB+SW, Jnt(S.W)는 SW, Jnt(C.B)는 CB만, L/L은 SW, Hoop CB만(=0)
   // ========================================
   const bodyMat450 = bodyWeight_CB * MAT_RATIO;
   const bottomMat450 = (bottomWeight_CB + bottomWeight_SW) * MAT_RATIO;
   const headMat450 = (headWeight_CB + headWeight_SW) * MAT_RATIO;
   const jointSW_Mat450 = jointSW_Weight_SW * MAT_RATIO;
-  const jointCB_Mat450 = (jointCB_Weight_CB + jointCB_Weight_SW) * MAT_RATIO;
+  const jointCB_Mat450 = jointCB_Weight_CB * MAT_RATIO;
   const ladderMat450 = ladderWeight_SW * MAT_RATIO;
-  const hoopMat450 = hoopWeight_CB * MAT_RATIO;
+  const hoopMat450 = hoopWeight_CB * MAT_RATIO; // = 0
 
   const TOTAL_MAT450 = bodyMat450 + bottomMat450 + headMat450
     + jointSW_Mat450 + jointCB_Mat450
@@ -169,10 +168,11 @@ export function calculateTankExcel(
 
   // ========================================
   // 5단계: ROVING CLOTH #570
-  // Jnt(S.W), Jnt(C.B)의 SW무게 × 0.55
+  // Jnt(S.W), Jnt(C.B)의 SW무게 × (0.0586 * dia + 0.2129)
   // ========================================
-  const jointSW_RovingCloth570 = jointSW_Weight_SW * ROVING_RATIO;
-  const jointCB_RovingCloth570 = jointCB_Weight_SW * ROVING_RATIO;
+  const rc570Multiplier = 0.0586 * diameter + 0.2129;
+  const jointSW_RovingCloth570 = jointSW_Weight_SW * rc570Multiplier;
+  const jointCB_RovingCloth570 = jointCB_Weight_SW * rc570Multiplier; // = 0 (Jnt(C.B) SW = 0)
 
   const TOTAL_ROVING_CLOTH570 = jointSW_RovingCloth570 + jointCB_RovingCloth570;
 
