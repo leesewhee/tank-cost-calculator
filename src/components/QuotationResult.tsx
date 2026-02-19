@@ -26,8 +26,8 @@ interface QuotationResultProps {
   laborPrices: LaborPrices;
   thickness?: ThicknessConfig;
   tankName?: string;
-  useExcelPrimary?: boolean;
-  onTogglePrimary?: (value: boolean) => void;
+  useRtpMode?: boolean;
+  onToggleMode?: (value: boolean) => void;
 }
 
 export function QuotationResult({
@@ -38,15 +38,15 @@ export function QuotationResult({
   laborPrices,
   thickness = defaultThickness,
   tankName = "FRP TANK",
-  useExcelPrimary = false,
-  onTogglePrimary,
+  useRtpMode = false,
+  onToggleMode,
 }: QuotationResultProps) {
   const today = new Date();
   const dateStr = `${today.getFullYear()}년 ${String(today.getMonth() + 1).padStart(2, '0')}월 ${String(today.getDate()).padStart(2, '0')}일`;
   
-  // 토글에 따라 표시할 결과 선택 (기본=엑셀 실무, 토글 ON=RTP-1/ASME)
-  const r: CalculationResult = !useExcelPrimary && excelResult ? excelResult : useExcelPrimary ? result : (excelResult || result);
-  const isExcelMode = !useExcelPrimary;
+  // useRtpMode=false → 엑셀 실무 (기본), useRtpMode=true → RTP-1/ASME
+  const isExcelMode = !useRtpMode;
+  const r: CalculationResult = isExcelMode && excelResult ? excelResult : result;
   
   const handlePrint = () => {
     window.print();
@@ -55,7 +55,7 @@ export function QuotationResult({
   return (
     <div className="space-y-6 animate-fade-in print:animate-none">
       {/* 계산 방식 토글 */}
-      {excelResult && onTogglePrimary && (
+      {excelResult && onToggleMode && (
         <Card className="border border-accent">
           <CardContent className="py-3 px-4">
             <div className="flex items-center justify-between">
@@ -66,15 +66,15 @@ export function QuotationResult({
                 </Label>
               </div>
               <div className="flex items-center gap-3">
-                <span className={`text-xs font-medium ${!useExcelPrimary ? 'text-primary' : 'text-muted-foreground'}`}>
+                <span className={`text-xs font-medium ${!useRtpMode ? 'text-primary' : 'text-muted-foreground'}`}>
                   엑셀 실무
                 </span>
                 <Switch
                   id="calc-toggle"
-                  checked={useExcelPrimary}
-                  onCheckedChange={onTogglePrimary}
+                  checked={useRtpMode}
+                  onCheckedChange={onToggleMode}
                 />
-                <span className={`text-xs font-medium ${useExcelPrimary ? 'text-primary' : 'text-muted-foreground'}`}>
+                <span className={`text-xs font-medium ${useRtpMode ? 'text-primary' : 'text-muted-foreground'}`}>
                   RTP-1/ASME
                 </span>
               </div>
@@ -283,29 +283,34 @@ export function QuotationResult({
               </table>
               <div className="border-t bg-accent/20 p-3">
                 <p className="text-xs font-semibold text-muted-foreground mb-2">
-                  📊 M/D 기반 인건비 참고
+                  📊 RTP-1/ASME M/D 기반 인건비 참고
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">WINDING</span>
-                    <span className="font-mono">{r.labor.winding}M/D × {formatCurrency(laborPrices.winding)} = ₩{formatCurrency(r.labor.winding * laborPrices.winding)}</span>
+                    <span className="font-mono">{result.labor.winding}M/D × {formatCurrency(laborPrices.winding)} = ₩{formatCurrency(result.labor.winding * laborPrices.winding)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">ASSEMBLY</span>
-                    <span className="font-mono">{r.labor.assembly}M/D × {formatCurrency(laborPrices.assembly)} = ₩{formatCurrency(r.labor.assembly * laborPrices.assembly)}</span>
+                    <span className="font-mono">{result.labor.assembly}M/D × {formatCurrency(laborPrices.assembly)} = ₩{formatCurrency(result.labor.assembly * laborPrices.assembly)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">CHEMICAL</span>
-                    <span className="font-mono">{r.labor.chemical}M/D × {formatCurrency(laborPrices.chemical)} = ₩{formatCurrency(r.labor.chemical * laborPrices.chemical)}</span>
+                    <span className="font-mono">{result.labor.chemical}M/D × {formatCurrency(laborPrices.chemical)} = ₩{formatCurrency(result.labor.chemical * laborPrices.chemical)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">SPECIAL</span>
-                    <span className="font-mono">{r.labor.special}M/D × {formatCurrency(laborPrices.special)} = ₩{formatCurrency(r.labor.special * laborPrices.special)}</span>
+                    <span className="font-mono">{result.labor.special}M/D × {formatCurrency(laborPrices.special)} = ₩{formatCurrency(result.labor.special * laborPrices.special)}</span>
+                  </div>
+                  <div className="col-span-2 flex justify-between font-semibold border-t pt-1 mt-1">
+                    <span>M/D 합계</span>
+                    <span className="font-mono">₩{formatCurrency(result.costs.labor)}</span>
                   </div>
                 </div>
               </div>
             </>
           ) : (
+            <>
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-secondary">
@@ -367,7 +372,29 @@ export function QuotationResult({
                 </tr>
               </tbody>
             </table>
-          )}
+            {excelResult && (
+              <div className="border-t bg-accent/20 p-3">
+                <p className="text-xs font-semibold text-muted-foreground mb-2">
+                  📊 엑셀 실무 중량 기반 인건비 참고
+                </p>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">HLU</span>
+                    <span className="font-mono">{formatCurrency(excelResult.excelLabor.hluWeight)}kg × 4,500 = ₩{formatCurrency(excelResult.excelLabor.hluCost)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">FW</span>
+                    <span className="font-mono">{formatCurrency(excelResult.excelLabor.fwWeight)}kg × 1,500 = ₩{formatCurrency(excelResult.excelLabor.fwCost)}</span>
+                  </div>
+                  <div className="col-span-2 flex justify-between font-semibold border-t pt-1 mt-1">
+                    <span>중량 기반 합계</span>
+                    <span className="font-mono">₩{formatCurrency(excelResult.excelLabor.totalWeightCost)}</span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
         </CardContent>
       </Card>
       

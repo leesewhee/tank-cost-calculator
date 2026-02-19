@@ -26,7 +26,7 @@ const Index = () => {
   const [materialPrices, setMaterialPrices] = useState<MaterialPrices>(defaultMaterialPrices);
   const [laborPrices, setLaborPrices] = useState<LaborPrices>(defaultLaborPrices);
   const [thickness, setThickness] = useState<ThicknessConfig>(defaultThickness);
-  const [useExcelPrimary, setUseExcelPrimary] = useState(true);
+  const [useRtpMode, setUseRtpMode] = useState(false);
   const navigate = useNavigate();
   
   const handleCalculate = (
@@ -103,8 +103,8 @@ const Index = () => {
                 materialPrices={materialPrices}
                 laborPrices={laborPrices}
                 thickness={thickness}
-                useExcelPrimary={useExcelPrimary}
-                onTogglePrimary={setUseExcelPrimary}
+                useRtpMode={useRtpMode}
+                onToggleMode={setUseRtpMode}
               />
             ) : (
               <div className="section-card flex flex-col items-center justify-center min-h-[400px] text-center">
