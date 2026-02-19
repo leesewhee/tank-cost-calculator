@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import {
   CalculationResult,
   TankDimensions,
@@ -41,15 +43,61 @@ export function QuotationResult({
   useRtpMode = false,
   onToggleMode,
 }: QuotationResultProps) {
+  const [useMdMode, setUseMdMode] = useState(false);
+  const [mdDays, setMdDays] = useState({
+    winding: 0,
+    assembly: 0,
+    chemical: 0,
+    special: 0,
+  });
+  const [mdInitialized, setMdInitialized] = useState(false);
+
   const today = new Date();
   const dateStr = `${today.getFullYear()}년 ${String(today.getMonth() + 1).padStart(2, '0')}월 ${String(today.getDate()).padStart(2, '0')}일`;
   
   // useRtpMode=false → 엑셀 실무 (기본), useRtpMode=true → RTP-1/ASME
   const isExcelMode = !useRtpMode;
-  const r: CalculationResult = isExcelMode && excelResult ? excelResult : result;
+  const baseResult: CalculationResult = isExcelMode && excelResult ? excelResult : result;
+
+  // Initialize M/D days from calculation result
+  if (!mdInitialized && baseResult.labor) {
+    setMdDays({
+      winding: baseResult.labor.winding,
+      assembly: baseResult.labor.assembly,
+      chemical: baseResult.labor.chemical,
+      special: baseResult.labor.special,
+    });
+    setMdInitialized(true);
+  }
+
+  // Calculate M/D labor cost from editable days
+  const mdLaborCost = 
+    mdDays.winding * laborPrices.winding +
+    mdDays.assembly * laborPrices.assembly +
+    mdDays.chemical * laborPrices.chemical +
+    mdDays.special * laborPrices.special;
+
+  // Determine displayed result - override labor cost if M/D mode
+  const r = useMdMode ? {
+    ...baseResult,
+    costs: {
+      ...baseResult.costs,
+      labor: mdLaborCost,
+      subtotal: baseResult.costs.material + mdLaborCost,
+      total: baseResult.costs.material + mdLaborCost + baseResult.costs.inspection + baseResult.costs.transportation + baseResult.costs.profit,
+    }
+  } : baseResult;
+
+  // Get HLU/FW data (available from excelResult or fallback)
+  const hluFwData = excelResult?.excelLabor;
   
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleMdChange = (field: keyof typeof mdDays, value: string) => {
+    const num = parseFloat(value) || 0;
+    setMdDays(prev => ({ ...prev, [field]: num }));
   };
   
   return (
@@ -242,80 +290,86 @@ export function QuotationResult({
       {/* 인건비 상세 */}
       <Card>
         <CardHeader className="bg-table-header text-table-header-foreground py-3">
-          <CardTitle className="text-base flex items-center gap-2">
-            <Users className="w-4 h-4" />
-            2) LABOR COST (인건비)
+          <CardTitle className="text-base flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              2) LABOR COST (인건비)
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`text-xs font-medium ${!useMdMode ? 'text-primary-foreground' : 'text-table-header-foreground/60'}`}>
+                HLU/FW
+              </span>
+              <Switch
+                id="labor-toggle"
+                checked={useMdMode}
+                onCheckedChange={setUseMdMode}
+                className="data-[state=checked]:bg-primary-foreground/30"
+              />
+              <span className={`text-xs font-medium ${useMdMode ? 'text-primary-foreground' : 'text-table-header-foreground/60'}`}>
+                M/D
+              </span>
+            </div>
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          {isExcelMode && excelResult ? (
-            <>
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-secondary">
-                    <th className="text-left p-3 font-medium">항목</th>
-                    <th className="text-right p-3 font-medium">수량</th>
-                    <th className="text-right p-3 font-medium">단위</th>
-                    <th className="text-right p-3 font-medium">단가</th>
-                    <th className="text-right p-3 font-medium">금액</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="table-row-hover border-b">
-                    <td className="p-3">HAND LAY-UP (HLU)</td>
-                    <td className="p-3 text-right tabular-nums">{formatCurrency(excelResult.excelLabor.hluWeight)}</td>
-                    <td className="p-3 text-right">KG</td>
-                    <td className="p-3 text-right tabular-nums">{formatCurrency(4500)}</td>
-                    <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(excelResult.excelLabor.hluCost)}</td>
-                  </tr>
-                  <tr className="table-row-hover border-b table-row-alt">
-                    <td className="p-3">FILAMENT WINDING (FW)</td>
-                    <td className="p-3 text-right tabular-nums">{formatCurrency(excelResult.excelLabor.fwWeight)}</td>
-                    <td className="p-3 text-right">KG</td>
-                    <td className="p-3 text-right tabular-nums">{formatCurrency(1500)}</td>
-                    <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(excelResult.excelLabor.fwCost)}</td>
-                  </tr>
-                  <tr className="bg-primary/10 font-semibold">
-                    <td colSpan={4} className="p-3 text-right">SUB TOTAL 2)</td>
-                    <td className="p-3 text-right tabular-nums">{formatCurrency(excelResult.excelLabor.totalWeightCost)}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="border-t bg-accent/20 p-3">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">
-                  📊 RTP-1/ASME M/D 기반 인건비 참고
-                </p>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">WINDING</span>
-                    <span className="font-mono">{result.labor.winding}M/D × {formatCurrency(laborPrices.winding)} = ₩{formatCurrency(result.labor.winding * laborPrices.winding)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">ASSEMBLY</span>
-                    <span className="font-mono">{result.labor.assembly}M/D × {formatCurrency(laborPrices.assembly)} = ₩{formatCurrency(result.labor.assembly * laborPrices.assembly)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">CHEMICAL</span>
-                    <span className="font-mono">{result.labor.chemical}M/D × {formatCurrency(laborPrices.chemical)} = ₩{formatCurrency(result.labor.chemical * laborPrices.chemical)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">SPECIAL</span>
-                    <span className="font-mono">{result.labor.special}M/D × {formatCurrency(laborPrices.special)} = ₩{formatCurrency(result.labor.special * laborPrices.special)}</span>
-                  </div>
-                  <div className="col-span-2 flex justify-between font-semibold border-t pt-1 mt-1">
-                    <span>M/D 합계</span>
-                    <span className="font-mono">₩{formatCurrency(result.costs.labor)}</span>
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
+          {!useMdMode ? (
+            /* HLU/FW 모드 */
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-secondary">
                   <th className="text-left p-3 font-medium">항목</th>
                   <th className="text-right p-3 font-medium">수량</th>
+                  <th className="text-right p-3 font-medium">단위</th>
+                  <th className="text-right p-3 font-medium">단가</th>
+                  <th className="text-right p-3 font-medium">금액</th>
+                </tr>
+              </thead>
+              <tbody>
+                {hluFwData ? (
+                  <>
+                    <tr className="table-row-hover border-b">
+                      <td className="p-3">HAND LAY-UP (HLU)</td>
+                      <td className="p-3 text-right tabular-nums">{formatCurrency(hluFwData.hluWeight)}</td>
+                      <td className="p-3 text-right">KG</td>
+                      <td className="p-3 text-right tabular-nums">{formatCurrency(4500)}</td>
+                      <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(hluFwData.hluCost)}</td>
+                    </tr>
+                    <tr className="table-row-hover border-b table-row-alt">
+                      <td className="p-3">FILAMENT WINDING (FW)</td>
+                      <td className="p-3 text-right tabular-nums">{formatCurrency(hluFwData.fwWeight)}</td>
+                      <td className="p-3 text-right">KG</td>
+                      <td className="p-3 text-right tabular-nums">{formatCurrency(1500)}</td>
+                      <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(hluFwData.fwCost)}</td>
+                    </tr>
+                    <tr className="bg-primary/10 font-semibold">
+                      <td colSpan={4} className="p-3 text-right">SUB TOTAL 2)</td>
+                      <td className="p-3 text-right tabular-nums">{formatCurrency(hluFwData.totalWeightCost)}</td>
+                    </tr>
+                  </>
+                ) : (
+                  <>
+                    <tr className="table-row-hover border-b">
+                      <td className="p-3">HAND LAY-UP (HLU)</td>
+                      <td className="p-3 text-right">-</td>
+                      <td className="p-3 text-right">KG</td>
+                      <td className="p-3 text-right">-</td>
+                      <td className="p-3 text-right">-</td>
+                    </tr>
+                    <tr className="bg-primary/10 font-semibold">
+                      <td colSpan={4} className="p-3 text-right">SUB TOTAL 2)</td>
+                      <td className="p-3 text-right tabular-nums">{formatCurrency(r.costs.labor)}</td>
+                    </tr>
+                  </>
+                )}
+              </tbody>
+            </table>
+          ) : (
+            /* M/D 모드 - 날짜 직접 편집 가능 */
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-secondary">
+                  <th className="text-left p-3 font-medium">항목</th>
+                  <th className="text-right p-3 font-medium">M/D</th>
                   <th className="text-right p-3 font-medium">단위</th>
                   <th className="text-right p-3 font-medium">단가</th>
                   <th className="text-right p-3 font-medium">금액</th>
@@ -328,10 +382,17 @@ export function QuotationResult({
                       WINDING LABOR
                     </FormulaTooltip>
                   </td>
-                  <td className="p-3 text-right tabular-nums">{r.labor.winding}</td>
+                  <td className="p-3 text-right">
+                    <Input
+                      type="number"
+                      value={mdDays.winding}
+                      onChange={(e) => handleMdChange('winding', e.target.value)}
+                      className="w-20 h-7 text-right text-sm ml-auto"
+                    />
+                  </td>
                   <td className="p-3 text-right">M/D</td>
                   <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.winding)}</td>
-                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.winding * laborPrices.winding)}</td>
+                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(mdDays.winding * laborPrices.winding)}</td>
                 </tr>
                 <tr className="table-row-hover border-b table-row-alt">
                   <td className="p-3">
@@ -339,10 +400,17 @@ export function QuotationResult({
                       ASSEMBLY LABOR
                     </FormulaTooltip>
                   </td>
-                  <td className="p-3 text-right tabular-nums">{r.labor.assembly}</td>
+                  <td className="p-3 text-right">
+                    <Input
+                      type="number"
+                      value={mdDays.assembly}
+                      onChange={(e) => handleMdChange('assembly', e.target.value)}
+                      className="w-20 h-7 text-right text-sm ml-auto"
+                    />
+                  </td>
                   <td className="p-3 text-right">M/D</td>
                   <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.assembly)}</td>
-                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.assembly * laborPrices.assembly)}</td>
+                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(mdDays.assembly * laborPrices.assembly)}</td>
                 </tr>
                 <tr className="table-row-hover border-b">
                   <td className="p-3">
@@ -350,10 +418,17 @@ export function QuotationResult({
                       CHEMICAL LABOR
                     </FormulaTooltip>
                   </td>
-                  <td className="p-3 text-right tabular-nums">{r.labor.chemical}</td>
+                  <td className="p-3 text-right">
+                    <Input
+                      type="number"
+                      value={mdDays.chemical}
+                      onChange={(e) => handleMdChange('chemical', e.target.value)}
+                      className="w-20 h-7 text-right text-sm ml-auto"
+                    />
+                  </td>
                   <td className="p-3 text-right">M/D</td>
                   <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.chemical)}</td>
-                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.chemical * laborPrices.chemical)}</td>
+                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(mdDays.chemical * laborPrices.chemical)}</td>
                 </tr>
                 <tr className="table-row-hover border-b table-row-alt">
                   <td className="p-3">
@@ -361,40 +436,25 @@ export function QuotationResult({
                       SPECIAL LABOR
                     </FormulaTooltip>
                   </td>
-                  <td className="p-3 text-right tabular-nums">{r.labor.special}</td>
+                  <td className="p-3 text-right">
+                    <Input
+                      type="number"
+                      value={mdDays.special}
+                      onChange={(e) => handleMdChange('special', e.target.value)}
+                      className="w-20 h-7 text-right text-sm ml-auto"
+                    />
+                  </td>
                   <td className="p-3 text-right">M/D</td>
                   <td className="p-3 text-right tabular-nums">{formatCurrency(laborPrices.special)}</td>
-                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(r.labor.special * laborPrices.special)}</td>
+                  <td className="p-3 text-right tabular-nums font-medium">{formatCurrency(mdDays.special * laborPrices.special)}</td>
                 </tr>
                 <tr className="bg-primary/10 font-semibold">
                   <td colSpan={4} className="p-3 text-right">SUB TOTAL 2)</td>
-                  <td className="p-3 text-right tabular-nums">{formatCurrency(r.costs.labor)}</td>
+                  <td className="p-3 text-right tabular-nums">{formatCurrency(mdLaborCost)}</td>
                 </tr>
               </tbody>
             </table>
-            {excelResult && (
-              <div className="border-t bg-accent/20 p-3">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">
-                  📊 엑셀 실무 중량 기반 인건비 참고
-                </p>
-                <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">HLU</span>
-                    <span className="font-mono">{formatCurrency(excelResult.excelLabor.hluWeight)}kg × 4,500 = ₩{formatCurrency(excelResult.excelLabor.hluCost)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">FW</span>
-                    <span className="font-mono">{formatCurrency(excelResult.excelLabor.fwWeight)}kg × 1,500 = ₩{formatCurrency(excelResult.excelLabor.fwCost)}</span>
-                  </div>
-                  <div className="col-span-2 flex justify-between font-semibold border-t pt-1 mt-1">
-                    <span>중량 기반 합계</span>
-                    <span className="font-mono">₩{formatCurrency(excelResult.excelLabor.totalWeightCost)}</span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </>
-        )}
+          )}
         </CardContent>
       </Card>
       
