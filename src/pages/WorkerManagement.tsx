@@ -1,4 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
+// @ts-ignore - Textarea import
+import { Textarea } from "@/components/ui/textarea";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -33,6 +35,7 @@ interface Worker {
   email: string;
   safety_training_number: string;
   safety_training_date: string;
+  remarks: string;
 }
 
 interface WorkerDocument {
@@ -48,7 +51,7 @@ const emptyWorker: Omit<Worker, "id"> = {
   name: "", resident_number: "", phone: "", blood_type: "",
   address: "", bank_account: "", safety_shoes: "", vest_size: "",
   emergency_contact: "", experience: "", email: "",
-  safety_training_number: "", safety_training_date: "",
+  safety_training_number: "", safety_training_date: "", remarks: "",
 };
 
 const WorkerManagement = () => {
@@ -448,6 +451,16 @@ const WorkerManagement = () => {
               </div>
             ))}
           </div>
+          <div className="space-y-1 pr-2">
+            <Label className="text-xs">비고</Label>
+            <Textarea
+              value={workerForm.remarks}
+              onChange={(e) => setWorkerForm((prev) => ({ ...prev, remarks: e.target.value }))}
+              placeholder="추가 정보를 입력하세요..."
+              rows={3}
+              className="text-sm"
+            />
+          </div>
           <div className="flex justify-end gap-2 mt-4">
             <Button variant="outline" onClick={() => setShowWorkerDialog(false)}>취소</Button>
             <Button onClick={handleSaveWorker}>{editingWorker ? "수정" : "등록"}</Button>
@@ -484,6 +497,13 @@ const WorkerManagement = () => {
                     <span className="font-medium">{value || "-"}</span>
                   </div>
                 ))}
+
+              {detailWorker.remarks && (
+                <div className="col-span-2 mt-2">
+                  <span className="text-muted-foreground">비고:</span>
+                  <p className="font-medium whitespace-pre-wrap mt-1">{detailWorker.remarks}</p>
+                </div>
+              )}
               </div>
 
               <div className="border-t pt-4">

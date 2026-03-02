@@ -1,0 +1,1 @@
+ALTER TABLE public.workers ADD COLUMN remarks text NOT NULL DEFAULT '';
