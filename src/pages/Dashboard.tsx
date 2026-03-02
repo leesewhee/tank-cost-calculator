@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cylinder, FileText, Settings, Shield, ClipboardList, Wrench, Calculator, Scale, Droplets, Table, Settings2, BarChart3, Beaker, Ruler, FolderOpen } from "lucide-react";
+import { Cylinder, FileText, Settings, Shield, ClipboardList, Wrench, Calculator, Scale, Droplets, Table, Settings2, BarChart3, Beaker, Ruler, FolderOpen, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const programs = [
@@ -17,6 +17,7 @@ const programs = [
   { id: "ladder-handrail", title: "사다리 · 핸드레일 제작 기준", description: "KOSHA GUIDE 기반 안전 기준 정리", icon: Shield, path: "/ladder-handrail" },
   { id: "ncr-report", title: "부적합보고서 관리", description: "프로젝트별 NCR 작성 및 관리", icon: ClipboardList, path: "/ncr-report" },
   { id: "document-management", title: "각종 서식 관리", description: "시방서 등 서식 업로드·다운로드 및 이력 관리", icon: FolderOpen, path: "/document-management" },
+  { id: "worker-management", title: "작업자 관리", description: "프로젝트별 인원 관리 및 서류 업로드", icon: Users, path: "/worker-management" },
 ];
 
 const Dashboard = () => {
