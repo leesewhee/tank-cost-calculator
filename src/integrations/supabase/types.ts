@@ -14,6 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
+      document_categories: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      document_files: {
+        Row: {
+          category_id: string
+          created_at: string
+          file_name: string
+          file_path: string
+          id: string
+          memo: string
+          original_name: string
+          project_name: string
+          used_date: string
+        }
+        Insert: {
+          category_id: string
+          created_at?: string
+          file_name: string
+          file_path: string
+          id?: string
+          memo?: string
+          original_name?: string
+          project_name?: string
+          used_date?: string
+        }
+        Update: {
+          category_id?: string
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          id?: string
+          memo?: string
+          original_name?: string
+          project_name?: string
+          used_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "document_files_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "document_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       drawings: {
         Row: {
           created_at: string
