@@ -375,6 +375,7 @@ export type Database = {
           id: string
           name: string
           phone: string
+          remarks: string
           resident_number: string
           safety_shoes: string
           safety_training_date: string
@@ -393,6 +394,7 @@ export type Database = {
           id?: string
           name: string
           phone?: string
+          remarks?: string
           resident_number?: string
           safety_shoes?: string
           safety_training_date?: string
@@ -411,6 +413,7 @@ export type Database = {
           id?: string
           name?: string
           phone?: string
+          remarks?: string
           resident_number?: string
           safety_shoes?: string
           safety_training_date?: string
