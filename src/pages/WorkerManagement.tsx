@@ -242,34 +242,21 @@ const WorkerManagement = () => {
 
   const unassignedWorkers = allWorkers.filter((w) => !projectWorkerIds.includes(w.id));
 
-  const WorkerFormFields = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[60vh] overflow-y-auto pr-2">
-      {[
-        { key: "name", label: "이름 *" },
-        { key: "resident_number", label: "주민번호" },
-        { key: "phone", label: "핸드폰번호" },
-        { key: "blood_type", label: "혈액형" },
-        { key: "address", label: "주소" },
-        { key: "bank_account", label: "계좌번호" },
-        { key: "safety_shoes", label: "안전화 사이즈" },
-        { key: "vest_size", label: "조끼 사이즈" },
-        { key: "emergency_contact", label: "비상연락망" },
-        { key: "experience", label: "경력" },
-        { key: "email", label: "이메일" },
-        { key: "safety_training_number", label: "기초안전 이수번호" },
-        { key: "safety_training_date", label: "기초안전이수증 취득일" },
-      ].map(({ key, label }) => (
-        <div key={key} className="space-y-1">
-          <Label className="text-xs">{label}</Label>
-          <Input
-            value={(workerForm as any)[key]}
-            onChange={(e) => setWorkerForm((prev) => ({ ...prev, [key]: e.target.value }))}
-            className="h-9"
-          />
-        </div>
-      ))}
-    </div>
-  );
+  const workerFormFields = [
+    { key: "name", label: "이름 *" },
+    { key: "resident_number", label: "주민번호" },
+    { key: "phone", label: "핸드폰번호" },
+    { key: "blood_type", label: "혈액형" },
+    { key: "address", label: "주소" },
+    { key: "bank_account", label: "계좌번호" },
+    { key: "safety_shoes", label: "안전화 사이즈" },
+    { key: "vest_size", label: "조끼 사이즈" },
+    { key: "emergency_contact", label: "비상연락망" },
+    { key: "experience", label: "경력" },
+    { key: "email", label: "이메일" },
+    { key: "safety_training_number", label: "기초안전 이수번호" },
+    { key: "safety_training_date", label: "기초안전이수증 취득일" },
+  ];
 
   const WorkerTable = ({ workers, showProjectActions }: { workers: Worker[]; showProjectActions?: boolean }) => (
     <div className="overflow-x-auto">
@@ -449,7 +436,18 @@ const WorkerManagement = () => {
           <DialogHeader>
             <DialogTitle>{editingWorker ? "작업자 정보 수정" : "신규 작업자 등록"}</DialogTitle>
           </DialogHeader>
-          <WorkerFormFields />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[60vh] overflow-y-auto pr-2">
+            {workerFormFields.map(({ key, label }) => (
+              <div key={key} className="space-y-1">
+                <Label className="text-xs">{label}</Label>
+                <Input
+                  value={(workerForm as any)[key]}
+                  onChange={(e) => setWorkerForm((prev) => ({ ...prev, [key]: e.target.value }))}
+                  className="h-9"
+                />
+              </div>
+            ))}
+          </div>
           <div className="flex justify-end gap-2 mt-4">
             <Button variant="outline" onClick={() => setShowWorkerDialog(false)}>취소</Button>
             <Button onClick={handleSaveWorker}>{editingWorker ? "수정" : "등록"}</Button>
