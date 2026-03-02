@@ -12,10 +12,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/hooks/use-toast";
 import { ArrowLeft, Plus, Search, Trash2, Download, Upload, UserPlus, Users, Eye, Edit, X, FileText } from "lucide-react";
 
-interface Project {
+interface WorkerProject {
   id: string;
   name: string;
-  created_date: string;
+  created_at: string;
 }
 
 interface Worker {
@@ -53,8 +53,8 @@ const emptyWorker: Omit<Worker, "id"> = {
 
 const WorkerManagement = () => {
   const navigate = useNavigate();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projects, setProjects] = useState<WorkerProject[]>([]);
+  const [selectedProject, setSelectedProject] = useState<WorkerProject | null>(null);
   const [projectWorkerIds, setProjectWorkerIds] = useState<string[]>([]);
   const [allWorkers, setAllWorkers] = useState<Worker[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -66,6 +66,7 @@ const WorkerManagement = () => {
   const [workerDocs, setWorkerDocs] = useState<WorkerDocument[]>([]);
   const [showAssignDialog, setShowAssignDialog] = useState(false);
   const [activeTab, setActiveTab] = useState("project");
+  const [newProjectName, setNewProjectName] = useState("");
 
   // Load projects & all workers
   useEffect(() => {
@@ -74,8 +75,28 @@ const WorkerManagement = () => {
   }, []);
 
   const fetchProjects = async () => {
-    const { data } = await supabase.from("projects").select("*").order("created_at", { ascending: false });
+    const { data } = await supabase.from("worker_projects").select("*").order("created_at", { ascending: false });
     if (data) setProjects(data);
+  };
+
+  const handleAddProject = async () => {
+    if (!newProjectName.trim()) return;
+    const { error } = await supabase.from("worker_projects").insert({ name: newProjectName.trim() });
+    if (error) { toast({ title: "추가 실패", variant: "destructive" }); return; }
+    setNewProjectName("");
+    fetchProjects();
+    toast({ title: "프로젝트가 추가되었습니다" });
+  };
+
+  const handleDeleteProject = async (projectId: string) => {
+    if (!confirm("이 프로젝트를 삭제하시겠습니까? 배정된 작업자 연결도 함께 삭제됩니다.")) return;
+    await supabase.from("worker_projects").delete().eq("id", projectId);
+    if (selectedProject?.id === projectId) {
+      setSelectedProject(null);
+      setProjectWorkerIds([]);
+    }
+    fetchProjects();
+    toast({ title: "프로젝트가 삭제되었습니다" });
   };
 
   const fetchAllWorkers = async () => {
@@ -88,7 +109,7 @@ const WorkerManagement = () => {
     if (data) setProjectWorkerIds(data.map((d) => d.worker_id));
   };
 
-  const selectProject = (project: Project) => {
+  const selectProject = (project: WorkerProject) => {
     setSelectedProject(project);
     fetchProjectWorkers(project.id);
   };
@@ -326,21 +347,35 @@ const WorkerManagement = () => {
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base">프로젝트 목록</CardTitle>
+                  <div className="flex gap-1 mt-2">
+                    <Input
+                      placeholder="새 프로젝트명"
+                      value={newProjectName}
+                      onChange={(e) => setNewProjectName(e.target.value)}
+                      className="h-8 text-sm"
+                      onKeyDown={(e) => e.key === "Enter" && handleAddProject()}
+                    />
+                    <Button size="sm" className="h-8 px-2" onClick={handleAddProject}><Plus className="w-4 h-4" /></Button>
+                  </div>
                 </CardHeader>
                 <CardContent className="space-y-1 max-h-[70vh] overflow-y-auto">
                   {projects.map((p) => (
-                    <Button
-                      key={p.id}
-                      variant={selectedProject?.id === p.id ? "default" : "ghost"}
-                      className="w-full justify-start text-sm"
-                      onClick={() => selectProject(p)}
-                    >
-                      {p.name}
-                    </Button>
+                    <div key={p.id} className="flex items-center gap-1">
+                      <Button
+                        variant={selectedProject?.id === p.id ? "default" : "ghost"}
+                        className="flex-1 justify-start text-sm"
+                        onClick={() => selectProject(p)}
+                      >
+                        {p.name}
+                      </Button>
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive" onClick={() => handleDeleteProject(p.id)}>
+                        <Trash2 className="w-3 h-3" />
+                      </Button>
+                    </div>
                   ))}
                   {projects.length === 0 && (
                     <p className="text-sm text-muted-foreground text-center py-4">
-                      프로젝트가 없습니다.<br />도면 리비전 관리에서 프로젝트를 먼저 추가해주세요.
+                      프로젝트가 없습니다.<br />위에서 새 프로젝트를 추가해주세요.
                     </p>
                   )}
                 </CardContent>

@@ -271,7 +271,7 @@ export type Database = {
             foreignKeyName: "project_workers_project_id_fkey"
             columns: ["project_id"]
             isOneToOne: false
-            referencedRelation: "projects"
+            referencedRelation: "worker_projects"
             referencedColumns: ["id"]
           },
           {
@@ -344,6 +344,24 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      worker_projects: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
       }
       workers: {
         Row: {
