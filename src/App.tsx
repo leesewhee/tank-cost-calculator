@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import TankQuotation from "./pages/Index";
+import DocumentManagement from "./pages/DocumentManagement";
 import DrawingRevision from "./pages/DrawingRevision";
 import LadderHandrailStandard from "./pages/LadderHandrailStandard";
 import NCRReport from "./pages/NCRReport";
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/flange-torque" element={<FlangeTorquePage />} />
           <Route path="/material-properties" element={<MaterialPropertiesPage />} />
           <Route path="/chemical-resistance" element={<ChemicalResistancePage />} />
+          <Route path="/document-management" element={<DocumentManagement />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
