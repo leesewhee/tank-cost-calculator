@@ -247,6 +247,42 @@ export type Database = {
           },
         ]
       }
+      project_workers: {
+        Row: {
+          assigned_at: string
+          id: string
+          project_id: string
+          worker_id: string
+        }
+        Insert: {
+          assigned_at?: string
+          id?: string
+          project_id: string
+          worker_id: string
+        }
+        Update: {
+          assigned_at?: string
+          id?: string
+          project_id?: string
+          worker_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_workers_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_workers_worker_id_fkey"
+            columns: ["worker_id"]
+            isOneToOne: false
+            referencedRelation: "workers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           created_at: string
@@ -268,6 +304,101 @@ export type Database = {
           id?: string
           name?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      worker_documents: {
+        Row: {
+          created_at: string
+          doc_type: string
+          file_name: string
+          file_path: string
+          id: string
+          original_name: string
+          worker_id: string
+        }
+        Insert: {
+          created_at?: string
+          doc_type?: string
+          file_name: string
+          file_path: string
+          id?: string
+          original_name?: string
+          worker_id: string
+        }
+        Update: {
+          created_at?: string
+          doc_type?: string
+          file_name?: string
+          file_path?: string
+          id?: string
+          original_name?: string
+          worker_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "worker_documents_worker_id_fkey"
+            columns: ["worker_id"]
+            isOneToOne: false
+            referencedRelation: "workers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      workers: {
+        Row: {
+          address: string
+          bank_account: string
+          blood_type: string
+          created_at: string
+          email: string
+          emergency_contact: string
+          experience: string
+          id: string
+          name: string
+          phone: string
+          resident_number: string
+          safety_shoes: string
+          safety_training_date: string
+          safety_training_number: string
+          updated_at: string
+          vest_size: string
+        }
+        Insert: {
+          address?: string
+          bank_account?: string
+          blood_type?: string
+          created_at?: string
+          email?: string
+          emergency_contact?: string
+          experience?: string
+          id?: string
+          name: string
+          phone?: string
+          resident_number?: string
+          safety_shoes?: string
+          safety_training_date?: string
+          safety_training_number?: string
+          updated_at?: string
+          vest_size?: string
+        }
+        Update: {
+          address?: string
+          bank_account?: string
+          blood_type?: string
+          created_at?: string
+          email?: string
+          emergency_contact?: string
+          experience?: string
+          id?: string
+          name?: string
+          phone?: string
+          resident_number?: string
+          safety_shoes?: string
+          safety_training_date?: string
+          safety_training_number?: string
+          updated_at?: string
+          vest_size?: string
         }
         Relationships: []
       }

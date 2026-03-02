@@ -11,6 +11,7 @@ import LadderHandrailStandard from "./pages/LadderHandrailStandard";
 import NCRReport from "./pages/NCRReport";
 import NotFound from "./pages/NotFound";
 import BoltReferenceTable from "./pages/BoltReferenceTable";
+import WorkerManagement from "./pages/WorkerManagement";
 import {
   BoltCalculatorPage,
   FRPCalculatorPage,
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/material-properties" element={<MaterialPropertiesPage />} />
           <Route path="/chemical-resistance" element={<ChemicalResistancePage />} />
           <Route path="/document-management" element={<DocumentManagement />} />
+          <Route path="/worker-management" element={<WorkerManagement />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
