@@ -70,6 +70,7 @@ const WorkerManagement = () => {
   const [showAssignDialog, setShowAssignDialog] = useState(false);
   const [activeTab, setActiveTab] = useState("project");
   const [newProjectName, setNewProjectName] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   // Load projects & all workers
   useEffect(() => {
