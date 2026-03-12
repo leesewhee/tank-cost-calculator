@@ -70,6 +70,7 @@ const WorkerManagement = () => {
   const [showAssignDialog, setShowAssignDialog] = useState(false);
   const [activeTab, setActiveTab] = useState("project");
   const [newProjectName, setNewProjectName] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   // Load projects & all workers
   useEffect(() => {
@@ -201,25 +202,46 @@ const WorkerManagement = () => {
   const handleDocUpload = async (e: React.ChangeEvent<HTMLInputElement>, docType: string) => {
     if (!detailWorker || !e.target.files?.[0]) return;
     const file = e.target.files[0];
-    const filePath = `${detailWorker.id}/${Date.now()}_${file.name}`;
-    const { error: uploadError } = await supabase.storage.from("worker-documents").upload(filePath, file);
-    if (uploadError) { toast({ title: "업로드 실패", variant: "destructive" }); return; }
-    await supabase.from("worker_documents").insert({
-      worker_id: detailWorker.id, doc_type: docType,
-      file_name: file.name, file_path: filePath, original_name: file.name,
-    });
-    const { data } = await supabase.from("worker_documents").select("*").eq("worker_id", detailWorker.id);
-    if (data) setWorkerDocs(data);
-    toast({ title: `${docType} 업로드 완료` });
+    
+    // File size limit: 10MB
+    if (file.size > 10 * 1024 * 1024) {
+      toast({ title: "파일 크기 제한", description: "10MB 이하 파일만 업로드 가능합니다.", variant: "destructive" });
+      e.target.value = "";
+      return;
+    }
+    
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop() || "bin";
+      const filePath = `${detailWorker.id}/${Date.now()}.${ext}`;
+      const { error: uploadError } = await supabase.storage.from("worker-documents").upload(filePath, file);
+      if (uploadError) { 
+        toast({ title: "업로드 실패", description: uploadError.message, variant: "destructive" }); 
+        return; 
+      }
+      await supabase.from("worker_documents").insert({
+        worker_id: detailWorker.id, doc_type: docType,
+        file_name: file.name, file_path: filePath, original_name: file.name,
+      });
+      const { data } = await supabase.from("worker_documents").select("*").eq("worker_id", detailWorker.id);
+      if (data) setWorkerDocs(data);
+      toast({ title: `${docType} 업로드 완료` });
+    } finally {
+      setUploading(false);
+      e.target.value = "";
+    }
   };
 
-  const handleDocDownload = async (doc: WorkerDocument) => {
-    const { data } = await supabase.storage.from("worker-documents").download(doc.file_path);
-    if (data) {
-      const url = URL.createObjectURL(data);
+  const handleDocDownload = (doc: WorkerDocument) => {
+    const { data } = supabase.storage.from("worker-documents").getPublicUrl(doc.file_path);
+    if (data?.publicUrl) {
       const a = document.createElement("a");
-      a.href = url; a.download = doc.original_name; a.click();
-      URL.revokeObjectURL(url);
+      a.href = data.publicUrl;
+      a.download = doc.original_name || doc.file_name;
+      a.target = "_blank";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   };
 
@@ -513,15 +535,17 @@ const WorkerManagement = () => {
                 <div className="flex gap-3 mb-3">
                   {["주민등록 사본", "기초안전이수증 사본"].map((docType) => (
                     <div key={docType}>
-                      <Label htmlFor={`upload-${docType}`} className="cursor-pointer">
+                      <Label htmlFor={`upload-${docType}`} className={`cursor-pointer ${uploading ? "pointer-events-none opacity-50" : ""}`}>
                         <div className="flex items-center gap-1 text-sm bg-primary/10 text-primary px-3 py-2 rounded-md hover:bg-primary/20 transition-colors">
-                          <Upload className="w-4 h-4" /> {docType} 업로드
+                          <Upload className="w-4 h-4" /> {uploading ? "업로드 중..." : `${docType} 업로드`}
                         </div>
                       </Label>
                       <input
                         id={`upload-${docType}`}
                         type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
                         className="hidden"
+                        disabled={uploading}
                         onChange={(e) => handleDocUpload(e, docType)}
                       />
                     </div>
