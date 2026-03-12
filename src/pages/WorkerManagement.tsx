@@ -535,15 +535,17 @@ const WorkerManagement = () => {
                 <div className="flex gap-3 mb-3">
                   {["주민등록 사본", "기초안전이수증 사본"].map((docType) => (
                     <div key={docType}>
-                      <Label htmlFor={`upload-${docType}`} className="cursor-pointer">
+                      <Label htmlFor={`upload-${docType}`} className={`cursor-pointer ${uploading ? "pointer-events-none opacity-50" : ""}`}>
                         <div className="flex items-center gap-1 text-sm bg-primary/10 text-primary px-3 py-2 rounded-md hover:bg-primary/20 transition-colors">
-                          <Upload className="w-4 h-4" /> {docType} 업로드
+                          <Upload className="w-4 h-4" /> {uploading ? "업로드 중..." : `${docType} 업로드`}
                         </div>
                       </Label>
                       <input
                         id={`upload-${docType}`}
                         type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
                         className="hidden"
+                        disabled={uploading}
                         onChange={(e) => handleDocUpload(e, docType)}
                       />
                     </div>
