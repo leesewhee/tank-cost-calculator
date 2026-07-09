@@ -1,95 +1,42 @@
 
+## FRP 플랜지 토크 참조 매뉴얼 PDF 제작
 
-# bolt-friend 프로그램 마이그레이션 실행 계획
+`src/lib/flangeTorque.ts`의 데이터를 기반으로 현장 및 사무실에서 참조할 수 있는 다중 페이지 PDF 문서를 `/mnt/documents/`에 생성합니다. 코드 변경 없이 산출물(artifact)만 만들며, 앱 기능에는 영향을 주지 않습니다.
 
-## 개요
-GitHub 저장소(leesewhee/bolt-friend)에서 9개 엔지니어링 도구의 소스 코드를 확인했습니다. 이를 현재 월드테크 시스템으로 이전합니다.
+### 데이터 검증
+PDF 작성 전에 다음 소스를 다시 교차 확인합니다.
+- `src/lib/flangeTorque.ts` — ANSI(1"~48"), Metric(DN25~DN1200) 19개 사이즈, 볼트 규격/개수/기본·최대 토크
+- 가스켓 4종 계수 (PTFE 1.0 / EPDM 0.85 / Viton 0.9 / 충전 PTFE 1.1)
+- 윤활 볼트 -25% 계수
+- RTP-1 / ASME PCC-1 체결 순서 4단계 (30% → 60% → 100% → 최종 확인)
 
-## 이전 대상 (9개 프로그램 + 1개 참조 페이지)
+### PDF 구성 (A4, 세로, 6~8페이지)
 
-| 프로그램 | 원본 코드량 | 비고 |
-|----------|------------|------|
-| 볼트 길이 계산기 | 523 + 239줄 | 볼트 규격 참조 테이블 포함 |
-| FRP 두께 계산기 | 944 + 469줄 | 다국어 제거 필요 |
-| FRP 무게 계산기 | 543줄 | 로직 자체 내장 |
-| 탱크 용량 계산기 | 312 + 119줄 | 기존 calculations.ts와 충돌 방지 |
-| ANSI/JIS 플랜지 규격표 | 135 + 135줄 | - |
-| FRP 플랜지 토크 테이블 | 336 + 189줄 | - |
-| FRP 물성 데이터표 | 170 + 243줄 | - |
-| 화학약품 내식성 조회표 | 222 + 402줄 | - |
-| 핸드레일/사다리 계산기 | 748 + 338줄 | PDF 업로드 기능은 UI만 유지 |
+1. **표지** — 제목, 부제, RTP-1/PCC-1 근거, 회사 주소/연락처, 개정일
+2. **사용 안내 & 계산식** — `조정토크 = 기본토크 × 가스켓계수 × 윤활계수`, 단위 환산(1 ft·lb ≈ 1.356 Nm), 가스켓/윤활 계수표
+3. **ANSI (인치) 규격 토크표** — 사이즈, 직경(mm/inch), 볼트규격, 볼트수, 기본 토크(Nm/ft-lb), 최대 토크(Nm/ft-lb) — 필요 시 2페이지 분할
+4. **Metric (DN) 규격 토크표** — 동일 컬럼, DN25~DN1200
+5. **가스켓별 조정 토크 비교표** — 대표 사이즈(2", 4", 6", 8", 12", 16", 24", 36", 48")에 대해 4가지 가스켓 × 윤활 On/Off 조합의 조정 토크 매트릭스
+6. **체결 순서 & 8볼트 별모양 다이어그램** — 4단계 절차표 + 순서 도식(1→5→3→7→2→6→4→8)
+7. **주의사항 & 참조 규격** — 앱과 동일한 5개 주의사항, 3개 참조 규격, 하단 면책 문구
 
-## 코드 수정 사항
+### 기술 구현
+- ReportLab (Platypus) 사용, A4 세로, 여백 15mm
+- 한글 폰트: 시스템의 나눔/노토 CJK 자동 탐색, 미설치 시 설치
+- 표: `Table` + `TableStyle` (헤더 배경 `#D5E8F0`, 격자 얇은 회색, 짝수행 zebra)
+- 페이지 하단 페이지번호 및 "FRP 플랜지 토크 참조 매뉴얼" 러닝 헤더
+- 원형 다이어그램은 ReportLab `Drawing`으로 8볼트 위치 + 순서 번호 렌더링
 
-원본 코드에서 다음을 변경합니다:
+### 품질 검증 (필수)
+1. PDF 생성 후 `pdftoppm -jpeg -r 150`로 전 페이지 이미지 변환
+2. 모든 페이지를 시각적으로 검사: 한글 깨짐/네모박스, 표 컬럼 정렬, 잘린 텍스트, 페이지 넘김 위치, 다이어그램 렌더링
+3. 데이터 수치를 `flangeTorque.ts`와 재대조
+4. 문제 발견 시 스크립트 수정 후 재생성, 무결점 확인 후 전달
 
-1. **다국어 코드 제거** - `useLanguage()` 호출 및 `labels.ko/en` 구조를 제거하고, 한국어 텍스트만 직접 사용
-2. **로고 이미지 참조 제거** - BoltCalculator의 `worldtech-logo.png` import 삭제
-3. **페이지 레이아웃 통일** - 각 도구를 개별 페이지로 감싸며 헤더 + 뒤로가기 + 푸터 적용
-4. **라우팅 통합** - App.tsx에 10개 라우트 추가
-5. **대시보드 카드 추가** - Dashboard.tsx에 9개 프로그램 카드 추가
+### 산출물
+- `/mnt/documents/FRP_Flange_Torque_Manual.pdf`
+- 채팅에 `<presentation-artifact>` 태그로 미리보기 제공
 
-## 작업 단계 (3단계)
-
-코드량이 약 5,000줄 이상으로 매우 방대하므로 3단계로 나누어 진행합니다.
-
-### 1단계: 계산기 도구 (4개)
-- `src/lib/boltCalculator.ts` - 볼트 계산 로직
-- `src/components/BoltCalculator.tsx` - 볼트 계산기 UI
-- `src/pages/BoltReferenceTable.tsx` - 볼트 규격 참조 테이블
-- `src/lib/frpCalculator.ts` - FRP 두께 계산 로직
-- `src/components/FRPThicknessCalculator.tsx` - FRP 두께 계산기 UI
-- `src/components/WeightCalculator.tsx` - FRP 무게 계산기 UI
-- `src/lib/handrailCalculator.ts` - 핸드레일 계산 로직
-- `src/components/HandrailCalculator.tsx` - 핸드레일 계산기 UI
-
-### 2단계: 탱크 + 플랜지 도구 (3개)
-- `src/lib/tankVolumeCalculator.ts` - 탱크 용량 계산 로직
-- `src/components/TankVolumeCalculator.tsx` - 탱크 용량 계산기 UI
-- `src/lib/flangeSpec.ts` - 플랜지 규격 데이터
-- `src/components/FlangeSpecTable.tsx` - 플랜지 규격표 UI
-- `src/lib/flangeTorque.ts` - 플랜지 토크 데이터
-- `src/components/FlangeTorqueTable.tsx` - 플랜지 토크 테이블 UI
-
-### 3단계: 데이터 테이블 + 대시보드 통합 (2개 + 통합)
-- `src/lib/materialProperties.ts` - 물성 데이터
-- `src/components/MaterialPropertiesTable.tsx` - 물성 데이터표 UI
-- `src/lib/chemicalResistance.ts` - 내식성 데이터
-- `src/components/ChemicalResistanceTable.tsx` - 내식성 조회표 UI
-- `src/pages/EngineeringTools.tsx` - 각 도구를 페이지로 감싸는 래퍼
-- `src/App.tsx` 수정 - 10개 라우트 추가
-- `src/pages/Dashboard.tsx` 수정 - 9개 프로그램 카드 추가
-
-## 주의사항
-- 기존 `src/lib/calculations.ts`의 `TankDimensions` 타입과 충돌 방지를 위해 탱크 용량 계산기 파일명을 `tankVolumeCalculator.ts`로 구분
-- HandrailCalculator의 PDF 업로드 기능은 Supabase Edge Function이 필요하나 현재 프로젝트에 없으므로, UI만 유지하고 추후 별도 구현
-- 총 생성 파일: 19개 / 수정 파일: 2개
-
-## 기술 세부 사항
-
-### 새로운 라우트 구조
-
-```text
-/bolt-calculator        -> 볼트 길이 계산기
-/bolt-reference         -> 볼트 규격 참조 테이블
-/frp-calculator         -> FRP 두께 계산기
-/weight-calculator      -> FRP 무게 계산기
-/tank-volume-calculator -> 탱크 용량 계산기
-/flange-spec            -> ANSI/JIS 플랜지 규격표
-/flange-torque          -> FRP 플랜지 토크 테이블
-/material-properties    -> FRP 물성 데이터표
-/chemical-resistance    -> 화학약품 내식성 조회표
-/handrail-calculator    -> 핸드레일/사다리 계산기
-```
-
-### 대시보드 카드 아이콘 매핑
-- 볼트 계산기: Wrench
-- FRP 두께 계산기: Calculator
-- FRP 무게 계산기: Scale
-- 탱크 용량 계산기: Droplets
-- 플랜지 규격표: Table
-- 플랜지 토크: Settings2
-- 물성 데이터표: BarChart3
-- 내식성 조회표: Beaker
-- 핸드레일 계산기: Ruler
-
+### 확인 요청
+1. 언어는 **한글 위주(영문 규격 용어 병기)**로 진행해도 될까요, 아니면 완전 이중언어(한/영 병기)로 만들까요?
+2. 표지에 회사명/로고를 넣어드릴까요? (넣는다면 사용할 회사명을 알려주세요)
