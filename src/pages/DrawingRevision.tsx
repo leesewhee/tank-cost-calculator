@@ -450,6 +450,7 @@ import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
                        </div>
                      </DialogContent>
                    </Dialog>
+                   </div>
                  </div>
                </CardHeader>
                <CardContent>
