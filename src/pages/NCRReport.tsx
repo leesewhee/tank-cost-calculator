@@ -673,6 +673,13 @@ const NCRReportPage = () => {
                             <Button
                               variant="ghost"
                               size="icon"
+                              onClick={() => handlePrintOne(report)}
+                            >
+                              <Printer className="w-4 h-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
                               onClick={() => handleOpenEdit(report)}
                             >
                               <Pencil className="w-4 h-4 text-blue-600" />
