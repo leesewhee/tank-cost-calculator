@@ -25,10 +25,11 @@ import { useState, useEffect } from "react";
    SelectTrigger,
    SelectValue,
  } from "@/components/ui/select";
- import { ArrowLeft, FileText, Plus, Pencil, Trash2 } from "lucide-react";
+ import { ArrowLeft, FileText, Plus, Pencil, Trash2, Printer } from "lucide-react";
  import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
  
  interface Drawing {
    id: string;
