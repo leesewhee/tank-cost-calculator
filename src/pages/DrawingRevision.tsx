@@ -395,6 +395,11 @@ import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
                <CardHeader>
                  <div className="flex items-center justify-between">
                    <CardTitle>도면 목록</CardTitle>
+                   <div className="flex items-center gap-2">
+                   <Button size="sm" variant="outline" onClick={handlePrint}>
+                     <Printer className="w-4 h-4 mr-1" />
+                     출력
+                   </Button>
                    <Dialog open={isDrawingDialogOpen} onOpenChange={setIsDrawingDialogOpen}>
                      <DialogTrigger asChild>
                        <Button size="sm">
