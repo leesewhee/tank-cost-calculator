@@ -27,10 +27,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, ClipboardList, Plus, Eye, Trash2, Pencil, X } from "lucide-react";
+import { ArrowLeft, ClipboardList, Plus, Eye, Trash2, Pencil, X, Printer } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
 
 interface Project {
   id: string;
