@@ -606,10 +606,16 @@ const NCRReportPage = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle>부적합보고서 목록</CardTitle>
-                <Button size="sm" onClick={handleOpenCreate}>
-                  <Plus className="w-4 h-4 mr-1" />
-                  보고서 작성
-                </Button>
+                <div className="flex items-center gap-2">
+                  <Button size="sm" variant="outline" onClick={handlePrintAll}>
+                    <Printer className="w-4 h-4 mr-1" />
+                    전체 출력
+                  </Button>
+                  <Button size="sm" onClick={handleOpenCreate}>
+                    <Plus className="w-4 h-4 mr-1" />
+                    보고서 작성
+                  </Button>
+                </div>
               </div>
             </CardHeader>
             <CardContent>
