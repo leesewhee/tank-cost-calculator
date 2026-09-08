@@ -25,10 +25,11 @@ import { useState, useEffect } from "react";
    SelectTrigger,
    SelectValue,
  } from "@/components/ui/select";
- import { ArrowLeft, FileText, Plus, Pencil, Trash2 } from "lucide-react";
+ import { ArrowLeft, FileText, Plus, Pencil, Trash2, Printer } from "lucide-react";
  import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
  
  interface Drawing {
    id: string;
@@ -234,6 +235,53 @@ import { toast } from "sonner";
     toast.success('프로젝트가 삭제되었습니다');
    };
  
+  const handlePrint = () => {
+    if (!selectedProject || projectDrawings.length === 0) {
+      toast.error("출력할 도면이 없습니다");
+      return;
+    }
+    const groups = groupByDate(projectDrawings, (d) => d.revisionDate);
+    const body = `
+      <div class="section">
+        <table>
+          <tr><td class="label">프로젝트명</td><td>${escapeHtml(selectedProject.name)}</td>
+              <td class="label">총 도면 수</td><td>${projectDrawings.length} 건</td></tr>
+        </table>
+      </div>
+      ${groups
+        .map(
+          ([date, list]) => `
+        <div class="section">
+          <h2 class="group">개정일자 : ${escapeHtml(date)} (${list.length}건)</h2>
+          <table>
+            <thead><tr>
+              <th style="width:60px">No.</th><th style="width:140px">도면번호</th>
+              <th>도면명</th><th style="width:90px">최신 Rev.</th><th style="width:110px">개정일자</th>
+            </tr></thead>
+            <tbody>
+              ${list
+                .map(
+                  (d, i) => `<tr>
+                    <td>${i + 1}</td>
+                    <td>${escapeHtml(d.drawingNumber)}</td>
+                    <td>${escapeHtml(d.drawingName)}</td>
+                    <td>${escapeHtml(d.revision)}</td>
+                    <td>${escapeHtml(d.revisionDate)}</td>
+                  </tr>`
+                )
+                .join("")}
+            </tbody>
+          </table>
+        </div>`
+        )
+        .join("")}
+      <table class="sign">
+        <tr><th style="text-align:center">작성</th><th style="text-align:center">검토</th><th style="text-align:center">승인</th></tr>
+        <tr><td style="height:52px"></td><td></td><td></td></tr>
+      </table>`;
+    openPrintWindow("도면 리비전 관리 대장", selectedProject.name, body);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -347,6 +395,11 @@ import { toast } from "sonner";
                <CardHeader>
                  <div className="flex items-center justify-between">
                    <CardTitle>도면 목록</CardTitle>
+                   <div className="flex items-center gap-2">
+                   <Button size="sm" variant="outline" onClick={handlePrint}>
+                     <Printer className="w-4 h-4 mr-1" />
+                     출력
+                   </Button>
                    <Dialog open={isDrawingDialogOpen} onOpenChange={setIsDrawingDialogOpen}>
                      <DialogTrigger asChild>
                        <Button size="sm">
@@ -397,6 +450,7 @@ import { toast } from "sonner";
                        </div>
                      </DialogContent>
                    </Dialog>
+                   </div>
                  </div>
                </CardHeader>
                <CardContent>

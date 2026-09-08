@@ -27,10 +27,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowLeft, ClipboardList, Plus, Eye, Trash2, Pencil, X } from "lucide-react";
+import { ArrowLeft, ClipboardList, Plus, Eye, Trash2, Pencil, X, Printer } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
 
 interface Project {
   id: string;
@@ -394,6 +395,126 @@ const NCRReportPage = () => {
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId);
 
+  const renderReportHtml = (r: NCRReport, items: InspectionItem[]) => {
+    const chk = (on: boolean, label: string) => `${on ? "■" : "□"} ${label}`;
+    const rows = items.filter(
+      (i) => i.drawing_number || i.issue_count || i.item_remarks
+    );
+    return `
+    <div class="section">
+      <table>
+        <tr><td class="label">공사번호</td><td>${escapeHtml(r.construction_no)}</td>
+            <td class="label">공사명</td><td>${escapeHtml(r.construction_name)}</td></tr>
+        <tr><td class="label">장치명</td><td>${escapeHtml(r.equipment_name)}</td>
+            <td class="label">검사일시</td><td>${escapeHtml(r.inspection_date)}</td></tr>
+        <tr><td class="label">검사자</td><td>${escapeHtml(r.inspector)}</td>
+            <td class="label">검사장소</td><td>${escapeHtml(r.inspection_location)}</td></tr>
+      </table>
+      <table style="margin-top:6px">
+        <thead><tr>
+          <th style="width:50px">No.</th><th style="width:160px">도면번호</th>
+          <th style="width:120px">부적합 수량</th><th>비고</th>
+        </tr></thead>
+        <tbody>
+          ${
+            rows.length
+              ? rows
+                  .map(
+                    (i) => `<tr><td>${i.item_no}</td><td>${escapeHtml(i.drawing_number)}</td>
+                      <td>${escapeHtml(i.issue_count)}</td><td>${escapeHtml(i.item_remarks)}</td></tr>`
+                  )
+                  .join("")
+              : `<tr><td colspan="4" class="muted">검사품목 없음</td></tr>`
+          }
+        </tbody>
+      </table>
+      <table style="margin-top:6px">
+        <tr><td class="label">부적합 내용</td><td style="height:48px">${escapeHtml(r.issues).replace(/\n/g, "<br/>")}</td></tr>
+        <tr><td class="label">조치 사항</td><td style="height:48px">${escapeHtml(r.actions).replace(/\n/g, "<br/>")}</td></tr>
+        <tr><td class="label">조치 구분</td><td>${[
+          chk(r.action_rework, "재작업"),
+          chk(r.action_modify, "수정"),
+          chk(r.action_sort, "선별"),
+          chk(r.action_return, "반품"),
+          chk(r.action_discard, "폐기"),
+        ].join(" &nbsp; ")}</td></tr>
+        <tr><td class="label">조치 부서</td><td>${escapeHtml(r.action_department)} / 처리기간: ${escapeHtml(r.processing_period)}</td></tr>
+        <tr><td class="label">재검사 결과</td><td>${escapeHtml(r.reinspection_result)}</td></tr>
+        <tr><td class="label">최종 확인</td><td>${escapeHtml(r.final_result)}</td></tr>
+        <tr><td class="label">비고</td><td>${escapeHtml(r.remarks).replace(/\n/g, "<br/>")}</td></tr>
+      </table>
+      <table class="sign">
+        <tr><th style="text-align:center">작성</th><th style="text-align:center">검토</th><th style="text-align:center">승인</th></tr>
+        <tr style="text-align:center"><td style="height:46px">${escapeHtml(r.written_by)}</td>
+            <td>${escapeHtml(r.reviewed_by)}</td><td>${escapeHtml(r.approved_by)}</td></tr>
+      </table>
+    </div>`;
+  };
+
+  const fetchItemsFor = async (ids: string[]) => {
+    const { data } = await supabase
+      .from("ncr_inspection_items")
+      .select("*")
+      .in("report_id", ids)
+      .order("item_no");
+    const map = new Map<string, InspectionItem[]>();
+    (data || []).forEach((i: { report_id: string } & InspectionItem) => {
+      if (!map.has(i.report_id)) map.set(i.report_id, []);
+      map.get(i.report_id)!.push(i);
+    });
+    return map;
+  };
+
+  const handlePrintOne = async (report: NCRReport) => {
+    const map = await fetchItemsFor([report.id]);
+    openPrintWindow(
+      "부 적 합 보 고 서 (NCR)",
+      `${selectedProject?.name || ""} / ${report.inspection_date || ""}`,
+      renderReportHtml(report, map.get(report.id) || [])
+    );
+  };
+
+  const handlePrintAll = async () => {
+    if (reports.length === 0) {
+      toast.error("출력할 보고서가 없습니다");
+      return;
+    }
+    const map = await fetchItemsFor(reports.map((r) => r.id));
+    const groups = groupByDate(reports, (r) => r.inspection_date);
+    const summary = `
+      <div class="section">
+        <h2 class="group">보고서 요약 (총 ${reports.length}건)</h2>
+        <table>
+          <thead><tr><th style="width:50px">No.</th><th style="width:110px">검사일시</th>
+            <th style="width:120px">공사번호</th><th>장치명</th><th style="width:90px">검사자</th>
+            <th style="width:90px">최종확인</th></tr></thead>
+          <tbody>
+            ${groups
+              .flatMap(([, list]) => list)
+              .map(
+                (r, i) => `<tr><td>${i + 1}</td><td>${escapeHtml(r.inspection_date)}</td>
+                  <td>${escapeHtml(r.construction_no)}</td><td>${escapeHtml(r.equipment_name)}</td>
+                  <td>${escapeHtml(r.inspector)}</td><td>${escapeHtml(r.final_result)}</td></tr>`
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>`;
+    const details = groups
+      .map(
+        ([date, list]) => `
+        <div class="page-break"></div>
+        <h2 class="group">검사일자 : ${escapeHtml(date)} (${list.length}건)</h2>
+        ${list.map((r) => renderReportHtml(r, map.get(r.id) || [])).join('<div class="page-break"></div>')}`
+      )
+      .join("");
+    openPrintWindow(
+      "부적합보고서 (NCR) 관리대장",
+      selectedProject?.name || "",
+      summary + details
+    );
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -485,10 +606,16 @@ const NCRReportPage = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle>부적합보고서 목록</CardTitle>
-                <Button size="sm" onClick={handleOpenCreate}>
-                  <Plus className="w-4 h-4 mr-1" />
-                  보고서 작성
-                </Button>
+                <div className="flex items-center gap-2">
+                  <Button size="sm" variant="outline" onClick={handlePrintAll}>
+                    <Printer className="w-4 h-4 mr-1" />
+                    전체 출력
+                  </Button>
+                  <Button size="sm" onClick={handleOpenCreate}>
+                    <Plus className="w-4 h-4 mr-1" />
+                    보고서 작성
+                  </Button>
+                </div>
               </div>
             </CardHeader>
             <CardContent>
@@ -542,6 +669,13 @@ const NCRReportPage = () => {
                               onClick={() => handleViewReport(report)}
                             >
                               <Eye className="w-4 h-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => handlePrintOne(report)}
+                            >
+                              <Printer className="w-4 h-4" />
                             </Button>
                             <Button
                               variant="ghost"
