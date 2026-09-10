@@ -135,7 +135,17 @@ export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps
               />
             </div>
           </div>
+          <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
+            <p className="text-xs text-muted-foreground">
+              직경을 바꿔도 입력한 두께·비용은 그대로 유지됩니다. 크기에 맞는 표준값이 필요하면 오른쪽 버튼을 누르세요.
+            </p>
+            <Button type="button" variant="outline" size="sm" onClick={applySizeDefaults} disabled={!isFinite(dia) || dia <= 0}>
+              <Wand2 className="w-4 h-4 mr-2" />
+              크기별 기본값 적용
+            </Button>
+          </div>
         </CardContent>
+
       </Card>
       
       {/* 상세 설정 탭 */}
