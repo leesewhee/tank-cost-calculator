@@ -7,7 +7,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Info, BookOpen, Calculator, FlaskConical } from "lucide-react";
 
-interface FormulaInfo {
+export interface FormulaInfo {
   title: string;
   formula?: string;
   description: string;
@@ -98,36 +98,32 @@ export const formulaData = {
     formula: "π × D × H",
     description: "원통형 몸체의 측면적을 계산합니다. 직경(D)과 높이(H)를 곱한 원주 면적입니다.",
     source: "기하학적 공식 (원통 측면적)",
-    standard: "ASME RTP-1, ASTM D 3299",
   },
   bottomArea: {
     title: "Bottom (바닥) 면적",
     formula: "π × (D/2)²",
     description: "원형 바닥판의 면적을 계산합니다. 반지름의 제곱에 π를 곱한 값입니다.",
     source: "기하학적 공식 (원 면적)",
-    standard: "ASME RTP-1",
   },
   headArea: {
     title: "Head (지붕) 면적",
     formula: "BTM 면적 × 1.1",
     description: "접시형 경판(Torispherical Head)의 곡률을 반영하여 평면적의 10%를 할증합니다.",
-    source: "업계 통상 경험치",
-    standard: "RTP-1 Section 3A (접시형 경판)",
+    source: "월드테크(주) 기존 견적 경험치",
     note: "견적 단계 약식 계산",
   },
   jointSW: {
     title: "Joint S.W (용접부 구조층)",
     formula: "0.6 × π × D",
-    description: "이음부의 구조층 면적입니다. 유효 폭 0.6m를 가정한 원주 면적입니다. 0.6m = 이음부 양쪽 각 300mm 오버랩(300mm × 2)으로, ASME RTP-1 Section 4A 및 ASTM D 4097의 최소 오버랩 요건에 기반한 실무 적용 폭입니다.",
-    source: "업계 통상 경험치",
-    standard: "ASME RTP-1 Section 4A, ASTM D 4097",
+    description: "이음부의 구조층 면적입니다. 이음 한 개소당 양쪽 각 300mm 오버랩(300mm × 2 = 0.6m)을 적용해 온 사내 견적 관행에 따른 값입니다.",
+    source: "월드테크(주) 기존 견적 경험치",
     note: "양쪽 300mm 오버랩 = 0.6m 유효 보강 폭",
   },
   jointCB: {
     title: "Joint C.B (용접부 내식층)",
     formula: "0.5 × π × D",
     description: "이음부의 내식층 면적입니다. 유효 폭 0.5m를 가정한 원주 면적입니다.",
-    source: "업계 통상 경험치",
+    source: "월드테크(주) 기존 견적 경험치",
     note: "상세 설계 전 물량 산출용",
   },
   hoopArea: {
@@ -149,7 +145,6 @@ export const formulaData = {
     formula: "면적(m²) × 두께(mm) × 비중(조절 가능)",
     description: "FRP의 순수 물리적 비중은 1.6~1.8이나, 자재 로스(10~20%), 연결부위, 오차 등을 포함한 '견적용 할증 계수'로 통상 2.0을 적용합니다. 상세 설정 > 두께 탭에서 비중을 조절할 수 있습니다.",
     source: "영업용 원가 계산 방식",
-    standard: "순수 비중: 1.6~1.8 (Filament Winding)",
     note: "비중 조절 가능 (두께 탭)",
   },
 
@@ -158,22 +153,19 @@ export const formulaData = {
     title: "내식층 (C.B) 배합비",
     formula: "Resin 70% : Glass #450 30%",
     description: "내식층은 내화학성을 위해 수지 비율을 높게 가져갑니다. Surface Mat과 Chopped Mat으로 구성됩니다.",
-    source: "국제 표준 배합비",
-    standard: "ASME RTP-1, ASTM D 3299, KS F 4806",
+    source: "월드테크(주) 기존 견적 산출 가정",
   },
   swBodyRatio: {
     title: "구조층 Body (Winding) 배합비",
     formula: "Resin 40% : Glass (Roving) 60%",
     description: "Filament Winding 공법으로 유리섬유 함량을 높여 구조적 강도를 확보합니다.",
-    source: "국제 표준 배합비",
-    standard: "ASME RTP-1 (유리섬유 함량 50~70% 권장)",
+    source: "월드테크(주) 기존 견적 산출 가정",
   },
   swHandLayup: {
     title: "구조층 BTM/Head (Hand Lay-up) 배합비",
     formula: "Resin 70% : Glass #450 30%",
     description: "바닥과 헤드는 Hand Lay-up 공법으로 매트 작업을 하므로 수지가 더 많이 필요합니다.",
-    source: "국제 표준 배합비",
-    standard: "ASTM D 3299",
+    source: "월드테크(주) 기존 견적 산출 가정",
   },
 
   // 재료
@@ -181,28 +173,25 @@ export const formulaData = {
     title: "RESIN (수지)",
     formula: "CB층×70% + SW Body×40% + SW 기타×70%",
     description: "Vinyl Ester 또는 Polyester 수지로, 내화학성과 구조적 결합력을 제공합니다.",
-    source: "배합비 기반 산출",
-    standard: "ASME RTP-1 Type I (Vinyl Ester)",
+    source: "사내 배합비 가정 기반 산출",
   },
   mat450: {
     title: "Chopped Strand Mat #450",
     formula: "CB층×30% + SW(BTM/Head/Joint)×30%",
     description: "450g/m² 규격의 유리섬유 매트입니다. 내식층과 Hand Lay-up 구조층에 사용됩니다.",
-    source: "배합비 기반 산출",
-    standard: "ASTM D 2584",
+    source: "사내 배합비 가정 기반 산출",
   },
   roving2200: {
     title: "Roving #2200",
     formula: "SW Body × 60%",
     description: "2200tex 유리섬유 로빙으로, Body Filament Winding에 사용되어 높은 인장강도를 제공합니다.",
-    source: "배합비 기반 산출",
-    standard: "ASME RTP-1 Section 4",
+    source: "사내 배합비 가정 기반 산출",
   },
   surfaceMat: {
     title: "Surface Mat #30",
     formula: "전체 면적 × 2.2",
     description: "30g/m² 규격의 표면 매트입니다. 겹침 및 여유율을 반영하여 2.2배를 적용합니다.",
-    source: "업계 통상 경험치",
+    source: "월드테크(주) 기존 견적 경험치",
     note: "겹침 및 여유율 포함",
   },
   consumable: {
@@ -243,7 +232,6 @@ export const formulaData = {
     title: "검사 및 시험비",
     formula: "고정비 + (소계 × 비율)",
     description: "품질 검사, 수압 시험, NDT 등 각종 시험 비용입니다.",
-    standard: "KS 품질검사 기준",
   },
   transportation: {
     title: "운반비",

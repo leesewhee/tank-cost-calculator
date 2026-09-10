@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -16,8 +16,9 @@ import {
   defaultMaterialPrices,
   defaultLaborPrices,
   getDefaultsByDiameter,
+  validateQuotationInputs,
 } from "@/lib/calculations";
-import { Calculator, Settings, Cylinder, Ruler } from "lucide-react";
+import { Calculator, Settings, Cylinder, Ruler, AlertTriangle, Wand2 } from "lucide-react";
 import { CustomItemInput } from "./CustomItemInput";
 
 interface TankInputFormProps {
@@ -29,9 +30,11 @@ interface TankInputFormProps {
     safetyMargins: SafetyMargins,
     thickness: ThicknessConfig
   ) => void;
+  /** 입력이 마지막 계산 이후 변경되었는지 상위에 알림 */
+  onDirtyChange?: (dirty: boolean) => void;
 }
 
-export function TankInputForm({ onCalculate }: TankInputFormProps) {
+export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps) {
   const [diameter, setDiameter] = useState<string>("4.2");
   const [height, setHeight] = useState<string>("6.0");
   
@@ -40,31 +43,52 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
   const [fixedCosts, setFixedCosts] = useState<FixedCosts>(getDefaultsByDiameter(4.2).fixedCosts);
   const [safetyMargins, setSafetyMargins] = useState<SafetyMargins>(getDefaultsByDiameter(4.2).safetyMargins);
   const [thickness, setThickness] = useState<ThicknessConfig>(getDefaultsByDiameter(4.2).thickness);
-  
-  // 직경 변경시 기본값 업데이트
+  const [errors, setErrors] = useState<string[]>([]);
+  const [lastCalculated, setLastCalculated] = useState<string | null>(null);
+
+  const dia = parseFloat(diameter);
+  const hgt = parseFloat(height);
+
+  const snapshot = useMemo(
+    () => JSON.stringify({ diameter, height, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness }),
+    [diameter, height, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness]
+  );
+
+  const dirty = lastCalculated !== null && lastCalculated !== snapshot;
+
   useEffect(() => {
-    const dia = parseFloat(diameter) || 0;
-    if (dia > 0) {
-      const defaults = getDefaultsByDiameter(dia);
-      setFixedCosts(defaults.fixedCosts);
-      setSafetyMargins(defaults.safetyMargins);
-      setThickness(defaults.thickness);
-    }
-  }, [diameter]);
-  
+    onDirtyChange?.(dirty);
+  }, [dirty, onDirtyChange]);
+
+  /** 사용자가 직접 눌렀을 때만 크기별 기본값을 덮어씁니다 (수동 입력 보존) */
+  const applySizeDefaults = () => {
+    if (!isFinite(dia) || dia <= 0) return;
+    const defaults = getDefaultsByDiameter(dia);
+    setFixedCosts(defaults.fixedCosts);
+    setSafetyMargins(defaults.safetyMargins);
+    setThickness(defaults.thickness);
+  };
+
   const handleCalculate = () => {
-    const dimensions: TankDimensions = {
-      diameter: parseFloat(diameter) || 0,
-      height: parseFloat(height) || 0,
-    };
-    
-    if (dimensions.diameter > 0 && dimensions.height > 0) {
-      onCalculate(dimensions, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness);
-    }
+    const found = validateQuotationInputs({
+      diameter: dia,
+      height: hgt,
+      thickness,
+      fixedCosts,
+      laborPrices,
+      materialPrices,
+      safetyMargins,
+    });
+    setErrors(found);
+    if (found.length > 0) return;
+
+    onCalculate({ diameter: dia, height: hgt }, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness);
+    setLastCalculated(snapshot);
   };
   
   const formatNumber = (value: number) => value.toLocaleString('ko-KR');
   const parseNumber = (value: string) => parseInt(value.replace(/,/g, '')) || 0;
+
   
   return (
     <div className="space-y-6 animate-fade-in">
@@ -111,7 +135,17 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
               />
             </div>
           </div>
+          <div className="mt-4 flex items-center justify-between gap-3 flex-wrap">
+            <p className="text-xs text-muted-foreground">
+              직경을 바꿔도 입력한 두께·비용은 그대로 유지됩니다. 크기에 맞는 표준값이 필요하면 오른쪽 버튼을 누르세요.
+            </p>
+            <Button type="button" variant="outline" size="sm" onClick={applySizeDefaults} disabled={!isFinite(dia) || dia <= 0}>
+              <Wand2 className="w-4 h-4 mr-2" />
+              크기별 기본값 적용
+            </Button>
+          </div>
         </CardContent>
+
       </Card>
       
       {/* 상세 설정 탭 */}
@@ -186,9 +220,13 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                 <CustomItemInput
                   items={materialPrices.custom || []}
                   onItemsChange={(items) => setMaterialPrices({...materialPrices, custom: items})}
-                  unitLabel="원/kg"
-                  valueLabel="단가"
+                  unitLabel="kg"
+                  valueLabel="단가(원)"
+                  withQuantity
+                  quantityLabel="수량"
+                  hint="단가와 수량을 모두 입력해야 금액(단가 × 수량)이 견적에 반영됩니다."
                 />
+
               </div>
             </TabsContent>
             
@@ -237,9 +275,13 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                 <CustomItemInput
                   items={laborPrices.custom || []}
                   onItemsChange={(items) => setLaborPrices({...laborPrices, custom: items})}
-                  unitLabel="원/M.D"
-                  valueLabel="단가"
+                  unitLabel="M/D"
+                  valueLabel="단가(원)"
+                  withQuantity
+                  quantityLabel="공수(M/D)"
+                  hint="단가와 공수를 모두 입력해야 금액(단가 × 공수)이 견적에 반영됩니다."
                 />
+
               </div>
             </TabsContent>
             
@@ -406,7 +448,9 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
                   onItemsChange={(items) => setThickness({...thickness, custom: items})}
                   unitLabel="mm"
                   valueLabel="두께"
+                  hint="메모용 항목입니다. 적용 부위·면적 정보가 없어 금액 계산에는 반영되지 않습니다. 실제 반영은 위의 부위별 두께 입력란을 사용하세요."
                 />
+
               </div>
             </TabsContent>
             
@@ -464,6 +508,29 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
         </CardContent>
       </Card>
       
+      {/* 입력 오류 */}
+      {errors.length > 0 && (
+        <Card className="border-destructive bg-destructive/5">
+          <CardContent className="py-3 px-4 space-y-1">
+            <div className="flex items-center gap-2 text-sm font-semibold text-destructive">
+              <AlertTriangle className="w-4 h-4" />
+              입력값을 확인하세요
+            </div>
+            <ul className="text-xs text-destructive space-y-0.5 list-disc pl-5">
+              {errors.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {dirty && (
+        <p className="text-xs text-destructive text-center">
+          입력이 변경되었습니다. 다시 계산해야 현재 입력 기준의 견적서를 출력할 수 있습니다.
+        </p>
+      )}
+
       {/* 계산 버튼 */}
       <Button 
         onClick={handleCalculate} 
@@ -476,3 +543,4 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
     </div>
   );
 }
+

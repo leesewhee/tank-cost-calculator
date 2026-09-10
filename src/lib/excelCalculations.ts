@@ -17,7 +17,15 @@ import {
   SafetyMargins,
   ThicknessConfig,
   CalculationResult,
+  QuoteLine,
+  CalcIssue,
+  buildUnitPriceLines,
+  buildAmountLines,
+  buildFixedCostLines,
+  buildThicknessIssues,
+  finalizeCosts,
 } from "./calculations";
+
 
 // ========================================
 // 상수
@@ -41,9 +49,37 @@ export interface ExcelLaborResult {
   totalWeightCost: number;
 }
 
+/** 상세 근거 표시용 중간값 (화면 표시와 계산이 동일한 값을 사용하도록 노출) */
+export interface ExcelDetail {
+  density: number;
+  cbThk: number;
+  avgShell: number;
+  swBodyThk: number;
+  swBtmThk: number;
+  swHeadThk: number;
+  cbJntCBThk: number;
+  swJntSWThk: number;
+  swLLThk: number;
+  swHoopThk: number;
+  rc570Multiplier: number;
+  ratios: {
+    resinCB: number;
+    resinSWBody: number;
+    resinSWOther: number;
+    mat: number;
+    roving: number;
+    surfaceMatFactor: number;
+    consumableRate: number;
+  };
+  costHLU: number;
+  costFW: number;
+}
+
 export interface ExcelCalculationResult extends CalculationResult {
   excelLabor: ExcelLaborResult;
+  excelDetail: ExcelDetail;
 }
+
 
 export function calculateTankExcel(
   dimensions: TankDimensions,
@@ -55,6 +91,9 @@ export function calculateTankExcel(
 ): ExcelCalculationResult {
   const diameter = dimensions.diameter;
   const length = dimensions.height;
+  // 견적용 비중 (입력값 적용, 기본 2.0)
+  const density = thickness.frpDensity && thickness.frpDensity > 0 ? thickness.frpDensity : 2.0;
+
 
   // 부위별 두께 산출 (mm 단위) - Genspark 계산기 기준
   const cbThk = thickness.cbThickness; // 내식층 공통 두께 (기본 3mm)
@@ -87,11 +126,11 @@ export function calculateTankExcel(
   // Jnt(C.B) → cbJntCBThk 적용 (headThickness - CB)
   // Jnt(S.W), L/L, Hoop → CB층 없음 (0)
   // ========================================
-  const bodyWeight_CB = bodyArea * cbThk * 2;
-  const bottomWeight_CB = btmArea * cbThk * 2;
-  const headWeight_CB = headArea * cbThk * 2;
+  const bodyWeight_CB = bodyArea * cbThk * density;
+  const bottomWeight_CB = btmArea * cbThk * density;
+  const headWeight_CB = headArea * cbThk * density;
   const jointSW_Weight_CB = 0; // Jnt(S.W)에는 CB층 없음
-  const jointCB_Weight_CB = jntCBArea * cbJntCBThk * 2;
+  const jointCB_Weight_CB = jntCBArea * cbJntCBThk * density;
   const hoopWeight_CB = 0; // Hoop에는 CB층 없음
 
   const totalWeight_CB = bodyWeight_CB + bottomWeight_CB + headWeight_CB
@@ -107,13 +146,13 @@ export function calculateTankExcel(
   // L/L → swLLThk
   // Hoop → swHoopThk
   // ========================================
-  const bodyWeight_SW = bodyArea * swBodyThk * 2;
-  const bottomWeight_SW = btmArea * swBtmThk * 2;
-  const headWeight_SW = headArea * swHeadThk * 2;
-  const jointSW_Weight_SW = jntSWArea * swJntSWThk * 2; // Jnt(S.W) SW층: shellThickness 적용
+  const bodyWeight_SW = bodyArea * swBodyThk * density;
+  const bottomWeight_SW = btmArea * swBtmThk * density;
+  const headWeight_SW = headArea * swHeadThk * density;
+  const jointSW_Weight_SW = jntSWArea * swJntSWThk * density; // Jnt(S.W) SW층: shellThickness 적용
   const jointCB_Weight_SW = 0; // Jnt(C.B)에는 SW층 없음
-  const ladderWeight_SW = llArea * swLLThk * 2;
-  const hoopWeight_SW = hoopArea * swHoopThk * 2;
+  const ladderWeight_SW = llArea * swLLThk * density;
+  const hoopWeight_SW = hoopArea * swHoopThk * density;
 
   const totalWeight_SW = bodyWeight_SW + bottomWeight_SW + headWeight_SW
     + jointSW_Weight_SW + jointCB_Weight_SW
@@ -237,17 +276,27 @@ export function calculateTankExcel(
     roving2200Weight * materialPrices.roving2200 +
     surfaceMatArea * materialPrices.surfaceMat;
 
+  const customMaterial = buildUnitPriceLines(materialPrices.custom, "kg", "mat");
+  const fixedLines = buildFixedCostLines(fixedCosts, capacity);
+  const customFixedLines = buildAmountLines(fixedCosts.custom, "fix");
   const fixedItemCost =
-    fixedCosts.flange +
-    (fixedCosts.manhole > 0 ? fixedCosts.manhole * (capacity > 30 ? 2 : 1) : 0) +
-    fixedCosts.levelGauge +
-    fixedCosts.sqPipe * fixedCosts.sqPipeLength +
-    fixedCosts.gasket +
-    fixedCosts.boltNut +
-    fixedCosts.ladder;
+    fixedLines.reduce((s, l) => s + l.amount, 0) +
+    customFixedLines.reduce((s, l) => s + l.amount, 0);
 
   const consumable = Math.round((rawMaterialCost + fixedItemCost) * CONSUMABLE_RATE);
-  const materialCost = rawMaterialCost + fixedItemCost + consumable;
+
+  const materialLines: QuoteLine[] = [
+    { key: "resin", name: "RESIN (RF-1001 or EQ)", qty: resinWeight, unit: "KG", unitPrice: materialPrices.resin, amount: resinWeight * materialPrices.resin },
+    { key: "mat450", name: "CHOPPED STRAND MAT#450", qty: mat450Weight, unit: "KG", unitPrice: materialPrices.mat450, amount: mat450Weight * materialPrices.mat450 },
+    { key: "rovingCloth", name: "ROVING CLOTH#570", qty: rovingClothWeight, unit: "KG", unitPrice: materialPrices.rovingCloth, amount: rovingClothWeight * materialPrices.rovingCloth },
+    { key: "roving2200", name: "ROVING #2200", qty: roving2200Weight, unit: "KG", unitPrice: materialPrices.roving2200, amount: roving2200Weight * materialPrices.roving2200 },
+    { key: "surfaceMat", name: "SURFACE MAT#30", qty: surfaceMatArea, unit: "M²", unitPrice: materialPrices.surfaceMat, amount: surfaceMatArea * materialPrices.surfaceMat },
+    ...customMaterial.lines,
+    ...fixedLines,
+    ...customFixedLines,
+    { key: "consumable", name: "CONSUMABLE (소모품)", qty: 1, unit: "LOT", unitPrice: null, amount: consumable },
+  ];
+  const materialCost = materialLines.reduce((s, l) => s + l.amount, 0);
 
   // 인건비 - 엑셀 실무: HLU/FW 중량 기반
   const windingDays = Math.round(Math.max(1, Math.sqrt(capacity) * 1.5) * 1.0);
@@ -257,17 +306,32 @@ export function calculateTankExcel(
   const totalLaborDays = windingDays + assemblyDays + chemicalDays + specialDays;
 
   // 엑셀 실무에서는 HLU/FW 기반 인건비를 메인으로 사용
-  const laborCost = totalWeightCost;
+  const customLabor = buildUnitPriceLines(laborPrices.custom, "M/D", "lab");
+  const laborLines: QuoteLine[] = [
+    { key: "hlu", name: "HAND LAY-UP (HLU)", qty: hluWeight, unit: "KG", unitPrice: COST_HLU, amount: hluCost },
+    { key: "fw", name: "FILAMENT WINDING (FW)", qty: fwWeight, unit: "KG", unitPrice: COST_FW, amount: fwCost },
+    ...customLabor.lines,
+  ];
+  const laborCost = laborLines.reduce((s, l) => s + l.amount, 0);
 
-  // 최종 비용
-  const subtotal = materialCost + laborCost;
-  const inspection = safetyMargins.inspectionTest;
-  const transportation = safetyMargins.transportation;
-  const profitBase = subtotal + inspection + transportation;
-  const profit = Math.round(profitBase * (safetyMargins.profitMargin / 100));
-  const total = subtotal + inspection + transportation + profit;
-  const safetyMultiplier = 1 + (safetyMargins.safetyFactor / 100);
-  const finalTotal = Math.round(total * safetyMultiplier / 10000) * 10000;
+  const extraLines = buildAmountLines(safetyMargins.custom, "mar");
+  const extras = extraLines.reduce((s, l) => s + l.amount, 0);
+
+  const costs = finalizeCosts(
+    materialCost,
+    laborCost,
+    safetyMargins.inspectionTest,
+    safetyMargins.transportation,
+    extras,
+    safetyMargins
+  );
+
+  const issues: CalcIssue[] = [
+    ...customMaterial.issues,
+    ...customLabor.issues,
+    ...buildThicknessIssues(thickness),
+  ];
+
 
   return {
     capacity: Math.round(capacity * 10) / 10,
@@ -310,15 +374,12 @@ export function calculateTankExcel(
       special: specialDays,
       total: totalLaborDays,
     },
-    costs: {
-      material: materialCost,
-      labor: laborCost,
-      subtotal,
-      inspection,
-      transportation,
-      profit: finalTotal - subtotal - inspection - transportation,
-      total: finalTotal,
-    },
+    costs,
+    materialLines,
+    laborLines,
+    extraLines,
+    issues,
+
     excelLabor: {
       hluWeight,
       fwWeight,
@@ -326,5 +387,30 @@ export function calculateTankExcel(
       fwCost,
       totalWeightCost,
     },
+    excelDetail: {
+      density,
+      cbThk,
+      avgShell,
+      swBodyThk,
+      swBtmThk,
+      swHeadThk,
+      cbJntCBThk,
+      swJntSWThk,
+      swLLThk,
+      swHoopThk,
+      rc570Multiplier,
+      ratios: {
+        resinCB: RESIN_RATIO_CB,
+        resinSWBody: RESIN_RATIO_SW_BODY,
+        resinSWOther: RESIN_RATIO_SW_OTHER,
+        mat: MAT_RATIO,
+        roving: ROVING_RATIO,
+        surfaceMatFactor: SURFACE_MAT_FACTOR,
+        consumableRate: CONSUMABLE_RATE,
+      },
+      costHLU: COST_HLU,
+      costFW: COST_FW,
+    },
+
   };
 }
