@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -16,8 +16,9 @@ import {
   defaultMaterialPrices,
   defaultLaborPrices,
   getDefaultsByDiameter,
+  validateQuotationInputs,
 } from "@/lib/calculations";
-import { Calculator, Settings, Cylinder, Ruler } from "lucide-react";
+import { Calculator, Settings, Cylinder, Ruler, AlertTriangle, Wand2 } from "lucide-react";
 import { CustomItemInput } from "./CustomItemInput";
 
 interface TankInputFormProps {
@@ -29,9 +30,11 @@ interface TankInputFormProps {
     safetyMargins: SafetyMargins,
     thickness: ThicknessConfig
   ) => void;
+  /** 입력이 마지막 계산 이후 변경되었는지 상위에 알림 */
+  onDirtyChange?: (dirty: boolean) => void;
 }
 
-export function TankInputForm({ onCalculate }: TankInputFormProps) {
+export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps) {
   const [diameter, setDiameter] = useState<string>("4.2");
   const [height, setHeight] = useState<string>("6.0");
   
@@ -40,31 +43,52 @@ export function TankInputForm({ onCalculate }: TankInputFormProps) {
   const [fixedCosts, setFixedCosts] = useState<FixedCosts>(getDefaultsByDiameter(4.2).fixedCosts);
   const [safetyMargins, setSafetyMargins] = useState<SafetyMargins>(getDefaultsByDiameter(4.2).safetyMargins);
   const [thickness, setThickness] = useState<ThicknessConfig>(getDefaultsByDiameter(4.2).thickness);
-  
-  // 직경 변경시 기본값 업데이트
+  const [errors, setErrors] = useState<string[]>([]);
+  const [lastCalculated, setLastCalculated] = useState<string | null>(null);
+
+  const dia = parseFloat(diameter);
+  const hgt = parseFloat(height);
+
+  const snapshot = useMemo(
+    () => JSON.stringify({ diameter, height, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness }),
+    [diameter, height, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness]
+  );
+
+  const dirty = lastCalculated !== null && lastCalculated !== snapshot;
+
   useEffect(() => {
-    const dia = parseFloat(diameter) || 0;
-    if (dia > 0) {
-      const defaults = getDefaultsByDiameter(dia);
-      setFixedCosts(defaults.fixedCosts);
-      setSafetyMargins(defaults.safetyMargins);
-      setThickness(defaults.thickness);
-    }
-  }, [diameter]);
-  
+    onDirtyChange?.(dirty);
+  }, [dirty, onDirtyChange]);
+
+  /** 사용자가 직접 눌렀을 때만 크기별 기본값을 덮어씁니다 (수동 입력 보존) */
+  const applySizeDefaults = () => {
+    if (!isFinite(dia) || dia <= 0) return;
+    const defaults = getDefaultsByDiameter(dia);
+    setFixedCosts(defaults.fixedCosts);
+    setSafetyMargins(defaults.safetyMargins);
+    setThickness(defaults.thickness);
+  };
+
   const handleCalculate = () => {
-    const dimensions: TankDimensions = {
-      diameter: parseFloat(diameter) || 0,
-      height: parseFloat(height) || 0,
-    };
-    
-    if (dimensions.diameter > 0 && dimensions.height > 0) {
-      onCalculate(dimensions, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness);
-    }
+    const found = validateQuotationInputs({
+      diameter: dia,
+      height: hgt,
+      thickness,
+      fixedCosts,
+      laborPrices,
+      materialPrices,
+      safetyMargins,
+    });
+    setErrors(found);
+    if (found.length > 0) return;
+
+    onCalculate({ diameter: dia, height: hgt }, materialPrices, laborPrices, fixedCosts, safetyMargins, thickness);
+    setLastCalculated(snapshot);
   };
   
   const formatNumber = (value: number) => value.toLocaleString('ko-KR');
   const parseNumber = (value: string) => parseInt(value.replace(/,/g, '')) || 0;
+
   
   return (
     <div className="space-y-6 animate-fade-in">
