@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TankInputForm } from "@/components/TankInputForm";
 import { QuotationResult } from "@/components/QuotationResult";
@@ -13,6 +13,7 @@ import {
   calculateTank,
   defaultMaterialPrices,
   defaultLaborPrices,
+  defaultSafetyMargins,
   defaultThickness,
 } from "@/lib/calculations";
 import { calculateTankExcel, ExcelCalculationResult } from "@/lib/excelCalculations";
@@ -25,8 +26,10 @@ const Index = () => {
   const [dimensions, setDimensions] = useState<TankDimensions | null>(null);
   const [materialPrices, setMaterialPrices] = useState<MaterialPrices>(defaultMaterialPrices);
   const [laborPrices, setLaborPrices] = useState<LaborPrices>(defaultLaborPrices);
+  const [safetyMargins, setSafetyMargins] = useState<SafetyMargins>(defaultSafetyMargins);
   const [thickness, setThickness] = useState<ThicknessConfig>(defaultThickness);
   const [useRtpMode, setUseRtpMode] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const navigate = useNavigate();
   
   const handleCalculate = (
@@ -34,14 +37,14 @@ const Index = () => {
     matPrices: MaterialPrices,
     labPrices: LaborPrices,
     fixedCosts: FixedCosts,
-    safetyMargins: SafetyMargins,
+    margins: SafetyMargins,
     thicknessConfig: ThicknessConfig
   ) => {
     const calculationResult = calculateTank(
-      dims, matPrices, labPrices, fixedCosts, safetyMargins, thicknessConfig
+      dims, matPrices, labPrices, fixedCosts, margins, thicknessConfig
     );
     const excelCalcResult = calculateTankExcel(
-      dims, matPrices, labPrices, fixedCosts, safetyMargins, thicknessConfig
+      dims, matPrices, labPrices, fixedCosts, margins, thicknessConfig
     );
     
     setResult(calculationResult);
@@ -49,8 +52,13 @@ const Index = () => {
     setDimensions(dims);
     setMaterialPrices(matPrices);
     setLaborPrices(labPrices);
+    setSafetyMargins(margins);
     setThickness(thicknessConfig);
+    setDirty(false);
   };
+
+  const handleDirtyChange = useCallback((value: boolean) => setDirty(value), []);
+
   
   return (
     <div className="min-h-screen bg-background">
