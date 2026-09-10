@@ -338,15 +338,12 @@ export function calculateTankExcel(
       special: specialDays,
       total: totalLaborDays,
     },
-    costs: {
-      material: materialCost,
-      labor: laborCost,
-      subtotal,
-      inspection,
-      transportation,
-      profit: finalTotal - subtotal - inspection - transportation,
-      total: finalTotal,
-    },
+    costs,
+    materialLines,
+    laborLines,
+    extraLines,
+    issues,
+
     excelLabor: {
       hluWeight,
       fwWeight,
