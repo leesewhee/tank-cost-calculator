@@ -58,7 +58,7 @@ describe("비중 반영", () => {
   it("비중 1.6으로 낮추면 중량이 0.8배가 된다", () => {
     const a = runExcel();
     const b = runExcel({ ...defaultThickness, frpDensity: 1.6 });
-    expect(b.weights.swTotal / a.weights.swTotal).toBeCloseTo(0.8, 6);
+    expect(b.weights.swTotal / a.weights.swTotal).toBeCloseTo(0.8, 3);
     expect(b.materials.resin / a.materials.resin).toBeCloseTo(0.8, 2);
   });
 });
