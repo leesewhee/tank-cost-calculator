@@ -240,17 +240,27 @@ export function calculateTankExcel(
     roving2200Weight * materialPrices.roving2200 +
     surfaceMatArea * materialPrices.surfaceMat;
 
+  const customMaterial = buildUnitPriceLines(materialPrices.custom, "kg", "mat");
+  const fixedLines = buildFixedCostLines(fixedCosts, capacity);
+  const customFixedLines = buildAmountLines(fixedCosts.custom, "fix");
   const fixedItemCost =
-    fixedCosts.flange +
-    (fixedCosts.manhole > 0 ? fixedCosts.manhole * (capacity > 30 ? 2 : 1) : 0) +
-    fixedCosts.levelGauge +
-    fixedCosts.sqPipe * fixedCosts.sqPipeLength +
-    fixedCosts.gasket +
-    fixedCosts.boltNut +
-    fixedCosts.ladder;
+    fixedLines.reduce((s, l) => s + l.amount, 0) +
+    customFixedLines.reduce((s, l) => s + l.amount, 0);
 
   const consumable = Math.round((rawMaterialCost + fixedItemCost) * CONSUMABLE_RATE);
-  const materialCost = rawMaterialCost + fixedItemCost + consumable;
+
+  const materialLines: QuoteLine[] = [
+    { key: "resin", name: "RESIN (RF-1001 or EQ)", qty: resinWeight, unit: "KG", unitPrice: materialPrices.resin, amount: resinWeight * materialPrices.resin },
+    { key: "mat450", name: "CHOPPED STRAND MAT#450", qty: mat450Weight, unit: "KG", unitPrice: materialPrices.mat450, amount: mat450Weight * materialPrices.mat450 },
+    { key: "rovingCloth", name: "ROVING CLOTH#570", qty: rovingClothWeight, unit: "KG", unitPrice: materialPrices.rovingCloth, amount: rovingClothWeight * materialPrices.rovingCloth },
+    { key: "roving2200", name: "ROVING #2200", qty: roving2200Weight, unit: "KG", unitPrice: materialPrices.roving2200, amount: roving2200Weight * materialPrices.roving2200 },
+    { key: "surfaceMat", name: "SURFACE MAT#30", qty: surfaceMatArea, unit: "M²", unitPrice: materialPrices.surfaceMat, amount: surfaceMatArea * materialPrices.surfaceMat },
+    ...customMaterial.lines,
+    ...fixedLines,
+    ...customFixedLines,
+    { key: "consumable", name: "CONSUMABLE (소모품)", qty: 1, unit: "LOT", unitPrice: null, amount: consumable },
+  ];
+  const materialCost = materialLines.reduce((s, l) => s + l.amount, 0);
 
   // 인건비 - 엑셀 실무: HLU/FW 중량 기반
   const windingDays = Math.round(Math.max(1, Math.sqrt(capacity) * 1.5) * 1.0);
@@ -260,17 +270,32 @@ export function calculateTankExcel(
   const totalLaborDays = windingDays + assemblyDays + chemicalDays + specialDays;
 
   // 엑셀 실무에서는 HLU/FW 기반 인건비를 메인으로 사용
-  const laborCost = totalWeightCost;
+  const customLabor = buildUnitPriceLines(laborPrices.custom, "M/D", "lab");
+  const laborLines: QuoteLine[] = [
+    { key: "hlu", name: "HAND LAY-UP (HLU)", qty: hluWeight, unit: "KG", unitPrice: COST_HLU, amount: hluCost },
+    { key: "fw", name: "FILAMENT WINDING (FW)", qty: fwWeight, unit: "KG", unitPrice: COST_FW, amount: fwCost },
+    ...customLabor.lines,
+  ];
+  const laborCost = laborLines.reduce((s, l) => s + l.amount, 0);
 
-  // 최종 비용
-  const subtotal = materialCost + laborCost;
-  const inspection = safetyMargins.inspectionTest;
-  const transportation = safetyMargins.transportation;
-  const profitBase = subtotal + inspection + transportation;
-  const profit = Math.round(profitBase * (safetyMargins.profitMargin / 100));
-  const total = subtotal + inspection + transportation + profit;
-  const safetyMultiplier = 1 + (safetyMargins.safetyFactor / 100);
-  const finalTotal = Math.round(total * safetyMultiplier / 10000) * 10000;
+  const extraLines = buildAmountLines(safetyMargins.custom, "mar");
+  const extras = extraLines.reduce((s, l) => s + l.amount, 0);
+
+  const costs = finalizeCosts(
+    materialCost,
+    laborCost,
+    safetyMargins.inspectionTest,
+    safetyMargins.transportation,
+    extras,
+    safetyMargins
+  );
+
+  const issues: CalcIssue[] = [
+    ...customMaterial.issues,
+    ...customLabor.issues,
+    ...buildThicknessIssues(thickness),
+  ];
+
 
   return {
     capacity: Math.round(capacity * 10) / 10,
