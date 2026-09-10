@@ -220,9 +220,13 @@ export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps
                 <CustomItemInput
                   items={materialPrices.custom || []}
                   onItemsChange={(items) => setMaterialPrices({...materialPrices, custom: items})}
-                  unitLabel="원/kg"
-                  valueLabel="단가"
+                  unitLabel="kg"
+                  valueLabel="단가(원)"
+                  withQuantity
+                  quantityLabel="수량"
+                  hint="단가와 수량을 모두 입력해야 금액(단가 × 수량)이 견적에 반영됩니다."
                 />
+
               </div>
             </TabsContent>
             
@@ -271,9 +275,13 @@ export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps
                 <CustomItemInput
                   items={laborPrices.custom || []}
                   onItemsChange={(items) => setLaborPrices({...laborPrices, custom: items})}
-                  unitLabel="원/M.D"
-                  valueLabel="단가"
+                  unitLabel="M/D"
+                  valueLabel="단가(원)"
+                  withQuantity
+                  quantityLabel="공수(M/D)"
+                  hint="단가와 공수를 모두 입력해야 금액(단가 × 공수)이 견적에 반영됩니다."
                 />
+
               </div>
             </TabsContent>
             
@@ -440,7 +448,9 @@ export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps
                   onItemsChange={(items) => setThickness({...thickness, custom: items})}
                   unitLabel="mm"
                   valueLabel="두께"
+                  hint="메모용 항목입니다. 적용 부위·면적 정보가 없어 금액 계산에는 반영되지 않습니다. 실제 반영은 위의 부위별 두께 입력란을 사용하세요."
                 />
+
               </div>
             </TabsContent>
             
