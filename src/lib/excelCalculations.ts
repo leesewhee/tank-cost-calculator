@@ -55,6 +55,9 @@ export function calculateTankExcel(
 ): ExcelCalculationResult {
   const diameter = dimensions.diameter;
   const length = dimensions.height;
+  // 견적용 비중 (입력값 적용, 기본 2.0)
+  const density = thickness.frpDensity && thickness.frpDensity > 0 ? thickness.frpDensity : 2.0;
+
 
   // 부위별 두께 산출 (mm 단위) - Genspark 계산기 기준
   const cbThk = thickness.cbThickness; // 내식층 공통 두께 (기본 3mm)
