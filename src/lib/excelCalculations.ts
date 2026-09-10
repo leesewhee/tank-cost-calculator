@@ -87,11 +87,11 @@ export function calculateTankExcel(
   // Jnt(C.B) → cbJntCBThk 적용 (headThickness - CB)
   // Jnt(S.W), L/L, Hoop → CB층 없음 (0)
   // ========================================
-  const bodyWeight_CB = bodyArea * cbThk * 2;
-  const bottomWeight_CB = btmArea * cbThk * 2;
-  const headWeight_CB = headArea * cbThk * 2;
+  const bodyWeight_CB = bodyArea * cbThk * density;
+  const bottomWeight_CB = btmArea * cbThk * density;
+  const headWeight_CB = headArea * cbThk * density;
   const jointSW_Weight_CB = 0; // Jnt(S.W)에는 CB층 없음
-  const jointCB_Weight_CB = jntCBArea * cbJntCBThk * 2;
+  const jointCB_Weight_CB = jntCBArea * cbJntCBThk * density;
   const hoopWeight_CB = 0; // Hoop에는 CB층 없음
 
   const totalWeight_CB = bodyWeight_CB + bottomWeight_CB + headWeight_CB
@@ -107,13 +107,13 @@ export function calculateTankExcel(
   // L/L → swLLThk
   // Hoop → swHoopThk
   // ========================================
-  const bodyWeight_SW = bodyArea * swBodyThk * 2;
-  const bottomWeight_SW = btmArea * swBtmThk * 2;
-  const headWeight_SW = headArea * swHeadThk * 2;
-  const jointSW_Weight_SW = jntSWArea * swJntSWThk * 2; // Jnt(S.W) SW층: shellThickness 적용
+  const bodyWeight_SW = bodyArea * swBodyThk * density;
+  const bottomWeight_SW = btmArea * swBtmThk * density;
+  const headWeight_SW = headArea * swHeadThk * density;
+  const jointSW_Weight_SW = jntSWArea * swJntSWThk * density; // Jnt(S.W) SW층: shellThickness 적용
   const jointCB_Weight_SW = 0; // Jnt(C.B)에는 SW층 없음
-  const ladderWeight_SW = llArea * swLLThk * 2;
-  const hoopWeight_SW = hoopArea * swHoopThk * 2;
+  const ladderWeight_SW = llArea * swLLThk * density;
+  const hoopWeight_SW = hoopArea * swHoopThk * density;
 
   const totalWeight_SW = bodyWeight_SW + bottomWeight_SW + headWeight_SW
     + jointSW_Weight_SW + jointCB_Weight_SW
