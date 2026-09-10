@@ -563,22 +563,22 @@ export function calculateTank(
   
   const consumableRate = 0.065;
   const consumable = Math.round(materialSubtotal * consumableRate);
-  
-  // 재료비 총계
-  const materialCost = 
-    Math.round(resinWeight) * materialPrices.resin +
-    mat450Weight * materialPrices.mat450 +
-    rovingClothWeight * materialPrices.rovingCloth +
-    roving2200Weight * materialPrices.roving2200 +
-    surfaceMatArea * materialPrices.surfaceMat +
-    fixedCosts.flange +
-    (fixedCosts.manhole > 0 ? fixedCosts.manhole * (capacity > 30 ? 2 : 1) : 0) +
-    fixedCosts.levelGauge +
-    fixedCosts.sqPipe * fixedCosts.sqPipeLength +
-    fixedCosts.gasket +
-    fixedCosts.boltNut +
-    fixedCosts.ladder +
-    consumable;
+  const resinRounded = Math.round(resinWeight);
+
+  // 재료비 상세 행 (표시 = 합계)
+  const customMaterial = buildUnitPriceLines(materialPrices.custom, "kg", "mat");
+  const materialLines: QuoteLine[] = [
+    { key: "resin", name: "RESIN (RF-1001 or EQ)", qty: resinRounded, unit: "KG", unitPrice: materialPrices.resin, amount: resinRounded * materialPrices.resin },
+    { key: "mat450", name: "CHOPPED STRAND MAT#450", qty: mat450Weight, unit: "KG", unitPrice: materialPrices.mat450, amount: mat450Weight * materialPrices.mat450 },
+    { key: "rovingCloth", name: "ROVING CLOTH#570", qty: rovingClothWeight, unit: "KG", unitPrice: materialPrices.rovingCloth, amount: rovingClothWeight * materialPrices.rovingCloth },
+    { key: "roving2200", name: "ROVING #2200", qty: roving2200Weight, unit: "KG", unitPrice: materialPrices.roving2200, amount: roving2200Weight * materialPrices.roving2200 },
+    { key: "surfaceMat", name: "SURFACE MAT#30", qty: surfaceMatArea, unit: "M²", unitPrice: materialPrices.surfaceMat, amount: surfaceMatArea * materialPrices.surfaceMat },
+    ...customMaterial.lines,
+    ...buildFixedCostLines(fixedCosts, capacity),
+    ...buildAmountLines(fixedCosts.custom, "fix"),
+    { key: "consumable", name: "CONSUMABLE (소모품)", qty: 1, unit: "LOT", unitPrice: null, amount: consumable },
+  ];
+  const materialCost = materialLines.reduce((s, l) => s + l.amount, 0);
   
   // 인력 계산 (용량 및 면적 기반)
   const baseLabor = Math.max(1, Math.sqrt(capacity) * 1.5);
@@ -588,27 +588,35 @@ export function calculateTank(
   const specialDays = Math.round(baseLabor * 0.97);
   const totalLaborDays = windingDays + assemblyDays + chemicalDays + specialDays;
   
-  // 인건비 총계
-  const laborCost = 
-    windingDays * laborPrices.winding +
-    assemblyDays * laborPrices.assembly +
-    chemicalDays * laborPrices.chemical +
-    specialDays * laborPrices.special;
-  
-  // 비용 계산
-  const subtotal = materialCost + laborCost;
-  const inspection = safetyMargins.inspectionTest;
-  const transportation = safetyMargins.transportation;
-  
-  // 일반관리비 및 이익 (안전율 적용)
-  const profitBase = subtotal + inspection + transportation;
-  const profit = Math.round(profitBase * (safetyMargins.profitMargin / 100));
-  
-  const total = subtotal + inspection + transportation + profit;
-  
-  // 안전율 적용 (최종 금액에 반올림)
-  const safetyMultiplier = 1 + (safetyMargins.safetyFactor / 100);
-  const finalTotal = Math.round(total * safetyMultiplier / 10000) * 10000;
+  // 인건비 상세 행
+  const customLabor = buildUnitPriceLines(laborPrices.custom, "M/D", "lab");
+  const laborLines: QuoteLine[] = [
+    { key: "winding", name: "WINDING LABOR", qty: windingDays, unit: "M/D", unitPrice: laborPrices.winding, amount: windingDays * laborPrices.winding },
+    { key: "assembly", name: "ASSEMBLY LABOR", qty: assemblyDays, unit: "M/D", unitPrice: laborPrices.assembly, amount: assemblyDays * laborPrices.assembly },
+    { key: "chemical", name: "CHEMICAL LABOR", qty: chemicalDays, unit: "M/D", unitPrice: laborPrices.chemical, amount: chemicalDays * laborPrices.chemical },
+    { key: "special", name: "SPECIAL LABOR", qty: specialDays, unit: "M/D", unitPrice: laborPrices.special, amount: specialDays * laborPrices.special },
+    ...customLabor.lines,
+  ];
+  const laborCost = laborLines.reduce((s, l) => s + l.amount, 0);
+
+  // 추가 마진/안전 항목
+  const extraLines = buildAmountLines(safetyMargins.custom, "mar");
+  const extras = extraLines.reduce((s, l) => s + l.amount, 0);
+
+  const costs = finalizeCosts(
+    materialCost,
+    laborCost,
+    safetyMargins.inspectionTest,
+    safetyMargins.transportation,
+    extras,
+    safetyMargins
+  );
+
+  const issues: CalcIssue[] = [
+    ...customMaterial.issues,
+    ...customLabor.issues,
+    ...buildThicknessIssues(thickness),
+  ];
   
   return {
     capacity: Math.round(capacity * 10) / 10,
@@ -637,7 +645,7 @@ export function calculateTank(
       swTotal: Math.round(swTotal),
     },
     materials: {
-      resin: Math.round(resinWeight),
+      resin: resinRounded,
       mat450: mat450Weight,
       rovingCloth: rovingClothWeight,
       roving2200: roving2200Weight,
@@ -651,15 +659,11 @@ export function calculateTank(
       special: specialDays,
       total: totalLaborDays,
     },
-    costs: {
-      material: materialCost,
-      labor: laborCost,
-      subtotal,
-      inspection,
-      transportation,
-      profit: finalTotal - subtotal - inspection - transportation,
-      total: finalTotal,
-    },
+    costs,
+    materialLines,
+    laborLines,
+    extraLines,
+    issues,
   };
 }
 
