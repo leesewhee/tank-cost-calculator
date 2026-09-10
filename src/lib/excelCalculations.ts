@@ -387,5 +387,30 @@ export function calculateTankExcel(
       fwCost,
       totalWeightCost,
     },
+    excelDetail: {
+      density,
+      cbThk,
+      avgShell,
+      swBodyThk,
+      swBtmThk,
+      swHeadThk,
+      cbJntCBThk,
+      swJntSWThk,
+      swLLThk,
+      swHoopThk,
+      rc570Multiplier,
+      ratios: {
+        resinCB: RESIN_RATIO_CB,
+        resinSWBody: RESIN_RATIO_SW_BODY,
+        resinSWOther: RESIN_RATIO_SW_OTHER,
+        mat: MAT_RATIO,
+        roving: ROVING_RATIO,
+        surfaceMatFactor: SURFACE_MAT_FACTOR,
+        consumableRate: CONSUMABLE_RATE,
+      },
+      costHLU: COST_HLU,
+      costFW: COST_FW,
+    },
+
   };
 }
