@@ -508,6 +508,29 @@ export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps
         </CardContent>
       </Card>
       
+      {/* 입력 오류 */}
+      {errors.length > 0 && (
+        <Card className="border-destructive bg-destructive/5">
+          <CardContent className="py-3 px-4 space-y-1">
+            <div className="flex items-center gap-2 text-sm font-semibold text-destructive">
+              <AlertTriangle className="w-4 h-4" />
+              입력값을 확인하세요
+            </div>
+            <ul className="text-xs text-destructive space-y-0.5 list-disc pl-5">
+              {errors.map((e, i) => (
+                <li key={i}>{e}</li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+
+      {dirty && (
+        <p className="text-xs text-destructive text-center">
+          입력이 변경되었습니다. 다시 계산해야 현재 입력 기준의 견적서를 출력할 수 있습니다.
+        </p>
+      )}
+
       {/* 계산 버튼 */}
       <Button 
         onClick={handleCalculate} 
@@ -520,3 +543,4 @@ export function TankInputForm({ onCalculate, onDirtyChange }: TankInputFormProps
     </div>
   );
 }
+
