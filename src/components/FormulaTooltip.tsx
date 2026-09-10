@@ -115,7 +115,7 @@ export const formulaData = {
   jointSW: {
     title: "Joint S.W (용접부 구조층)",
     formula: "0.6 × π × D",
-    description: "이음부의 구조층 면적입니다. 유효 폭 0.6m를 가정한 원주 면적입니다. 0.6m = 이음부 양쪽 각 300mm 오버랩(300mm × 2)으로, ASME RTP-1 Section 4A 및 ASTM D 4097의 최소 오버랩 요건에 기반한 실무 적용 폭입니다.",
+    description: "이음부의 구조층 면적입니다. 이음 한 개소당 양쪽 각 300mm 오버랩(300mm × 2 = 0.6m)을 적용해 온 사내 견적 관행에 따른 값입니다.",
     source: "월드테크(주) 기존 견적 경험치",
     note: "양쪽 300mm 오버랩 = 0.6m 유효 보강 폭",
   },
