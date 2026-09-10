@@ -49,9 +49,37 @@ export interface ExcelLaborResult {
   totalWeightCost: number;
 }
 
+/** 상세 근거 표시용 중간값 (화면 표시와 계산이 동일한 값을 사용하도록 노출) */
+export interface ExcelDetail {
+  density: number;
+  cbThk: number;
+  avgShell: number;
+  swBodyThk: number;
+  swBtmThk: number;
+  swHeadThk: number;
+  cbJntCBThk: number;
+  swJntSWThk: number;
+  swLLThk: number;
+  swHoopThk: number;
+  rc570Multiplier: number;
+  ratios: {
+    resinCB: number;
+    resinSWBody: number;
+    resinSWOther: number;
+    mat: number;
+    roving: number;
+    surfaceMatFactor: number;
+    consumableRate: number;
+  };
+  costHLU: number;
+  costFW: number;
+}
+
 export interface ExcelCalculationResult extends CalculationResult {
   excelLabor: ExcelLaborResult;
+  excelDetail: ExcelDetail;
 }
+
 
 export function calculateTankExcel(
   dimensions: TankDimensions,
