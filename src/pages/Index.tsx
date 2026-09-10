@@ -98,7 +98,7 @@ const Index = () => {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* 입력 폼 */}
           <div className="print:hidden">
-            <TankInputForm onCalculate={handleCalculate} />
+            <TankInputForm onCalculate={handleCalculate} onDirtyChange={handleDirtyChange} />
           </div>
           
           {/* 결과 */}
@@ -112,7 +112,10 @@ const Index = () => {
                 laborPrices={laborPrices}
                 thickness={thickness}
                 useRtpMode={useRtpMode}
+                safetyMargins={safetyMargins}
+                stale={dirty}
                 onToggleMode={setUseRtpMode}
+
               />
             ) : (
               <div className="section-card flex flex-col items-center justify-center min-h-[400px] text-center">
