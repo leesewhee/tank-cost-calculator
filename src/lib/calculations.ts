@@ -9,9 +9,27 @@ export interface TankDimensions {
 export interface CustomItem {
   id: string;
   name: string;
-  value: number;
+  value: number;      // 금액(원) 또는 단가(원/단위)
   unit?: string;
+  quantity?: number;  // 단가형 항목(재료/인건비)에서 사용하는 수량·공수
 }
+
+// 견적서 한 줄(품명/수량/단가/금액)
+export interface QuoteLine {
+  key: string;
+  name: string;
+  qty: number | null;
+  unit: string;
+  unitPrice: number | null;
+  amount: number;
+  note?: string;
+}
+
+export interface CalcIssue {
+  level: "error" | "info";
+  message: string;
+}
+
 
 export interface MaterialPrices {
   resin: number;           // 수지 단가 (원/kg)
