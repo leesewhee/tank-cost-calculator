@@ -491,35 +491,76 @@ const NCRReportPage = () => {
   };
 
   const handlePrintSelected = async (ids: string[], includeDetail: boolean) => {
-    const target = reports.filter((r) => ids.includes(r.id));
+    const pool = allReports.length ? allReports : reports;
+    const target = pool.filter((r) => ids.includes(r.id));
     if (target.length === 0) {
       toast.error("출력할 보고서가 없습니다");
       return;
     }
     const map = includeDetail ? await fetchItemsFor(target.map((r) => r.id)) : new Map();
-    const groups = groupByDate(target, (r) => r.inspection_date);
-    const dates = groups.map(([d]) => d).filter((d) => d !== "날짜 미지정");
-    const period = dates.length ? `${dates[dates.length - 1]} ~ ${dates[0]}` : "-";
-    const flat = groups.flatMap(([, list]) => list);
+    const nameOf = (id: string) => projects.find((p) => p.id === id)?.name || "프로젝트 미지정";
+    const dk = (v: string) => (v || "").replace(/[^0-9]/g, "");
+
+    const projectMap = new Map<string, NCRReport[]>();
+    target.forEach((r) => {
+      const n = nameOf(r.project_id);
+      if (!projectMap.has(n)) projectMap.set(n, []);
+      projectMap.get(n)!.push(r);
+    });
+    const projectGroups = Array.from(projectMap.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+    const multi = projectGroups.length > 1;
+    const subtitle = multi ? `전체 프로젝트 ${projectGroups.length}개` : projectGroups[0][0];
+
+    const allDates = target.map((r) => r.inspection_date).filter(Boolean).sort((a, b) => dk(a).localeCompare(dk(b)));
+    const period = allDates.length ? `${allDates[0]} ~ ${allDates[allDates.length - 1]}` : "-";
+
+    const flat = projectGroups.flatMap(([, list]) =>
+      [...list].sort((a, b) => dk(b.inspection_date).localeCompare(dk(a.inspection_date)))
+    );
+
     const summary = `
       <div class="section">
         <table>
-          <tr><td class="label">프로젝트명</td><td>${escapeHtml(selectedProject?.name || "")}</td>
-              <td class="label">출력 건수</td><td>${target.length} 건 (전체 ${reports.length}건)</td></tr>
+          <tr><td class="label">출력 범위</td><td>${escapeHtml(subtitle)}</td>
+              <td class="label">출력 건수</td><td>${target.length} 건 (전체 ${pool.length}건)</td></tr>
           <tr><td class="label">검사일자 범위</td><td>${escapeHtml(period)}</td>
               <td class="label">출력 형식</td><td>${includeDetail ? "요약 + 상세 보고서" : "요약 목록"}</td></tr>
         </table>
       </div>
+      ${
+        multi
+          ? `<div class="section">
+              <h2 class="group">프로젝트별 요약</h2>
+              <table>
+                <thead><tr><th style="width:45px">No.</th><th>프로젝트명</th>
+                  <th style="width:90px">건수</th><th style="width:180px">검사일자 범위</th></tr></thead>
+                <tbody>
+                  ${projectGroups
+                    .map(([name, list], i) => {
+                      const ds = list.map((r) => r.inspection_date).filter(Boolean).sort((a, b) => dk(a).localeCompare(dk(b)));
+                      return `<tr><td>${i + 1}</td><td>${escapeHtml(name)}</td><td>${list.length}</td>
+                        <td>${ds.length ? `${escapeHtml(ds[0])} ~ ${escapeHtml(ds[ds.length - 1])}` : "-"}</td></tr>`;
+                    })
+                    .join("")}
+                </tbody>
+              </table>
+            </div>`
+          : ""
+      }
       <div class="section">
         <h2 class="group">부적합보고서 요약 목록 (${target.length}건)</h2>
         <table>
-          <thead><tr><th style="width:45px">No.</th><th style="width:100px">검사일자</th>
+          <thead><tr><th style="width:45px">No.</th>
+            ${multi ? '<th style="width:130px">프로젝트</th>' : ""}
+            <th style="width:100px">검사일자</th>
             <th style="width:110px">공사번호</th><th>장치명</th><th style="width:80px">검사자</th>
             <th style="width:80px">최종확인</th></tr></thead>
           <tbody>
             ${flat
               .map(
-                (r, i) => `<tr><td>${i + 1}</td><td>${escapeHtml(r.inspection_date)}</td>
+                (r, i) => `<tr><td>${i + 1}</td>
+                  ${multi ? `<td>${escapeHtml(nameOf(r.project_id))}</td>` : ""}
+                  <td>${escapeHtml(r.inspection_date)}</td>
                   <td>${escapeHtml(r.construction_no)}</td><td>${escapeHtml(r.equipment_name)}</td>
                   <td>${escapeHtml(r.inspector)}</td><td>${escapeHtml(r.final_result)}</td></tr>`
               )
@@ -527,25 +568,30 @@ const NCRReportPage = () => {
           </tbody>
         </table>
       </div>`;
+
     const details = includeDetail
-      ? groups
+      ? projectGroups
           .map(
-            ([date, list]) => `
+            ([name, list]) => `
         <div class="page-break"></div>
-        <h2 class="group">검사일자 : ${escapeHtml(date)} (${list.length}건)</h2>
-        ${list.map((r) => renderReportHtml(r, map.get(r.id) || [])).join('<div class="page-break"></div>')}`
+        <h2 class="group">프로젝트 : ${escapeHtml(name)} (${list.length}건)</h2>
+        ${groupByDate(list, (r) => r.inspection_date)
+          .map(
+            ([date, dl]) => `
+          <h2 class="group" style="background:#fafafa;border-left-color:#999">검사일자 : ${escapeHtml(date)} (${dl.length}건)</h2>
+          ${dl.map((r) => renderReportHtml(r, map.get(r.id) || [])).join('<div class="page-break"></div>')}`
+          )
+          .join('<div class="page-break"></div>')}`
           )
           .join("")
       : `<table class="sign">
           <tr><th style="text-align:center">작성</th><th style="text-align:center">검토</th><th style="text-align:center">승인</th></tr>
           <tr><td style="height:52px"></td><td></td><td></td></tr>
         </table>`;
-    openPrintWindow(
-      "부적합보고서 (NCR) 관리대장",
-      selectedProject?.name || "",
-      summary + details
-    );
+
+    openPrintWindow("부적합보고서 (NCR) 관리대장", subtitle, summary + details);
   };
+
 
 
   if (loading) {
