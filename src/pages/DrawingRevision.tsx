@@ -469,7 +469,7 @@ import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
                       size="sm"
                       variant="outline"
                       onClick={() => {
-                        if (projectDrawings.length === 0) {
+                        if (drawings.length === 0) {
                           toast.error("출력할 도면이 없습니다");
                           return;
                         }
@@ -483,14 +483,19 @@ import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
                       open={isPrintDialogOpen}
                       onOpenChange={setIsPrintDialogOpen}
                       title="도면 리비전 대장 출력"
-                      items={projectDrawings.map((d) => ({
+                      currentGroupId={selectedProjectId}
+                      currentGroupName={selectedProject?.name}
+                      items={drawings.map((d) => ({
                         id: d.id,
                         date: d.revisionDate,
                         label: `${d.drawingNumber} ${d.drawingName}`,
                         sub: `Rev. ${d.revision}`,
+                        groupId: d.projectId,
+                        groupName: d.projectName,
                       }))}
                       onPrint={(ids) => handlePrint(ids)}
                     />
+
 
                    <Dialog open={isDrawingDialogOpen} onOpenChange={setIsDrawingDialogOpen}>
                      <DialogTrigger asChild>
