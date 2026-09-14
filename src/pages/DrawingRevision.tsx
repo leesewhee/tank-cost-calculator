@@ -235,17 +235,50 @@ import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
     toast.success('프로젝트가 삭제되었습니다');
    };
  
-  const handlePrint = () => {
-    if (!selectedProject || projectDrawings.length === 0) {
+  const handlePrint = (ids: string[]) => {
+    if (!selectedProject) return;
+    const target = projectDrawings.filter((d) => ids.includes(d.id));
+    if (target.length === 0) {
       toast.error("출력할 도면이 없습니다");
       return;
     }
-    const groups = groupByDate(projectDrawings, (d) => d.revisionDate);
+    const sorted = [...target].sort((a, b) =>
+      (b.revisionDate || "").replace(/[^0-9]/g, "").localeCompare((a.revisionDate || "").replace(/[^0-9]/g, ""))
+    );
+    const groups = groupByDate(sorted, (d) => d.revisionDate);
+    const dates = groups.map(([d]) => d).filter((d) => d !== "날짜 미지정");
+    const period = dates.length
+      ? `${dates[dates.length - 1]} ~ ${dates[0]}`
+      : "-";
     const body = `
       <div class="section">
         <table>
           <tr><td class="label">프로젝트명</td><td>${escapeHtml(selectedProject.name)}</td>
-              <td class="label">총 도면 수</td><td>${projectDrawings.length} 건</td></tr>
+              <td class="label">출력 도면 수</td><td>${sorted.length} 건 (전체 ${projectDrawings.length}건)</td></tr>
+          <tr><td class="label">개정일자 범위</td><td>${escapeHtml(period)}</td>
+              <td class="label">개정일 구분</td><td>${groups.length} 개</td></tr>
+        </table>
+      </div>
+      <div class="section">
+        <h2 class="group">도면 리비전 전체 목록 (${sorted.length}건)</h2>
+        <table>
+          <thead><tr>
+            <th style="width:45px">No.</th><th style="width:140px">도면번호</th>
+            <th>도면명</th><th style="width:70px">Rev.</th><th style="width:100px">개정일자</th>
+          </tr></thead>
+          <tbody>
+            ${sorted
+              .map(
+                (d, i) => `<tr>
+                  <td>${i + 1}</td>
+                  <td>${escapeHtml(d.drawingNumber)}</td>
+                  <td>${escapeHtml(d.drawingName)}</td>
+                  <td>${escapeHtml(d.revision)}</td>
+                  <td>${escapeHtml(d.revisionDate)}</td>
+                </tr>`
+              )
+              .join("")}
+          </tbody>
         </table>
       </div>
       ${groups
@@ -255,8 +288,8 @@ import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
           <h2 class="group">개정일자 : ${escapeHtml(date)} (${list.length}건)</h2>
           <table>
             <thead><tr>
-              <th style="width:60px">No.</th><th style="width:140px">도면번호</th>
-              <th>도면명</th><th style="width:90px">최신 Rev.</th><th style="width:110px">개정일자</th>
+              <th style="width:45px">No.</th><th style="width:140px">도면번호</th>
+              <th>도면명</th><th style="width:70px">Rev.</th><th style="width:100px">개정일자</th>
             </tr></thead>
             <tbody>
               ${list
@@ -281,6 +314,7 @@ import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
       </table>`;
     openPrintWindow("도면 리비전 관리 대장", selectedProject.name, body);
   };
+
 
   if (loading) {
     return (
