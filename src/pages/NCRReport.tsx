@@ -628,10 +628,34 @@ const NCRReportPage = () => {
               <div className="flex items-center justify-between">
                 <CardTitle>부적합보고서 목록</CardTitle>
                 <div className="flex items-center gap-2">
-                  <Button size="sm" variant="outline" onClick={handlePrintAll}>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      if (reports.length === 0) {
+                        toast.error("출력할 보고서가 없습니다");
+                        return;
+                      }
+                      setIsPrintDialogOpen(true);
+                    }}
+                  >
                     <Printer className="w-4 h-4 mr-1" />
-                    전체 출력
+                    출력
                   </Button>
+                  <PrintOptionsDialog
+                    open={isPrintDialogOpen}
+                    onOpenChange={setIsPrintDialogOpen}
+                    title="부적합보고서 대장 출력"
+                    showDetailOption
+                    items={reports.map((r) => ({
+                      id: r.id,
+                      date: r.inspection_date,
+                      label: `${r.construction_no || "-"} / ${r.equipment_name || "-"}`,
+                      sub: `검사자 ${r.inspector || "-"} · ${r.final_result || "미확인"}`,
+                    }))}
+                    onPrint={(ids, opts) => handlePrintSelected(ids, opts.includeDetail)}
+                  />
+
                   <Button size="sm" onClick={handleOpenCreate}>
                     <Plus className="w-4 h-4 mr-1" />
                     보고서 작성
