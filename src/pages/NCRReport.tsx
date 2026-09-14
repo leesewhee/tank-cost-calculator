@@ -32,6 +32,8 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
+import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
+
 
 interface Project {
   id: string;
@@ -113,6 +115,8 @@ const NCRReportPage = () => {
   const [selectedProjectId, setSelectedProjectId] = useState("");
   const [reports, setReports] = useState<NCRReport[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPrintDialogOpen, setIsPrintDialogOpen] = useState(false);
+
 
   // 새 보고서 작성 / 수정
   const [isCreateOpen, setIsCreateOpen] = useState(false);
