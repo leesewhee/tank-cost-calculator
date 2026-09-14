@@ -32,6 +32,8 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
+import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
+
 
 interface Project {
   id: string;
@@ -113,6 +115,8 @@ const NCRReportPage = () => {
   const [selectedProjectId, setSelectedProjectId] = useState("");
   const [reports, setReports] = useState<NCRReport[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPrintDialogOpen, setIsPrintDialogOpen] = useState(false);
+
 
   // 새 보고서 작성 / 수정
   const [isCreateOpen, setIsCreateOpen] = useState(false);
@@ -474,23 +478,34 @@ const NCRReportPage = () => {
     );
   };
 
-  const handlePrintAll = async () => {
-    if (reports.length === 0) {
+  const handlePrintSelected = async (ids: string[], includeDetail: boolean) => {
+    const target = reports.filter((r) => ids.includes(r.id));
+    if (target.length === 0) {
       toast.error("출력할 보고서가 없습니다");
       return;
     }
-    const map = await fetchItemsFor(reports.map((r) => r.id));
-    const groups = groupByDate(reports, (r) => r.inspection_date);
+    const map = includeDetail ? await fetchItemsFor(target.map((r) => r.id)) : new Map();
+    const groups = groupByDate(target, (r) => r.inspection_date);
+    const dates = groups.map(([d]) => d).filter((d) => d !== "날짜 미지정");
+    const period = dates.length ? `${dates[dates.length - 1]} ~ ${dates[0]}` : "-";
+    const flat = groups.flatMap(([, list]) => list);
     const summary = `
       <div class="section">
-        <h2 class="group">보고서 요약 (총 ${reports.length}건)</h2>
         <table>
-          <thead><tr><th style="width:50px">No.</th><th style="width:110px">검사일시</th>
-            <th style="width:120px">공사번호</th><th>장치명</th><th style="width:90px">검사자</th>
-            <th style="width:90px">최종확인</th></tr></thead>
+          <tr><td class="label">프로젝트명</td><td>${escapeHtml(selectedProject?.name || "")}</td>
+              <td class="label">출력 건수</td><td>${target.length} 건 (전체 ${reports.length}건)</td></tr>
+          <tr><td class="label">검사일자 범위</td><td>${escapeHtml(period)}</td>
+              <td class="label">출력 형식</td><td>${includeDetail ? "요약 + 상세 보고서" : "요약 목록"}</td></tr>
+        </table>
+      </div>
+      <div class="section">
+        <h2 class="group">부적합보고서 요약 목록 (${target.length}건)</h2>
+        <table>
+          <thead><tr><th style="width:45px">No.</th><th style="width:100px">검사일자</th>
+            <th style="width:110px">공사번호</th><th>장치명</th><th style="width:80px">검사자</th>
+            <th style="width:80px">최종확인</th></tr></thead>
           <tbody>
-            ${groups
-              .flatMap(([, list]) => list)
+            ${flat
               .map(
                 (r, i) => `<tr><td>${i + 1}</td><td>${escapeHtml(r.inspection_date)}</td>
                   <td>${escapeHtml(r.construction_no)}</td><td>${escapeHtml(r.equipment_name)}</td>
@@ -500,20 +515,26 @@ const NCRReportPage = () => {
           </tbody>
         </table>
       </div>`;
-    const details = groups
-      .map(
-        ([date, list]) => `
+    const details = includeDetail
+      ? groups
+          .map(
+            ([date, list]) => `
         <div class="page-break"></div>
         <h2 class="group">검사일자 : ${escapeHtml(date)} (${list.length}건)</h2>
         ${list.map((r) => renderReportHtml(r, map.get(r.id) || [])).join('<div class="page-break"></div>')}`
-      )
-      .join("");
+          )
+          .join("")
+      : `<table class="sign">
+          <tr><th style="text-align:center">작성</th><th style="text-align:center">검토</th><th style="text-align:center">승인</th></tr>
+          <tr><td style="height:52px"></td><td></td><td></td></tr>
+        </table>`;
     openPrintWindow(
       "부적합보고서 (NCR) 관리대장",
       selectedProject?.name || "",
       summary + details
     );
   };
+
 
   if (loading) {
     return (
@@ -607,10 +628,34 @@ const NCRReportPage = () => {
               <div className="flex items-center justify-between">
                 <CardTitle>부적합보고서 목록</CardTitle>
                 <div className="flex items-center gap-2">
-                  <Button size="sm" variant="outline" onClick={handlePrintAll}>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      if (reports.length === 0) {
+                        toast.error("출력할 보고서가 없습니다");
+                        return;
+                      }
+                      setIsPrintDialogOpen(true);
+                    }}
+                  >
                     <Printer className="w-4 h-4 mr-1" />
-                    전체 출력
+                    출력
                   </Button>
+                  <PrintOptionsDialog
+                    open={isPrintDialogOpen}
+                    onOpenChange={setIsPrintDialogOpen}
+                    title="부적합보고서 대장 출력"
+                    showDetailOption
+                    items={reports.map((r) => ({
+                      id: r.id,
+                      date: r.inspection_date,
+                      label: `${r.construction_no || "-"} / ${r.equipment_name || "-"}`,
+                      sub: `검사자 ${r.inspector || "-"} · ${r.final_result || "미확인"}`,
+                    }))}
+                    onPrint={(ids, opts) => handlePrintSelected(ids, opts.includeDetail)}
+                  />
+
                   <Button size="sm" onClick={handleOpenCreate}>
                     <Plus className="w-4 h-4 mr-1" />
                     보고서 작성
