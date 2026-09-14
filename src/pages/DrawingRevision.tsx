@@ -434,10 +434,33 @@ import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
                  <div className="flex items-center justify-between">
                    <CardTitle>도면 목록</CardTitle>
                    <div className="flex items-center gap-2">
-                   <Button size="sm" variant="outline" onClick={handlePrint}>
-                     <Printer className="w-4 h-4 mr-1" />
-                     출력
-                   </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        if (projectDrawings.length === 0) {
+                          toast.error("출력할 도면이 없습니다");
+                          return;
+                        }
+                        setIsPrintDialogOpen(true);
+                      }}
+                    >
+                      <Printer className="w-4 h-4 mr-1" />
+                      출력
+                    </Button>
+                    <PrintOptionsDialog
+                      open={isPrintDialogOpen}
+                      onOpenChange={setIsPrintDialogOpen}
+                      title="도면 리비전 대장 출력"
+                      items={projectDrawings.map((d) => ({
+                        id: d.id,
+                        date: d.revisionDate,
+                        label: `${d.drawingNumber} ${d.drawingName}`,
+                        sub: `Rev. ${d.revision}`,
+                      }))}
+                      onPrint={(ids) => handlePrint(ids)}
+                    />
+
                    <Dialog open={isDrawingDialogOpen} onOpenChange={setIsDrawingDialogOpen}>
                      <DialogTrigger asChild>
                        <Button size="sm">
