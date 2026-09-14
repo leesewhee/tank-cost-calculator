@@ -114,6 +114,8 @@ const NCRReportPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProjectId, setSelectedProjectId] = useState("");
   const [reports, setReports] = useState<NCRReport[]>([]);
+  const [allReports, setAllReports] = useState<NCRReport[]>([]);
+
   const [loading, setLoading] = useState(true);
   const [isPrintDialogOpen, setIsPrintDialogOpen] = useState(false);
 
