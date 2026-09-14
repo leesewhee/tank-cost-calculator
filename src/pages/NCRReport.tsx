@@ -176,7 +176,17 @@ const NCRReportPage = () => {
     }
 
     setReports((data as NCRReport[]) || []);
+    fetchAllReports();
   };
+
+  const fetchAllReports = async () => {
+    const { data } = await supabase
+      .from("ncr_reports")
+      .select("*")
+      .order("created_at", { ascending: false });
+    setAllReports((data as NCRReport[]) || []);
+  };
+
 
   const handleAddProject = async () => {
     if (!newProjectName.trim()) return;
