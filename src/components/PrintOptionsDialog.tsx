@@ -23,6 +23,10 @@ export interface PrintSelectableItem {
   label: string;
   /** 보조 설명 */
   sub?: string;
+  /** 소속 프로젝트 ID */
+  groupId?: string;
+  /** 소속 프로젝트명 */
+  groupName?: string;
 }
 
 type Scope = "all" | "recent" | "range" | "pick";
@@ -31,7 +35,12 @@ interface PrintOptionsDialogProps {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   title: string;
+  /** 전체 프로젝트의 항목을 모두 넘겨주세요 */
   items: PrintSelectableItem[];
+  /** 현재 선택된 프로젝트 ID (있으면 프로젝트 범위 선택이 표시됨) */
+  currentGroupId?: string;
+  /** 현재 선택된 프로젝트명 */
+  currentGroupName?: string;
   /** 요약/상세 선택 옵션 표시 여부 */
   showDetailOption?: boolean;
   onPrint: (selectedIds: string[], options: { includeDetail: boolean }) => void;
@@ -44,9 +53,12 @@ export function PrintOptionsDialog({
   onOpenChange,
   title,
   items,
+  currentGroupId,
+  currentGroupName,
   showDetailOption = false,
   onPrint,
 }: PrintOptionsDialogProps) {
+  const [groupScope, setGroupScope] = useState<"current" | "all">("current");
   const [scope, setScope] = useState<Scope>("all");
   const [recentCount, setRecentCount] = useState("20");
   const [from, setFrom] = useState("");
@@ -58,19 +70,47 @@ export function PrintOptionsDialog({
     if (open) {
       setScope("all");
       setPicked([]);
+      setGroupScope("current");
     }
   }, [open]);
 
-  const sorted = useMemo(
-    () => [...items].sort((a, b) => key(b.date).localeCompare(key(a.date))),
+  const projectCount = useMemo(
+    () => new Set(items.map((i) => i.groupId || "-")).size,
     [items]
   );
+  const hasGroupChoice = Boolean(currentGroupId) && projectCount > 1;
+
+  const pool = useMemo(() => {
+    if (!hasGroupChoice || groupScope === "all") return items;
+    return items.filter((i) => i.groupId === currentGroupId);
+  }, [items, hasGroupChoice, groupScope, currentGroupId]);
+
+  const currentCount = useMemo(
+    () => items.filter((i) => i.groupId === currentGroupId).length,
+    [items, currentGroupId]
+  );
+
+  const sorted = useMemo(
+    () =>
+      [...pool].sort((a, b) => {
+        const g = (a.groupName || "").localeCompare(b.groupName || "");
+        if (groupScope === "all" && g !== 0) return g;
+        return key(b.date).localeCompare(key(a.date));
+      }),
+    [pool, groupScope]
+  );
+
+  useEffect(() => {
+    setPicked((p) => p.filter((id) => pool.some((i) => i.id === id)));
+  }, [pool]);
 
   const selected = useMemo(() => {
     if (scope === "all") return sorted;
     if (scope === "recent") {
       const n = parseInt(recentCount, 10);
-      return Number.isFinite(n) && n > 0 ? sorted.slice(0, n) : [];
+      if (!Number.isFinite(n) || n <= 0) return [];
+      const byDate = [...sorted].sort((a, b) => key(b.date).localeCompare(key(a.date)));
+      return byDate.slice(0, n);
     }
     if (scope === "range") {
       const f = key(from);
@@ -105,10 +145,34 @@ export function PrintOptionsDialog({
         </DialogHeader>
 
         <div className="space-y-4 pt-2">
+          {hasGroupChoice && (
+            <div className="rounded-md border p-3 space-y-2">
+              <p className="text-sm font-medium">프로젝트 범위</p>
+              <RadioGroup
+                value={groupScope}
+                onValueChange={(v) => setGroupScope(v as "current" | "all")}
+                className="space-y-2"
+              >
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="current" id="group-current" />
+                  <Label htmlFor="group-current" className="font-normal">
+                    현재 프로젝트만 — {currentGroupName || "-"} ({currentCount}건)
+                  </Label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <RadioGroupItem value="all" id="group-all" />
+                  <Label htmlFor="group-all" className="font-normal">
+                    전체 프로젝트 한 번에 ({projectCount}개 · {items.length}건)
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+          )}
+
           <RadioGroup value={scope} onValueChange={(v) => setScope(v as Scope)} className="space-y-3">
             <div className="flex items-center gap-2">
               <RadioGroupItem value="all" id="scope-all" />
-              <Label htmlFor="scope-all">전체 출력 ({items.length}건)</Label>
+              <Label htmlFor="scope-all">전체 출력 ({pool.length}건)</Label>
             </div>
 
             <div className="flex items-center gap-2">
@@ -176,27 +240,37 @@ export function PrintOptionsDialog({
               </div>
               <ScrollArea className="h-56">
                 <div className="p-2 space-y-1">
-                  {sorted.map((i) => (
-                    <label
-                      key={i.id}
-                      className="flex items-start gap-2 rounded px-2 py-1.5 hover:bg-muted cursor-pointer"
-                    >
-                      <Checkbox
-                        checked={picked.includes(i.id)}
-                        onCheckedChange={() => toggle(i.id)}
-                        className="mt-0.5"
-                      />
-                      <span className="text-sm leading-tight">
-                        <span className="font-medium">{i.label}</span>
-                        {i.sub && (
-                          <span className="block text-xs text-muted-foreground">{i.sub}</span>
+                  {sorted.map((i, idx) => {
+                    const showGroupHeader =
+                      groupScope === "all" &&
+                      hasGroupChoice &&
+                      (idx === 0 || sorted[idx - 1].groupName !== i.groupName);
+                    return (
+                      <div key={i.id}>
+                        {showGroupHeader && (
+                          <div className="px-2 pt-2 pb-1 text-xs font-semibold text-muted-foreground">
+                            {i.groupName || "프로젝트 미지정"}
+                          </div>
                         )}
-                      </span>
-                      <span className="ml-auto text-xs text-muted-foreground whitespace-nowrap">
-                        {i.date || "-"}
-                      </span>
-                    </label>
-                  ))}
+                        <label className="flex items-start gap-2 rounded px-2 py-1.5 hover:bg-muted cursor-pointer">
+                          <Checkbox
+                            checked={picked.includes(i.id)}
+                            onCheckedChange={() => toggle(i.id)}
+                            className="mt-0.5"
+                          />
+                          <span className="text-sm leading-tight">
+                            <span className="font-medium">{i.label}</span>
+                            {i.sub && (
+                              <span className="block text-xs text-muted-foreground">{i.sub}</span>
+                            )}
+                          </span>
+                          <span className="ml-auto text-xs text-muted-foreground whitespace-nowrap">
+                            {i.date || "-"}
+                          </span>
+                        </label>
+                      </div>
+                    );
+                  })}
                 </div>
               </ScrollArea>
             </div>
