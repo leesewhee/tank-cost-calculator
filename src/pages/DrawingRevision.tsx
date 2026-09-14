@@ -240,41 +240,46 @@ import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
    };
  
   const handlePrint = (ids: string[]) => {
-    if (!selectedProject) return;
-    const target = projectDrawings.filter((d) => ids.includes(d.id));
+    const target = drawings.filter((d) => ids.includes(d.id));
     if (target.length === 0) {
       toast.error("출력할 도면이 없습니다");
       return;
     }
-    const sorted = [...target].sort((a, b) =>
-      (b.revisionDate || "").replace(/[^0-9]/g, "").localeCompare((a.revisionDate || "").replace(/[^0-9]/g, ""))
+    const dk = (v: string) => (v || "").replace(/[^0-9]/g, "");
+    const sorted = [...target].sort((a, b) => dk(b.revisionDate).localeCompare(dk(a.revisionDate)));
+
+    // 프로젝트별 묶음 (프로젝트명 순)
+    const projectMap = new Map<string, Drawing[]>();
+    sorted.forEach((d) => {
+      const name = d.projectName || "프로젝트 미지정";
+      if (!projectMap.has(name)) projectMap.set(name, []);
+      projectMap.get(name)!.push(d);
+    });
+    const projectGroups = Array.from(projectMap.entries()).sort((a, b) =>
+      a[0].localeCompare(b[0])
     );
-    const groups = groupByDate(sorted, (d) => d.revisionDate);
-    const dates = groups.map(([d]) => d).filter((d) => d !== "날짜 미지정");
-    const period = dates.length
-      ? `${dates[dates.length - 1]} ~ ${dates[0]}`
-      : "-";
-    const body = `
-      <div class="section">
-        <table>
-          <tr><td class="label">프로젝트명</td><td>${escapeHtml(selectedProject.name)}</td>
-              <td class="label">출력 도면 수</td><td>${sorted.length} 건 (전체 ${projectDrawings.length}건)</td></tr>
-          <tr><td class="label">개정일자 범위</td><td>${escapeHtml(period)}</td>
-              <td class="label">개정일 구분</td><td>${groups.length} 개</td></tr>
-        </table>
-      </div>
-      <div class="section">
-        <h2 class="group">도면 리비전 전체 목록 (${sorted.length}건)</h2>
+
+    const allDates = sorted.map((d) => d.revisionDate).filter(Boolean).sort((a, b) => dk(a).localeCompare(dk(b)));
+    const period = allDates.length ? `${allDates[0]} ~ ${allDates[allDates.length - 1]}` : "-";
+    const multi = projectGroups.length > 1;
+    const subtitle = multi
+      ? `전체 프로젝트 ${projectGroups.length}개`
+      : projectGroups[0][0];
+
+    const listTable = (list: Drawing[], withProject: boolean) => `
         <table>
           <thead><tr>
-            <th style="width:45px">No.</th><th style="width:140px">도면번호</th>
+            <th style="width:45px">No.</th>
+            ${withProject ? '<th style="width:150px">프로젝트</th>' : ""}
+            <th style="width:140px">도면번호</th>
             <th>도면명</th><th style="width:70px">Rev.</th><th style="width:100px">개정일자</th>
           </tr></thead>
           <tbody>
-            ${sorted
+            ${list
               .map(
                 (d, i) => `<tr>
                   <td>${i + 1}</td>
+                  ${withProject ? `<td>${escapeHtml(d.projectName)}</td>` : ""}
                   <td>${escapeHtml(d.drawingNumber)}</td>
                   <td>${escapeHtml(d.drawingName)}</td>
                   <td>${escapeHtml(d.revision)}</td>
@@ -283,41 +288,67 @@ import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
               )
               .join("")}
           </tbody>
+        </table>`;
+
+    const overview = `
+      <div class="section">
+        <table>
+          <tr><td class="label">출력 범위</td><td>${escapeHtml(subtitle)}</td>
+              <td class="label">출력 도면 수</td><td>${sorted.length} 건 (전체 ${drawings.length}건)</td></tr>
+          <tr><td class="label">개정일자 범위</td><td>${escapeHtml(period)}</td>
+              <td class="label">프로젝트 수</td><td>${projectGroups.length} 개</td></tr>
         </table>
       </div>
-      ${groups
-        .map(
-          ([date, list]) => `
+      ${
+        multi
+          ? `<div class="section">
+              <h2 class="group">프로젝트별 요약</h2>
+              <table>
+                <thead><tr><th style="width:45px">No.</th><th>프로젝트명</th>
+                  <th style="width:90px">도면 수</th><th style="width:180px">개정일자 범위</th></tr></thead>
+                <tbody>
+                  ${projectGroups
+                    .map(([name, list], i) => {
+                      const ds = list.map((d) => d.revisionDate).filter(Boolean).sort((a, b) => dk(a).localeCompare(dk(b)));
+                      return `<tr><td>${i + 1}</td><td>${escapeHtml(name)}</td><td>${list.length}</td>
+                        <td>${ds.length ? `${escapeHtml(ds[0])} ~ ${escapeHtml(ds[ds.length - 1])}` : "-"}</td></tr>`;
+                    })
+                    .join("")}
+                </tbody>
+              </table>
+            </div>`
+          : ""
+      }
+      <div class="section">
+        <h2 class="group">도면 리비전 전체 목록 (${sorted.length}건)</h2>
+        ${listTable(sorted, multi)}
+      </div>`;
+
+    const perProject = projectGroups
+      .map(([name, list]) => {
+        const groups = groupByDate(list, (d) => d.revisionDate);
+        return `
         <div class="section">
-          <h2 class="group">개정일자 : ${escapeHtml(date)} (${list.length}건)</h2>
-          <table>
-            <thead><tr>
-              <th style="width:45px">No.</th><th style="width:140px">도면번호</th>
-              <th>도면명</th><th style="width:70px">Rev.</th><th style="width:100px">개정일자</th>
-            </tr></thead>
-            <tbody>
-              ${list
-                .map(
-                  (d, i) => `<tr>
-                    <td>${i + 1}</td>
-                    <td>${escapeHtml(d.drawingNumber)}</td>
-                    <td>${escapeHtml(d.drawingName)}</td>
-                    <td>${escapeHtml(d.revision)}</td>
-                    <td>${escapeHtml(d.revisionDate)}</td>
-                  </tr>`
-                )
-                .join("")}
-            </tbody>
-          </table>
-        </div>`
-        )
-        .join("")}
+          <h2 class="group">프로젝트 : ${escapeHtml(name)} (${list.length}건)</h2>
+          ${groups
+            .map(
+              ([date, dl]) => `
+            <h2 class="group" style="background:#fafafa;border-left-color:#999">개정일자 : ${escapeHtml(date)} (${dl.length}건)</h2>
+            ${listTable(dl, false)}`
+            )
+            .join("")}
+        </div>`;
+      })
+      .join("");
+
+    const body = `${overview}${perProject}
       <table class="sign">
         <tr><th style="text-align:center">작성</th><th style="text-align:center">검토</th><th style="text-align:center">승인</th></tr>
         <tr><td style="height:52px"></td><td></td><td></td></tr>
       </table>`;
-    openPrintWindow("도면 리비전 관리 대장", selectedProject.name, body);
+    openPrintWindow("도면 리비전 관리 대장", subtitle, body);
   };
+
 
 
   if (loading) {
