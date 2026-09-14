@@ -30,6 +30,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
+import { PrintOptionsDialog } from "@/components/PrintOptionsDialog";
+
  
  interface Drawing {
    id: string;
@@ -56,6 +58,8 @@ import { openPrintWindow, groupByDate, escapeHtml } from "@/lib/printDocument";
    const [isDrawingDialogOpen, setIsDrawingDialogOpen] = useState(false);
    const [editingDrawing, setEditingDrawing] = useState<Drawing | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isPrintDialogOpen, setIsPrintDialogOpen] = useState(false);
+
    
    const [newProjectName, setNewProjectName] = useState("");
   const [newDrawing, setNewDrawing] = useState({
