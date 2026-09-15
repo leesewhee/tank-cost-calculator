@@ -1,6 +1,47 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cylinder, FileText, Settings, Shield, ClipboardList, Wrench, Calculator, Scale, Droplets, Table, Settings2, BarChart3, Beaker, Ruler, FolderOpen, Users } from "lucide-react";
+import { Cylinder, FileText, Settings, Shield, ClipboardList, Wrench, Calculator, Scale, Droplets, Table, Settings2, BarChart3, Beaker, Ruler, FolderOpen, Users, Printer } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { openPrintWindow, escapeHtml } from "@/lib/printDocument";
+
+const handlePrintPrograms = () => {
+  const total = categories.reduce((s, c) => s + c.items.length, 0);
+  const body = `
+    <p style="font-size:12px;margin:0 0 12px;">
+      월드테크(주)는 FRP 견적·설계 계산, 규격 데이터, 각종 서식 및 관리자료를 아래와 같이
+      총 ${categories.length}개 분야, ${total}개 프로그램으로 체계화하여 관리하고 있습니다.
+    </p>
+    ${categories
+      .map(
+        (c) => `
+      <div class="section">
+        <h2 class="group">${escapeHtml(c.title)} <span class="muted" style="font-weight:400;">(${escapeHtml(c.subtitle)})</span></h2>
+        <table>
+          <thead>
+            <tr><th style="width:40px;text-align:center;">No.</th><th style="width:38%;">프로그램명</th><th>용도 및 주요 기능</th></tr>
+          </thead>
+          <tbody>
+            ${c.items
+              .map(
+                (p, i) => `
+              <tr>
+                <td style="text-align:center;">${i + 1}</td>
+                <td><b>${escapeHtml(p.title)}</b></td>
+                <td>${escapeHtml(p.description)}</td>
+              </tr>`
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>`
+      )
+      .join("")}
+    <table class="sign">
+      <tr><th class="label">담당자</th><td style="height:34px;"></td></tr>
+      <tr><th class="label">확인자</th><td></td></tr>
+    </table>`;
+  openPrintWindow("월드테크 업무 프로그램 관리 현황", "프로그램 관리 체계 안내", body);
+};
 
 interface ProgramItem {
   id: string;
@@ -59,14 +100,24 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       <header className="bg-sidebar text-sidebar-foreground py-8">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-sidebar-primary p-3 rounded-lg">
-              <Settings className="w-10 h-10 text-sidebar-primary-foreground" />
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="bg-sidebar-primary p-3 rounded-lg">
+                <Settings className="w-10 h-10 text-sidebar-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold">월드테크 각종 프로그램 관리</h1>
+                <p className="text-sm text-sidebar-foreground/70 mt-1">World Tech Program Management System</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold">월드테크 각종 프로그램 관리</h1>
-              <p className="text-sm text-sidebar-foreground/70 mt-1">World Tech Program Management System</p>
-            </div>
+            <Button
+              variant="secondary"
+              onClick={handlePrintPrograms}
+              className="shrink-0"
+            >
+              <Printer className="w-4 h-4 mr-2" />
+              프로그램 관리 현황 출력
+            </Button>
           </div>
         </div>
       </header>
