@@ -100,14 +100,24 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       <header className="bg-sidebar text-sidebar-foreground py-8">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-sidebar-primary p-3 rounded-lg">
-              <Settings className="w-10 h-10 text-sidebar-primary-foreground" />
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="bg-sidebar-primary p-3 rounded-lg">
+                <Settings className="w-10 h-10 text-sidebar-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold">월드테크 각종 프로그램 관리</h1>
+                <p className="text-sm text-sidebar-foreground/70 mt-1">World Tech Program Management System</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold">월드테크 각종 프로그램 관리</h1>
-              <p className="text-sm text-sidebar-foreground/70 mt-1">World Tech Program Management System</p>
-            </div>
+            <Button
+              variant="secondary"
+              onClick={handlePrintPrograms}
+              className="shrink-0"
+            >
+              <Printer className="w-4 h-4 mr-2" />
+              프로그램 관리 현황 출력
+            </Button>
           </div>
         </div>
       </header>
