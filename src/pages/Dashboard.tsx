@@ -161,14 +161,16 @@ const Dashboard = () => {
                 <p className="text-sm text-sidebar-foreground/70 mt-1">World Tech Program Management System</p>
               </div>
             </div>
-            <Button
-              variant="secondary"
-              onClick={handlePrintPrograms}
-              className="shrink-0"
-            >
-              <Printer className="w-4 h-4 mr-2" />
-              프로그램 관리 현황 출력
-            </Button>
+            <div className="flex gap-2 shrink-0">
+              <Button variant="secondary" onClick={handlePrintPrograms}>
+                <Printer className="w-4 h-4 mr-2" />
+                목록형 출력
+              </Button>
+              <Button variant="secondary" onClick={handlePrintScreen}>
+                <Printer className="w-4 h-4 mr-2" />
+                화면 그대로 출력
+              </Button>
+            </div>
           </div>
         </div>
       </header>
