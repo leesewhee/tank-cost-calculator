@@ -43,6 +43,57 @@ const handlePrintPrograms = () => {
   openPrintWindow("월드테크 업무 프로그램 관리 현황", "프로그램 관리 체계 안내", body);
 };
 
+/** 화면(카드 화면)에 보이는 모습 그대로 출력 */
+const handlePrintScreen = () => {
+  const total = categories.reduce((s, c) => s + c.items.length, 0);
+  const body = `
+    <style>
+      .screen-hero { background:#1f2a37; color:#fff; padding:14px 16px; border-radius:8px; margin-bottom:14px; }
+      .screen-hero h2 { margin:0; font-size:17px; }
+      .screen-hero p { margin:4px 0 0; font-size:11px; color:#cbd5e1; }
+      .screen-sec { margin-bottom:16px; page-break-inside: avoid; }
+      .screen-sec-head { border-bottom:1px solid #cbd5e1; padding-bottom:5px; margin-bottom:8px; }
+      .screen-sec-head h3 { margin:0; font-size:14px; }
+      .screen-sec-head span { font-size:10px; color:#6b7280; }
+      .card-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:8px; }
+      .pcard { border:1px solid #d1d5db; border-radius:8px; padding:10px; page-break-inside: avoid; }
+      .pcard .row { display:flex; align-items:center; gap:8px; }
+      .pcard .badge { width:30px; height:30px; flex:0 0 30px; border-radius:7px; background:#eef2ff; color:#1f2a37;
+        font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+      .pcard .t { font-size:11.5px; font-weight:700; line-height:1.3; }
+      .pcard .d { font-size:10px; color:#6b7280; margin-top:2px; line-height:1.3; }
+    </style>
+    <div class="screen-hero">
+      <h2>월드테크 각종 프로그램 관리</h2>
+      <p>World Tech Program Management System &nbsp;|&nbsp; ${categories.length}개 분야 · ${total}개 프로그램</p>
+    </div>
+    ${categories
+      .map(
+        (c) => `
+      <div class="screen-sec">
+        <div class="screen-sec-head"><h3>${escapeHtml(c.title)}</h3><span>${escapeHtml(c.subtitle)}</span></div>
+        <div class="card-grid">
+          ${c.items
+            .map(
+              (p, i) => `
+            <div class="pcard">
+              <div class="row">
+                <div class="badge">${i + 1}</div>
+                <div>
+                  <div class="t">${escapeHtml(p.title)}</div>
+                  <div class="d">${escapeHtml(p.description)}</div>
+                </div>
+              </div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>`
+      )
+      .join("")}`;
+  openPrintWindow("월드테크 각종 프로그램 관리 (화면 구성)", "메인 화면 구성 그대로", body);
+};
+
 interface ProgramItem {
   id: string;
   title: string;
@@ -110,14 +161,16 @@ const Dashboard = () => {
                 <p className="text-sm text-sidebar-foreground/70 mt-1">World Tech Program Management System</p>
               </div>
             </div>
-            <Button
-              variant="secondary"
-              onClick={handlePrintPrograms}
-              className="shrink-0"
-            >
-              <Printer className="w-4 h-4 mr-2" />
-              프로그램 관리 현황 출력
-            </Button>
+            <div className="flex gap-2 shrink-0">
+              <Button variant="secondary" onClick={handlePrintPrograms}>
+                <Printer className="w-4 h-4 mr-2" />
+                목록형 출력
+              </Button>
+              <Button variant="secondary" onClick={handlePrintScreen}>
+                <Printer className="w-4 h-4 mr-2" />
+                화면 그대로 출력
+              </Button>
+            </div>
           </div>
         </div>
       </header>
