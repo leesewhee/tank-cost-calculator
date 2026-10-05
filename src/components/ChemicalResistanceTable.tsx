@@ -9,6 +9,7 @@ import { Search, AlertCircle } from 'lucide-react';
 import { RESIN_GUIDES, CHEMICALS, chemicalLabel, searchManufacturerRows, type GuideId } from '@/lib/manufacturerResinGuides';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ResinReview from '@/features/worldtech/ResinReview';
 
 const RatingBadge = ({ rating }: { rating: ResistanceRating }) => {
   const colorClasses = {
@@ -49,7 +50,8 @@ export const ChemicalResistanceTable = () => {
   return (
     <div className="space-y-6">
       <Tabs defaultValue="manufacturer" className="space-y-4">
-        <TabsList><TabsTrigger value="manufacturer">제조사별 원문 조건</TabsTrigger><TabsTrigger value="general">기존 일반 참고표</TabsTrigger></TabsList>
+        <TabsList className="h-auto flex-wrap"><TabsTrigger value="manufacturer">제조사별 원문 조건</TabsTrigger><TabsTrigger value="review">조건 대조</TabsTrigger><TabsTrigger value="general">기존 일반 참고표</TabsTrigger></TabsList>
+        <TabsContent value="review"><ResinReview /></TabsContent>
         <TabsContent value="manufacturer" className="space-y-4">
           <Card><CardHeader><CardTitle>제조사별 수지 온도 조건 (°C)</CardTitle><CardDescription>세원화성·ASHLAND·Polynt 원문에서 FRP 주요 약품 약 20종을 회사별로 옮겼습니다. 숫자의 의미는 제조사·판본·각주에 따라 다르며, 특히 ASHLAND는 시험·사용·평가 온도로서 반드시 최고 허용온도를 뜻하지 않습니다. NR은 사용 비권장입니다.</CardDescription></CardHeader>
             <CardContent className="space-y-4">

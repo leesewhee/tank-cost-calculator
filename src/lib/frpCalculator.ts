@@ -128,15 +128,6 @@ export const getResinName = (resinType: ResinType): string => {
   return RESIN_PROPERTIES[resinType].name;
 };
 
-export const getRecommendedResin = (chemicalId: string, concentration: number, temperature: number): ResinType => {
-  const chemical = CHEMICALS.find(c => c.id === chemicalId);
-  if (!chemical) return 'vinyl-ester';
-  if (concentration > chemical.maxConcentration * 0.8 || temperature > chemical.maxTemperature * 0.8) {
-    return 'novolac';
-  }
-  return chemical.recommendedResin;
-};
-
 export const getRecommendedHeadType = (diameter: number, height: number, designPressure: number, vacuumPressure: number): string => {
   if (designPressure > 0.5 || Math.max(0.101325 - vacuumPressure, 0) > 0.05) return '2-1-elliptical';
   const aspectRatio = height / diameter;

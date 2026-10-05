@@ -29,7 +29,7 @@ describe('제조사 근거 조건', () => {
     expect(recommendResin(rows, { ...base, chemical: 'sodium-hypochlorite', concentration: 12 }).recommended).toBeNull();
     expect(recommendResin(rows, { ...base, concentration: 30, mixture: true }).recommended).toBeNull();
     expect(recommendResin(rows, { ...base, chemical: 'distilled-water', concentration: 100 }).recommended).toBeNull();
-    expect(recommendResin(rows, { ...base, concentration: NaN })).toThrow;
+    expect(() => recommendResin(rows, { ...base, concentration: NaN })).toThrow();
   });
   it('절대압이 낮아질수록 진공 차압이 커진다', () => {
     expect(getRecommendedHeadType(2000, 2000, 0, 0)).toBe('2-1-elliptical');
