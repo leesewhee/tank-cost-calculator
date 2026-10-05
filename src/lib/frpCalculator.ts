@@ -100,8 +100,6 @@ export interface FRPCalculationResult {
   stiffenerRings: number;
   safetyFactor: number;
   corrosionAllowance: number;
-  maxAllowableWorkingPressure: number;
-  hydrostaticTestPressure: number;
   innerLinerThickness: number;
   structuralLayerThickness: number;
   outerLayerThickness: number;
@@ -112,7 +110,7 @@ export interface FRPCalculationResult {
   corrosionLayerThickness: number;
   jointSW: number;
   jointCB: number;
-  linerLayer: number;
+  linerLayer: null;
   hoopThickness: number;
   nozzleReinforcement: { nozzleId: string; reinforcementThickness: number; reinforcementDiameter: number; }[];
   warnings: string[];
@@ -248,8 +246,6 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
   const outerLayerThickness = 1.5;
   const structuralLayerThickness = shellThickness - innerLinerThickness - outerLayerThickness;
 
-  const maxAllowableWorkingPressure = (allowableStress * shellThickness) / radius;
-  const hydrostaticTestPressure = Math.max(lowerPressure * 1.5, lowerPressure + 0.1);
 
   const nozzleReinforcement = input.nozzles.map(nozzle => {
     const nozzleDiameter = getNozzleDiameter(nozzle.standard, nozzle.size);
@@ -268,7 +264,7 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
   const jointSW = Math.ceil((shellLowerThickness * 1.2) * 2) / 2;
   const jointCB = Math.ceil((shellLowerThickness * 1.1) * 2) / 2;
   // 러그 L/L은 내식층 두께에서 도출할 수 없다.
-  const linerLayer = 0;
+  const linerLayer = null;
   const hoopThicknessValue = hoopReinforcement.required ? Math.ceil((shellLowerThickness * 1.3) * 2) / 2 : 0;
 
   return {
@@ -278,8 +274,6 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
     totalWeight: Math.round(totalWeight),
     totalSurfaceArea: Math.round(totalSurfaceArea * 100) / 100,
     hoopReinforcement, stiffenerRings, safetyFactor, corrosionAllowance,
-    maxAllowableWorkingPressure: Math.round(maxAllowableWorkingPressure * 1000) / 1000,
-    hydrostaticTestPressure: Math.round(hydrostaticTestPressure * 1000) / 1000,
     innerLinerThickness,
     structuralLayerThickness: Math.round(structuralLayerThickness * 10) / 10,
     outerLayerThickness,

@@ -171,7 +171,7 @@ export const FRPThicknessCalculator = () => {
       {showResults && (
         <Card className="border-primary">
           <CardHeader className="bg-primary/5">
-            <CardTitle className="text-2xl">엔지니어링 리포트</CardTitle>
+            <CardTitle className="text-2xl">기존 산출식 참고 결과</CardTitle>
             <div className="flex gap-2"><Badge variant="outline">기존 산출식 참고 · 규격 적합 미판정 ({designStandard === 'rtp-1' ? 'RTP-1' : 'ASME Section X'} 선택)</Badge><Badge variant="outline">{getResinName(effectiveResin)}</Badge></div>
           </CardHeader>
           <CardContent className="space-y-6 pt-6">
@@ -226,7 +226,7 @@ export const FRPThicknessCalculator = () => {
               {/* Nozzle Reinforcement */}
               {nozzles.length > 0 && (
                 <div className="space-y-3 md:col-span-2">
-                  <h3 className="font-semibold text-lg border-b pb-2">노즐 보강</h3>
+                <h3 className="font-semibold text-lg border-b pb-2">노즐 보강 (기존 추정 · 적합 미판정)</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                     {nozzles.map(n => {
                       const r = result.nozzleReinforcement.find(nr => nr.nozzleId === n.id);

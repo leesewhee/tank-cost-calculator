@@ -39,6 +39,6 @@ describe('제조사 근거 조건', () => {
     expect(getRecommendedHeadType(2000, 2000, 0, 0)).toBe('2-1-elliptical');
     expect(getRecommendedHeadType(2000, 2000, 0, 0.101325)).toBe('flat');
     const input = { designStandard: 'rtp-1' as const, chemicalId: 'water', concentration: 100, temperature: 25, resinType: 'vinyl-ester' as const, innerDiameter: 2000, height: 4000, designPressure: 0.1, vacuumPressure: 0.101325, headType: 'flat', bottomType: 'flat', nozzles: [] };
-    expect(calculateFRPThickness(input).linerLayer).toBe(0);
+    expect(calculateFRPThickness(input).linerLayer).toBeNull();
   });
 });
