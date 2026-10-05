@@ -27,6 +27,13 @@ const RatingBadge = ({ rating }: { rating: ResistanceRating }) => {
 export const ChemicalResistanceTable = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
+  const [manufacturerSearch, setManufacturerSearch] = useState('');
+  const [manufacturerFilter, setManufacturerFilter] = useState('all');
+
+  const manufacturerRows = useMemo(() => MANUFACTURER_CONDITIONS.filter(row =>
+    (manufacturerFilter === 'all' || row.guideId === manufacturerFilter) &&
+    `${row.chemical} ${row.product} ${row.concentration} ${guideFor(row.guideId).vendor}`.toLowerCase().includes(manufacturerSearch.trim().toLowerCase())
+  ), [manufacturerSearch, manufacturerFilter]);
 
   const filteredData = useMemo(() => {
     return CHEMICAL_DATABASE.filter((chem) => {
@@ -49,10 +56,12 @@ export const ChemicalResistanceTable = () => {
           <Card><CardHeader><CardTitle>제조사별 수지 사용 조건</CardTitle><CardDescription>제품명·농도·최고 사용온도가 함께 판독된 일부 행만 전사했습니다. 온도는 특정 제품과 조건에만 해당하며 NR은 사용 비권장, 빈칸은 미확인입니다.</CardDescription></CardHeader>
             <CardContent className="space-y-4">
               <div className="flex flex-wrap gap-3">{RESIN_GUIDES.map(g => <a key={g.id} href={g.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4">{g.vendor} 원문 사진 PDF 보기 ↗</a>)}</div>
+              <div className="flex flex-wrap gap-3"><Input className="max-w-sm" aria-label="제조사 조건 검색" placeholder="약품명·농도·제품 등급 검색" value={manufacturerSearch} onChange={e => setManufacturerSearch(e.target.value)} /><Select value={manufacturerFilter} onValueChange={setManufacturerFilter}><SelectTrigger className="w-44"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">제조사 전체</SelectItem>{RESIN_GUIDES.map(g => <SelectItem key={g.id} value={g.id}>{g.vendor}</SelectItem>)}</SelectContent></Select></div>
               <p className="text-sm text-muted-foreground">원문 전체 표는 PDF에서 직접 확인하세요. 사진 누락·기울어짐·작은 글자로 미전사된 행은 조회되지 않습니다. 제조사 최신 기술자료 및 실제 농도·온도·혼합물 조건을 별도로 확인해야 합니다.</p>
               <div className="overflow-x-auto"><Table><TableHeader><TableRow><TableHead>제조사</TableHead><TableHead>화학약품</TableHead><TableHead>농도</TableHead><TableHead>제품 등급</TableHead><TableHead>최고 사용온도 (°C)</TableHead><TableHead>원문 위치</TableHead></TableRow></TableHeader><TableBody>
-                {MANUFACTURER_CONDITIONS.map(row => <TableRow key={row.id}><TableCell><Badge variant="outline">{guideFor(row.guideId).vendor}</Badge></TableCell><TableCell>{row.chemical}</TableCell><TableCell>{row.concentration}</TableCell><TableCell className="font-medium">{row.product}</TableCell><TableCell>{row.temperature === 'NR' ? 'NR (비권장)' : row.temperature}</TableCell><TableCell className="text-xs"><a href={guideFor(row.guideId).url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{row.reference} ↗</a></TableCell></TableRow>)}
+                {manufacturerRows.map(row => <TableRow key={row.id}><TableCell><Badge variant="outline">{guideFor(row.guideId).vendor}</Badge></TableCell><TableCell>{row.chemical}</TableCell><TableCell>{row.concentration}</TableCell><TableCell className="font-medium">{row.product}</TableCell><TableCell>{row.temperature === 'NR' ? 'NR (비권장)' : row.temperature}</TableCell><TableCell className="text-xs"><a href={guideFor(row.guideId).url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{row.reference} ↗</a></TableCell></TableRow>)}
               </TableBody></Table></div>
+              {manufacturerRows.length === 0 && <p className="text-sm text-muted-foreground">전사된 조건에 일치하는 항목이 없습니다. 원문 PDF에서 확인하세요.</p>}
             </CardContent></Card>
         </TabsContent>
         <TabsContent value="general" className="space-y-4">
