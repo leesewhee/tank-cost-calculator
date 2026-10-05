@@ -51,7 +51,7 @@ export const ChemicalResistanceTable = () => {
       <Tabs defaultValue="manufacturer" className="space-y-4">
         <TabsList><TabsTrigger value="manufacturer">제조사별 원문 조건</TabsTrigger><TabsTrigger value="general">기존 일반 참고표</TabsTrigger></TabsList>
         <TabsContent value="manufacturer" className="space-y-4">
-          <Card><CardHeader><CardTitle>제조사별 수지 최고 사용온도 (°C)</CardTitle><CardDescription>세원화성·ASHLAND·Polynt 원문에서 FRP 주요 약품 약 20종을 회사별로 옮겼습니다. 숫자는 해당 제품·농도에서의 최고 사용온도이며, NR은 사용 비권장입니다.</CardDescription></CardHeader>
+          <Card><CardHeader><CardTitle>제조사별 수지 온도 조건 (°C)</CardTitle><CardDescription>세원화성·ASHLAND·Polynt 원문에서 FRP 주요 약품 약 20종을 회사별로 옮겼습니다. 숫자의 의미는 제조사·판본·각주에 따라 다르며, 특히 ASHLAND는 시험·사용·평가 온도로서 반드시 최고 허용온도를 뜻하지 않습니다. NR은 사용 비권장입니다.</CardDescription></CardHeader>
             <CardContent className="space-y-4">
               <div className="flex flex-wrap gap-3">
                 <div className="relative flex-1 min-w-[220px] max-w-md"><Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" /><Input className="pl-10" aria-label="제조사 조건 검색" placeholder="예: 황산, 염산, NaOH, H2SO4, Sulfuric, R585" value={manufacturerSearch} onChange={e => setManufacturerSearch(e.target.value)} /></div>
@@ -59,7 +59,7 @@ export const ChemicalResistanceTable = () => {
               </div>
               <div className="flex flex-wrap gap-2">{Object.entries(CHEMICALS).map(([k, c]) => <Button key={k} type="button" size="sm" variant={manufacturerSearch === c.ko ? 'default' : 'outline'} className="h-7 text-xs" onClick={() => setManufacturerSearch(manufacturerSearch === c.ko ? '' : c.ko)}>{c.ko}</Button>)}</div>
               <div className="flex flex-wrap gap-4 text-xs text-muted-foreground p-3 rounded-md bg-muted/50">
-                <span><b className="text-foreground">숫자</b> 최고 사용온도(°C)</span><span><b className="text-destructive">NR</b> 사용 비권장</span><span><b>-</b> 원문에 자료 없음</span><span><b>미확인</b> 사진상 판독 불확실 — 원문 확인</span><span><b>A/B</b> ASHLAND 원문 표기 그대로(원문 각주 확인)</span><span><b>LS</b> Limited Service</span>
+                <span><b className="text-foreground">숫자</b> 제조사별 온도 표기(°C)</span><span><b className="text-destructive">NR</b> 사용 비권장</span><span><b>-</b> 원문에 자료 없음</span><span><b>미확인</b> 사진상 판독 불확실 — 원문 확인</span><span><b>A/B</b> ASHLAND 원문 표기 그대로(원문 각주 확인)</span><span><b>LS</b> Limited Service</span>
               </div>
             </CardContent></Card>
           {RESIN_GUIDES.filter(g => manufacturerFilter === 'all' || g.id === manufacturerFilter).map(g => {
