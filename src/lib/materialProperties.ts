@@ -2,6 +2,7 @@
 
 export interface MaterialProperty {
   id: string;
+  source?: { type: 'manufacturer' | 'unverified'; vendor?: string; reference?: string };
   property: string;
   polyester: string;
   vinylEster: string;

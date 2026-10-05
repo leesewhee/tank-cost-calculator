@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { FRP_MATERIAL_PROPERTIES, RESIN_CHARACTERISTICS } from '@/lib/materialProperties';
 import { Check, AlertTriangle } from 'lucide-react';
+import { RESIN_GUIDES } from '@/lib/manufacturerResinGuides';
 
 export const MaterialPropertiesTable = () => {
   return (
@@ -11,9 +12,13 @@ export const MaterialPropertiesTable = () => {
       <Card>
         <CardHeader>
           <CardTitle>FRP 물성 데이터표</CardTitle>
-          <CardDescription>FRP 수지별 기계적, 열적, 물리적 특성 비교</CardDescription>
+          <CardDescription>기존 일반 참고 물성 비교 (제조사 출처 미확인; 제품별 사용온도와 별개)</CardDescription>
         </CardHeader>
         <CardContent>
+          <div className="mb-5 p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-300 rounded-lg text-sm">
+            이 물성표의 수치는 특정 제조사 제품의 보증값이 아닙니다. 화학약품·농도별 최고 사용온도는 <a href="/chemical-resistance" className="text-primary underline">화학약품 내식성 조회표의 제조사별 원문 조건</a>에서 확인하세요.
+            <div className="flex flex-wrap gap-3 mt-2">{RESIN_GUIDES.map(g => <a key={g.id} href={g.url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{g.vendor} 원문 사진 PDF ↗</a>)}</div>
+          </div>
           <Tabs defaultValue="properties">
             <TabsList className="mb-6">
               <TabsTrigger value="properties">물성 데이터</TabsTrigger>
@@ -31,6 +36,7 @@ export const MaterialPropertiesTable = () => {
                       <TableHead className="text-center font-bold bg-amber-500/10">노볼락</TableHead>
                       <TableHead className="text-center font-bold">단위</TableHead>
                       <TableHead className="text-center font-bold">시험방법</TableHead>
+                      <TableHead className="text-center font-bold">자료 출처</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -44,6 +50,7 @@ export const MaterialPropertiesTable = () => {
                         <TableCell className="text-center">
                           <Badge variant="outline" className="text-xs">{prop.testMethod}</Badge>
                         </TableCell>
+                        <TableCell className="text-center text-xs text-muted-foreground">{prop.source?.type === 'manufacturer' ? prop.source.vendor : '출처 미확인'}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

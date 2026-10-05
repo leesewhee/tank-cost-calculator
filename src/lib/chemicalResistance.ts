@@ -4,6 +4,7 @@ export type ResistanceRating = 'A' | 'B' | 'C' | 'NR';
 
 export interface ChemicalData {
   id: string;
+  source?: { type: 'manufacturer' | 'unverified'; vendor?: string; reference?: string };
   name: { ko: string; en: string };
   formula: string;
   concentration: string;

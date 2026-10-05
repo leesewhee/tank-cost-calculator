@@ -6,6 +6,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { CHEMICAL_DATABASE, RATING_DESCRIPTIONS, CATEGORY_LABELS, type ResistanceRating } from '@/lib/chemicalResistance';
 import { Search, AlertCircle } from 'lucide-react';
+import { MANUFACTURER_CONDITIONS, RESIN_GUIDES, guideFor } from '@/lib/manufacturerResinGuides';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const RatingBadge = ({ rating }: { rating: ResistanceRating }) => {
   const colorClasses = {
@@ -41,6 +43,20 @@ export const ChemicalResistanceTable = () => {
 
   return (
     <div className="space-y-6">
+      <Tabs defaultValue="manufacturer" className="space-y-4">
+        <TabsList><TabsTrigger value="manufacturer">제조사별 원문 조건</TabsTrigger><TabsTrigger value="general">기존 일반 참고표</TabsTrigger></TabsList>
+        <TabsContent value="manufacturer" className="space-y-4">
+          <Card><CardHeader><CardTitle>제조사별 수지 사용 조건</CardTitle><CardDescription>제품명·농도·최고 사용온도가 함께 판독된 일부 행만 전사했습니다. 온도는 특정 제품과 조건에만 해당하며 NR은 사용 비권장, 빈칸은 미확인입니다.</CardDescription></CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex flex-wrap gap-3">{RESIN_GUIDES.map(g => <a key={g.id} href={g.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4">{g.vendor} 원문 사진 PDF 보기 ↗</a>)}</div>
+              <p className="text-sm text-muted-foreground">원문 전체 표는 PDF에서 직접 확인하세요. 사진 누락·기울어짐·작은 글자로 미전사된 행은 조회되지 않습니다. 제조사 최신 기술자료 및 실제 농도·온도·혼합물 조건을 별도로 확인해야 합니다.</p>
+              <div className="overflow-x-auto"><Table><TableHeader><TableRow><TableHead>제조사</TableHead><TableHead>화학약품</TableHead><TableHead>농도</TableHead><TableHead>제품 등급</TableHead><TableHead>최고 사용온도 (°C)</TableHead><TableHead>원문 위치</TableHead></TableRow></TableHeader><TableBody>
+                {MANUFACTURER_CONDITIONS.map(row => <TableRow key={row.id}><TableCell><Badge variant="outline">{guideFor(row.guideId).vendor}</Badge></TableCell><TableCell>{row.chemical}</TableCell><TableCell>{row.concentration}</TableCell><TableCell className="font-medium">{row.product}</TableCell><TableCell>{row.temperature === 'NR' ? 'NR (비권장)' : row.temperature}</TableCell><TableCell className="text-xs"><a href={guideFor(row.guideId).url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{row.reference} ↗</a></TableCell></TableRow>)}
+              </TableBody></Table></div>
+            </CardContent></Card>
+        </TabsContent>
+        <TabsContent value="general" className="space-y-4">
+      <div className="p-3 rounded-lg border border-amber-300 bg-amber-50 text-amber-950 dark:bg-amber-950/30 dark:text-amber-200 text-sm">기존 표는 제조사 출처 미확인 일반 참고값입니다. 제조사 제품별 최고 사용온도와 직접 비교하거나 설계 승인값으로 사용하지 마세요. A/B/C 등급은 제조사 표의 온도·NR과 호환되지 않습니다.</div>
       <Card>
         <CardHeader>
           <CardTitle>화학약품 내식성 조회표</CardTitle>
@@ -95,6 +111,7 @@ export const ChemicalResistanceTable = () => {
                 <TableHeader>
                   <TableRow>
                     <TableHead className="font-bold min-w-[180px]">화학약품</TableHead>
+                    <TableHead className="text-center">출처</TableHead>
                     <TableHead className="text-center font-bold">화학식</TableHead>
                     <TableHead className="text-center font-bold">농도</TableHead>
                     <TableHead className="text-center font-bold bg-blue-500/10" colSpan={2}>폴리에스터</TableHead>
@@ -102,6 +119,7 @@ export const ChemicalResistanceTable = () => {
                     <TableHead className="text-center font-bold bg-amber-500/10" colSpan={2}>노볼락</TableHead>
                   </TableRow>
                   <TableRow>
+                    <TableHead></TableHead>
                     <TableHead></TableHead>
                     <TableHead></TableHead>
                     <TableHead></TableHead>
@@ -130,6 +148,7 @@ export const ChemicalResistanceTable = () => {
                           <span className="text-xs text-muted-foreground">{chem.name.en}</span>
                         </div>
                       </TableCell>
+                      <TableCell className="text-center text-xs text-muted-foreground">{chem.source?.type === 'manufacturer' ? chem.source.vendor : '출처 미확인'}</TableCell>
                       <TableCell className="text-center font-mono text-sm">{chem.formula}</TableCell>
                       <TableCell className="text-center">{chem.concentration}</TableCell>
                       <TableCell className="text-center bg-blue-500/5">
@@ -162,6 +181,8 @@ export const ChemicalResistanceTable = () => {
       <p className="text-sm text-muted-foreground italic text-center">
         ※ 실제 적용 시 공정 조건(온도, 농도, 복합 약품)에 따라 별도 시험을 권장합니다.
       </p>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
