@@ -1,0 +1,2463 @@
+{
+  "version": "2026-10-05",
+  "manufacturers": [
+    "폴린트",
+    "세원화성",
+    "ASHLAND"
+  ],
+  "chemicals": [
+    {
+      "id": "water",
+      "label": "물 · 연수 기준",
+      "defaultConcentration": 100,
+      "aliases": [
+        "물",
+        "water",
+        "h2o",
+        "연수"
+      ]
+    },
+    {
+      "id": "di-water",
+      "label": "DI · 탈이온수",
+      "defaultConcentration": 100,
+      "aliases": [
+        "di water",
+        "di",
+        "탈이온수",
+        "demineralized water"
+      ]
+    },
+    {
+      "id": "distilled-water",
+      "label": "증류수",
+      "defaultConcentration": 100,
+      "aliases": [
+        "증류수",
+        "distilled water"
+      ]
+    },
+    {
+      "id": "hard-water",
+      "label": "경수",
+      "defaultConcentration": 100,
+      "aliases": [
+        "경수",
+        "hard water"
+      ]
+    },
+    {
+      "id": "hydrochloric-acid",
+      "label": "염산 · HCl",
+      "defaultConcentration": 30,
+      "aliases": [
+        "염산",
+        "hcl",
+        "hydrochloric acid"
+      ]
+    },
+    {
+      "id": "sulfuric-acid",
+      "label": "황산 · H₂SO₄",
+      "defaultConcentration": 50,
+      "aliases": [
+        "황산",
+        "h2so4",
+        "sulfuric acid"
+      ]
+    },
+    {
+      "id": "nitric-acid",
+      "label": "질산 · HNO₃",
+      "defaultConcentration": 20,
+      "aliases": [
+        "질산",
+        "hno3",
+        "nitric acid"
+      ]
+    },
+    {
+      "id": "phosphoric-acid",
+      "label": "인산 · H₃PO₄",
+      "defaultConcentration": 85,
+      "aliases": [
+        "인산",
+        "h3po4",
+        "phosphoric acid"
+      ]
+    },
+    {
+      "id": "sodium-hydroxide",
+      "label": "가성소다 · NaOH",
+      "defaultConcentration": 50,
+      "aliases": [
+        "가성소다",
+        "수산화나트륨",
+        "naoh",
+        "sodium hydroxide"
+      ]
+    },
+    {
+      "id": "sodium-hypochlorite",
+      "label": "차아염소산나트륨 · NaOCl",
+      "defaultConcentration": 12,
+      "aliases": [
+        "차아염소산나트륨",
+        "naocl",
+        "sodium hypochlorite"
+      ]
+    },
+    {
+      "id": "acetic-acid",
+      "label": "초산 · CH₃COOH",
+      "defaultConcentration": 50,
+      "aliases": [
+        "초산",
+        "아세트산",
+        "acetic acid",
+        "ch3cooh"
+      ]
+    },
+    {
+      "id": "acetone",
+      "label": "아세톤",
+      "defaultConcentration": 100,
+      "aliases": [
+        "아세톤",
+        "acetone"
+      ]
+    },
+    {
+      "id": "methanol",
+      "label": "메탄올",
+      "defaultConcentration": 100,
+      "aliases": [
+        "메탄올",
+        "methanol",
+        "ch3oh"
+      ]
+    },
+    {
+      "id": "toluene",
+      "label": "톨루엔",
+      "defaultConcentration": 100,
+      "aliases": [
+        "톨루엔",
+        "toluene"
+      ]
+    },
+    {
+      "id": "saltwater",
+      "label": "염화나트륨 수용액 · 소금물",
+      "defaultConcentration": 3.5,
+      "aliases": [
+        "소금물",
+        "염화나트륨",
+        "nacl",
+        "sodium chloride"
+      ]
+    },
+    {
+      "id": "wastewater",
+      "label": "폐수 · 성분 확인 필요",
+      "defaultConcentration": 100,
+      "aliases": [
+        "폐수",
+        "wastewater"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": "100",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 80,
+        "RF-1051 / KRF-1051": 80
+      },
+      "notes": [
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 19쪽 / water Conc.% 100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": "100",
+      "limits": {
+        "RF-1001 / KRF-1001": 100,
+        "RF-2000SE / KRF-2000SE": 100,
+        "RF-1051 / KRF-1051": 100
+      },
+      "notes": [
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 19쪽 / hard-water Conc.% 100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": "100",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 80,
+        "RF-1051 / KRF-1051": 80
+      },
+      "notes": [
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 19쪽 / di-water Conc.% 100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "15",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 99,
+        "RF-1051 / KRF-1051": 110
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 15",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "20",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 99,
+        "RF-1051 / KRF-1051": 110
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 20",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "25",
+      "limits": {
+        "RF-1001 / KRF-1001": 65,
+        "RF-2000SE / KRF-2000SE": 80,
+        "RF-1051 / KRF-1051": 100
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 25",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "30",
+      "limits": {
+        "RF-1001 / KRF-1001": 65,
+        "RF-2000SE / KRF-2000SE": 80,
+        "RF-1051 / KRF-1051": 95
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 30",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "32",
+      "limits": {
+        "RF-1001 / KRF-1001": 65,
+        "RF-2000SE / KRF-2000SE": 65,
+        "RF-1051 / KRF-1051": 80
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 32",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "34",
+      "limits": {
+        "RF-1001 / KRF-1001": 50,
+        "RF-2000SE / KRF-2000SE": 50,
+        "RF-1051 / KRF-1051": 70
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 34",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "36",
+      "limits": {
+        "RF-1001 / KRF-1001": 50,
+        "RF-2000SE / KRF-2000SE": 50,
+        "RF-1051 / KRF-1051": 60
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 36",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": "37",
+      "limits": {
+        "RF-1001 / KRF-1001": 40,
+        "RF-2000SE / KRF-2000SE": 40,
+        "RF-1051 / KRF-1051": 50
+      },
+      "notes": [
+        "내식층에 이중 C-glass veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 11쪽 / hydrochloric-acid Conc.% 37",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": "25",
+      "limits": {
+        "RF-1001 / KRF-1001": 100,
+        "RF-2000SE / KRF-2000SE": 100,
+        "RF-1051 / KRF-1051": 100
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 18쪽 / sulfuric-acid Conc.% 25",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": "50",
+      "limits": {
+        "RF-1001 / KRF-1001": 95,
+        "RF-2000SE / KRF-2000SE": 95,
+        "RF-1051 / KRF-1051": 95
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 18쪽 / sulfuric-acid Conc.% 50",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": "70",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 80,
+        "RF-1051 / KRF-1051": 80
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 18쪽 / sulfuric-acid Conc.% 70",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": "75",
+      "limits": {
+        "RF-1001 / KRF-1001": 40,
+        "RF-2000SE / KRF-2000SE": 40,
+        "RF-1051 / KRF-1051": 50
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 18쪽 / sulfuric-acid Conc.% 75",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": ">80",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": "NR"
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "내식층 뒤에 ECR glass 권장",
+        "약품 노출 중 변색 가능"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 18쪽 / sulfuric-acid Conc.% >80",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": "5",
+      "limits": {
+        "RF-1001 / KRF-1001": 65,
+        "RF-2000SE / KRF-2000SE": 65,
+        "RF-1051 / KRF-1051": 80
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 14쪽 / nitric-acid Conc.% 5",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": "10",
+      "limits": {
+        "RF-1001 / KRF-1001": 65,
+        "RF-2000SE / KRF-2000SE": 65,
+        "RF-1051 / KRF-1051": 65
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 14쪽 / nitric-acid Conc.% 10",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": "20",
+      "limits": {
+        "RF-1001 / KRF-1001": 50,
+        "RF-2000SE / KRF-2000SE": 50,
+        "RF-1051 / KRF-1051": 65
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 14쪽 / nitric-acid Conc.% 20",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": "30",
+      "limits": {
+        "RF-1001 / KRF-1001": 40,
+        "RF-2000SE / KRF-2000SE": 40,
+        "RF-1051 / KRF-1051": 40
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 14쪽 / nitric-acid Conc.% 30",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": "40",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": 40
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 14쪽 / nitric-acid Conc.% 40",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": "70",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": "NR"
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 14쪽 / nitric-acid Conc.% 70",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": "All",
+      "limits": {
+        "RF-1001 / KRF-1001": 99,
+        "RF-2000SE / KRF-2000SE": 99,
+        "RF-1051 / KRF-1051": 99
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 15쪽 / phosphoric-acid Conc.% All",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": "All",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 80,
+        "RF-1051 / KRF-1051": 40
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 17쪽 / sodium-hydroxide Conc.% All",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": "0-18",
+      "limits": {
+        "RF-1001 / KRF-1001": 65,
+        "RF-2000SE / KRF-2000SE": 65,
+        "RF-1051 / KRF-1051": 50
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "Amine/BPO 경화 권장",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 17쪽 / sodium-hypochlorite Conc.% 0-18",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": "21",
+      "limits": {
+        "RF-1001 / KRF-1001": null,
+        "RF-2000SE / KRF-2000SE": 40,
+        "RF-1051 / KRF-1051": null
+      },
+      "notes": [
+        "내식층에 이중 synthetic veil",
+        "Amine/BPO 경화 권장",
+        "후경화 강력 권장"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 17쪽 / sodium-hypochlorite Conc.% 21",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": "10",
+      "limits": {
+        "RF-1001 / KRF-1001": 99,
+        "RF-2000SE / KRF-2000SE": 99,
+        "RF-1051 / KRF-1051": 99
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetic-acid Conc.% 10",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": "25",
+      "limits": {
+        "RF-1001 / KRF-1001": 99,
+        "RF-2000SE / KRF-2000SE": 99,
+        "RF-1051 / KRF-1051": 99
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetic-acid Conc.% 25",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": "50",
+      "limits": {
+        "RF-1001 / KRF-1001": 80,
+        "RF-2000SE / KRF-2000SE": 75,
+        "RF-1051 / KRF-1051": 80
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetic-acid Conc.% 50",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": "75",
+      "limits": {
+        "RF-1001 / KRF-1001": 50,
+        "RF-2000SE / KRF-2000SE": 45,
+        "RF-1051 / KRF-1051": 60
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetic-acid Conc.% 75",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": "85",
+      "limits": {
+        "RF-1001 / KRF-1001": 45,
+        "RF-2000SE / KRF-2000SE": 45,
+        "RF-1051 / KRF-1051": 45
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetic-acid Conc.% 85",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": "100",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": 30
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetic-acid Conc.% 100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": "10",
+      "limits": {
+        "RF-1001 / KRF-1001": "TC",
+        "RF-2000SE / KRF-2000SE": 60,
+        "RF-1051 / KRF-1051": 60
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetone Conc.% 10",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": "100",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": "NR"
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 3쪽 / acetone Conc.% 100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": "5",
+      "limits": {
+        "RF-1001 / KRF-1001": 50,
+        "RF-2000SE / KRF-2000SE": 50,
+        "RF-1051 / KRF-1051": 50
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 13쪽 / methanol Conc.% 5",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": "20",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": 40
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 13쪽 / methanol Conc.% 20",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": "40-100",
+      "limits": {
+        "RF-1001 / KRF-1001": "NR",
+        "RF-2000SE / KRF-2000SE": "NR",
+        "RF-1051 / KRF-1051": 40
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 13쪽 / methanol Conc.% 40-100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": "100",
+      "limits": {
+        "RF-1001 / KRF-1001": 25,
+        "RF-2000SE / KRF-2000SE": 25,
+        "RF-1051 / KRF-1051": 40
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 19쪽 / toluene Conc.% 100",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": "All",
+      "limits": {
+        "RF-1001 / KRF-1001": 100,
+        "RF-2000SE / KRF-2000SE": 100,
+        "RF-1051 / KRF-1051": 100
+      },
+      "notes": [
+        "표준 내식층에 surface veil 적용"
+      ],
+      "source": "POLYNT_GUIDE_2018 / PDF 17쪽 / saltwater Conc.% All",
+      "source_sha256": "18a386980f80104dae446b216fcb66748fdca4d26a59c70091b6ff7356a27451",
+      "auto_eligible": true,
+      "edition": "Edition Jun, 2018 (PDF20쪽; 파일명2019와 구분)",
+      "checked": "2026-10-05",
+      "temperature_meaning": "원문 최고 사용온도 / veil·후경화·제품 suffix 조건 확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": "10",
+      "limits": {
+        "R280": 80,
+        "R470": 80,
+        "R585": 100,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 100,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 2 / acetic-acid Conc.% 10",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 2,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": "15",
+      "limits": {
+        "R280": 60,
+        "R470": 60,
+        "R585": 100,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 100,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 3 / acetic-acid Conc.% 15",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 3,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": "25",
+      "limits": {
+        "R280": 60,
+        "R470": 60,
+        "R585": 80,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 100,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 4 / acetic-acid Conc.% 25",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 4,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": "50",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": 80
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 5 / acetic-acid Conc.% 50",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 5,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": "75",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 65,
+        "SR841L / SR841H": 65,
+        "SR870SE": 65,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 6 / acetic-acid Conc.% 75",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 6,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": "100",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": "NR",
+        "SR841L / SR841H": 30,
+        "SR870SE": "NR",
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 7 / acetic-acid Conc.% 100",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 7,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": "10",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": "NR",
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 9 / acetone Conc.% 10",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 9,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": "100",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": "NR",
+        "SR841L / SR841H": "NR",
+        "SR870SE": "NR",
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_08.jpg / 인쇄 18쪽 / 행 10 / acetone Conc.% 100",
+      "source_id": "세원화성-08",
+      "source_sha256": "8592b96e026ce58180480588761e115b130565041f5d0c5ed214d574f9623892",
+      "page": 18,
+      "row": 10,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": "15",
+      "limits": {
+        "R280": 80,
+        "R470": 80,
+        "R585": 100,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 110,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_13.jpg / 인쇄 28쪽 / 행 332 / hydrochloric-acid Conc.% 15",
+      "source_id": "세원화성-13",
+      "source_sha256": "4f9c632b95170c8903e1a313c5e555a8a45d23d64ac2cd288cdaeda0332de361",
+      "page": 28,
+      "row": 332,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": "20",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": 60,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 110,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_13.jpg / 인쇄 28쪽 / 행 333 / hydrochloric-acid Conc.% 20",
+      "source_id": "세원화성-13",
+      "source_sha256": "4f9c632b95170c8903e1a313c5e555a8a45d23d64ac2cd288cdaeda0332de361",
+      "page": 28,
+      "row": 333,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": "30",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 65,
+        "SR841L / SR841H": 95,
+        "SR870SE": 80,
+        "SR819SE": 85
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_13.jpg / 인쇄 28쪽 / 행 334 / hydrochloric-acid Conc.% 30",
+      "source_id": "세원화성-13",
+      "source_sha256": "4f9c632b95170c8903e1a313c5e555a8a45d23d64ac2cd288cdaeda0332de361",
+      "page": 28,
+      "row": 334,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": "37",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 40,
+        "SR841L / SR841H": 50,
+        "SR870SE": 40,
+        "SR819SE": 40
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_13.jpg / 인쇄 28쪽 / 행 335 / hydrochloric-acid Conc.% 37",
+      "source_id": "세원화성-13",
+      "source_sha256": "4f9c632b95170c8903e1a313c5e555a8a45d23d64ac2cd288cdaeda0332de361",
+      "page": 28,
+      "row": 335,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": "100",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": "NR",
+        "SR841L / SR841H": "NR",
+        "SR870SE": "NR",
+        "SR819SE": "NR"
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_14.jpg / 인쇄 30쪽 / 행 422 / methanol Conc.% 100",
+      "source_id": "세원화성-14",
+      "source_sha256": "0949a9c0a2bc6305737a39e0f3c5d14c4efd888041a2b9bdd57c9c81cd31bed4",
+      "page": 30,
+      "row": 422,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": "5",
+      "limits": {
+        "R280": 60,
+        "R470": 60,
+        "R585": 80,
+        "SR825L / SR825H": 65,
+        "SR841L / SR841H": 80,
+        "SR870SE": 65,
+        "SR819SE": 65
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_14.jpg / 인쇄 31쪽 / 행 455 / nitric-acid Conc.% 5",
+      "source_id": "세원화성-14",
+      "source_sha256": "0949a9c0a2bc6305737a39e0f3c5d14c4efd888041a2b9bdd57c9c81cd31bed4",
+      "page": 31,
+      "row": 455,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": "20",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 50,
+        "SR841L / SR841H": 65,
+        "SR870SE": 50,
+        "SR819SE": 50
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_14.jpg / 인쇄 31쪽 / 행 456 / nitric-acid Conc.% 20",
+      "source_id": "세원화성-14",
+      "source_sha256": "0949a9c0a2bc6305737a39e0f3c5d14c4efd888041a2b9bdd57c9c81cd31bed4",
+      "page": 31,
+      "row": 456,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": "40",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": "NR",
+        "SR841L / SR841H": 40,
+        "SR870SE": "NR",
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_14.jpg / 인쇄 31쪽 / 행 457 / nitric-acid Conc.% 40",
+      "source_id": "세원화성-14",
+      "source_sha256": "0949a9c0a2bc6305737a39e0f3c5d14c4efd888041a2b9bdd57c9c81cd31bed4",
+      "page": 31,
+      "row": 457,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": "85",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 100,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_15.jpg / 인쇄 32쪽 / 행 484 / phosphoric-acid Conc.% 85",
+      "source_id": "세원화성-15",
+      "source_sha256": "aae642f3f6c7df203e81353c2d41b1fa33c32259f1e2c15c659234a094b3e2cc",
+      "page": 32,
+      "row": 484,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": "100",
+      "limits": {
+        "R280": 60,
+        "R470": 60,
+        "R585": null,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 105,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_15.jpg / 인쇄 32쪽 / 행 485 / phosphoric-acid Conc.% 100",
+      "source_id": "세원화성-15",
+      "source_sha256": "aae642f3f6c7df203e81353c2d41b1fa33c32259f1e2c15c659234a094b3e2cc",
+      "page": 32,
+      "row": 485,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": "All",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 100,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 34쪽 / 행 559 / saltwater Conc.% All",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 34,
+      "row": 559,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": "5",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 40,
+        "SR870SE": 80,
+        "SR819SE": 80
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 574 / sodium-hydroxide Conc.% 5",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 574,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": "10",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": null,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 40,
+        "SR870SE": 80,
+        "SR819SE": 80
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 575 / sodium-hydroxide Conc.% 10",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 575,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": "25",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": null,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 40,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 576 / sodium-hydroxide Conc.% 25",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 576,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": "50",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": null,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 40,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 577 / sodium-hydroxide Conc.% 50",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 577,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": "5.25",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 579 / sodium-hypochlorite Conc.% 5.25",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 579,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다.",
+        "농도 기준(제품 NaOCl%/유효염소%) 미확인: 폴린트 유효염소 행과 동일 농도로 비교하거나 자동 추천하지 않습니다."
+      ],
+      "auto_eligible": false,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": "10",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": 50
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 580 / sodium-hypochlorite Conc.% 10",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 580,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다.",
+        "농도 기준(제품 NaOCl%/유효염소%) 미확인: 폴린트 유효염소 행과 동일 농도로 비교하거나 자동 추천하지 않습니다."
+      ],
+      "auto_eligible": false,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": "15",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 581 / sodium-hypochlorite Conc.% 15",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 581,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다.",
+        "농도 기준(제품 NaOCl%/유효염소%) 미확인: 폴린트 유효염소 행과 동일 농도로 비교하거나 자동 추천하지 않습니다."
+      ],
+      "auto_eligible": false,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": "18",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 50,
+        "SR870SE": 80,
+        "SR819SE": 50
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_16.jpg / 인쇄 35쪽 / 행 582 / sodium-hypochlorite Conc.% 18",
+      "source_id": "세원화성-16",
+      "source_sha256": "675278d9e547fe4825e1b40d1a23ed5853bab94560dd66c86c6e531ab9fa31c8",
+      "page": 35,
+      "row": 582,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다.",
+        "농도 기준(제품 NaOCl%/유효염소%) 미확인: 폴린트 유효염소 행과 동일 농도로 비교하거나 자동 추천하지 않습니다."
+      ],
+      "auto_eligible": false,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": "10",
+      "limits": {
+        "R280": 80,
+        "R470": 80,
+        "R585": 100,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 105,
+        "SR870SE": 100,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 36쪽 / 행 626 / sulfuric-acid Conc.% 10",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 36,
+      "row": 626,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": "25",
+      "limits": {
+        "R280": 80,
+        "R470": 80,
+        "R585": 100,
+        "SR825L / SR825H": 100,
+        "SR841L / SR841H": 75,
+        "SR870SE": 100,
+        "SR819SE": 100
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 36쪽 / 행 627 / sulfuric-acid Conc.% 25",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 36,
+      "row": 627,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": "50",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 60,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 36쪽 / 행 628 / sulfuric-acid Conc.% 50",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 36,
+      "row": 628,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": "70",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 60,
+        "SR841L / SR841H": 50,
+        "SR870SE": 50,
+        "SR819SE": 50
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 36쪽 / 행 629 / sulfuric-acid Conc.% 70",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 36,
+      "row": 629,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": "75",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 30,
+        "SR841L / SR841H": 50,
+        "SR870SE": 40,
+        "SR819SE": 30
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 36쪽 / 행 630 / sulfuric-acid Conc.% 75",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 36,
+      "row": 630,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": "80",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": "NR",
+        "SR841L / SR841H": "NR",
+        "SR870SE": "NR",
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 36쪽 / 행 631 / sulfuric-acid Conc.% 80",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 36,
+      "row": 631,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": "100",
+      "limits": {
+        "R280": "NR",
+        "R470": "NR",
+        "R585": "NR",
+        "SR825L / SR825H": 25,
+        "SR841L / SR841H": 50,
+        "SR870SE": 40,
+        "SR819SE": 25
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_17.jpg / 인쇄 37쪽 / 행 660 / toluene Conc.% 100",
+      "source_id": "세원화성-17",
+      "source_sha256": "b9a8a1fe43ccbadc057d86e5abf292dc8b16b77e253e88e91de30438e1e5efda",
+      "page": 37,
+      "row": 660,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": "100",
+      "limits": {
+        "R280": null,
+        "R470": null,
+        "R585": null,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_18.jpg / 인쇄 39쪽 / 행 696 / di-water Conc.% 100",
+      "source_id": "세원화성-18",
+      "source_sha256": "909f56fbe43a5b380b0937dee74f63b283073bf4a7945a14cf560305364a5f13",
+      "page": 39,
+      "row": 696,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": "100",
+      "limits": {
+        "R280": 80,
+        "R470": 80,
+        "R585": 100,
+        "SR825L / SR825H": 80,
+        "SR841L / SR841H": 80,
+        "SR870SE": 80,
+        "SR819SE": null
+      },
+      "source": "수지회사/세원화성/KakaoTalk_20261005_144343300_18.jpg / 인쇄 39쪽 / 행 697 / distilled-water Conc.% 100",
+      "source_id": "세원화성-18",
+      "source_sha256": "909f56fbe43a5b380b0937dee74f63b283073bf4a7945a14cf560305364a5f13",
+      "page": 39,
+      "row": 697,
+      "notes": [
+        "내약품성 표의 해당 제품 열·농도 행만 적용. 다른 제품/배합/공법/혼합약품으로 전용하지 않습니다.",
+        "–는 자료 없음이며 NR은 추천하지 않음입니다. 공란을 0℃ 또는 사용 가능으로 취급하지 않습니다.",
+        "제품 물성표의 열변형온도는 약품 사용온도가 아니며 수지 물성을 FRP 적층 설계허용치로 대체하지 않습니다.",
+        "수지회사/세원화성/KakaoTalk_20261005_144343300_04.jpg / 인쇄11쪽: HLU 수지 함유율 65–73%, 수지 로스10–15%, 유리 로스15%, 수축계수1.02–1.05는 제조 참고 범위. 회사 실적견적/실제 적층 조건을 자동 대체하지 않습니다.",
+        "사진 판본·적용 제품의 현재 공급 사양과 실제 성형·경화·내식층 조건은 제조사 확인이 필요합니다."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "표 기재 약품 사용온도 · 실제 적용 조건 확인",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": "10",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 99,
+        "HETRON FR998/35": 99,
+        "HETRON 970/35": 99
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_04.jpg / 인쇄 12쪽 / acetic-acid Conc.% 10",
+      "source_id": "ASHLAND-04",
+      "source_sha256": "061ddf4e5405821a7456aba26acaec8777e88fae5555e0b3e0aa929937bc4f7e",
+      "page": 12,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "해당 행에 수치가 확인된 고성능 epoxy vinyl ester 4개 제품 열만 전사. 표의 나머지 제품군은 사진을 참조하세요."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": "15",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 99,
+        "HETRON FR998/35": 99,
+        "HETRON 970/35": 99
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_04.jpg / 인쇄 12쪽 / acetic-acid Conc.% 15",
+      "source_id": "ASHLAND-04",
+      "source_sha256": "061ddf4e5405821a7456aba26acaec8777e88fae5555e0b3e0aa929937bc4f7e",
+      "page": 12,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "해당 행에 수치가 확인된 고성능 epoxy vinyl ester 4개 제품 열만 전사. 표의 나머지 제품군은 사진을 참조하세요."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": "25",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 99,
+        "HETRON FR998/35": 99,
+        "HETRON 970/35": 99
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_04.jpg / 인쇄 12쪽 / acetic-acid Conc.% 25",
+      "source_id": "ASHLAND-04",
+      "source_sha256": "061ddf4e5405821a7456aba26acaec8777e88fae5555e0b3e0aa929937bc4f7e",
+      "page": 12,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "해당 행에 수치가 확인된 고성능 epoxy vinyl ester 4개 제품 열만 전사. 표의 나머지 제품군은 사진을 참조하세요."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": "50",
+      "limits": {
+        "HETRON 942/35": 82,
+        "HETRON 980/35": 82,
+        "HETRON FR998/35": 82,
+        "HETRON 970/35": 82
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_04.jpg / 인쇄 12쪽 / acetic-acid Conc.% 50",
+      "source_id": "ASHLAND-04",
+      "source_sha256": "061ddf4e5405821a7456aba26acaec8777e88fae5555e0b3e0aa929937bc4f7e",
+      "page": 12,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "해당 행에 수치가 확인된 고성능 epoxy vinyl ester 4개 제품 열만 전사. 표의 나머지 제품군은 사진을 참조하세요."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": "75",
+      "limits": {
+        "HETRON 942/35": 66,
+        "HETRON 980/35": 66,
+        "HETRON FR998/35": 66,
+        "HETRON 970/35": 66
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_04.jpg / 인쇄 12쪽 / acetic-acid Conc.% 75",
+      "source_id": "ASHLAND-04",
+      "source_sha256": "061ddf4e5405821a7456aba26acaec8777e88fae5555e0b3e0aa929937bc4f7e",
+      "page": 12,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "해당 행에 수치가 확인된 고성능 epoxy vinyl ester 4개 제품 열만 전사. 표의 나머지 제품군은 사진을 참조하세요."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "1",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 104,
+        "HETRON FR998/35": 104,
+        "HETRON 970/35": 110
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 1",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "5",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 104,
+        "HETRON FR998/35": 104,
+        "HETRON 970/35": 110
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 5",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "10",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 104,
+        "HETRON FR998/35": 104,
+        "HETRON 970/35": 110
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 10",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "15",
+      "limits": {
+        "HETRON 942/35": 99,
+        "HETRON 980/35": 104,
+        "HETRON FR998/35": 104,
+        "HETRON 970/35": 110
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 15",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "20",
+      "limits": {
+        "HETRON 942/35": 93,
+        "HETRON 980/35": 93,
+        "HETRON FR998/35": 93,
+        "HETRON 970/35": 110
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 20",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "25",
+      "limits": {
+        "HETRON 942/35": 82,
+        "HETRON 980/35": 82,
+        "HETRON FR998/35": 82,
+        "HETRON 970/35": 82
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 25",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "32",
+      "limits": {
+        "HETRON 942/35": 66,
+        "HETRON 980/35": 66,
+        "HETRON FR998/35": 66,
+        "HETRON 970/35": 82
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 32",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "36",
+      "limits": {
+        "HETRON 942/35": 52,
+        "HETRON 980/35": 52,
+        "HETRON FR998/35": 52,
+        "HETRON 970/35": 71
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 36",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    },
+    {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": "37",
+      "limits": {
+        "HETRON 942/35": 38,
+        "HETRON 980/35": 38,
+        "HETRON FR998/35": 38,
+        "HETRON 970/35": 52
+      },
+      "source": "수지회사/ASHLAND/KakaoTalk_20261005_144318319_11.jpg / 인쇄 28쪽 / hydrochloric-acid Conc.% 37",
+      "source_id": "ASHLAND-11",
+      "source_sha256": "9916135015e1c56240ddd19b202aa129e8c6c9c2d1f9683c637a32f78610695f",
+      "page": 28,
+      "row": null,
+      "notes": [
+        "사진 4–5쪽: 온도값은 시험·사용·평가된 온도이며 반드시 최대 사용온도를 뜻하지 않습니다. 표 초과는 자동 승인하지 않습니다.",
+        "–는 자료 없음, LS는 제한된 사용수명, NR은 추천하지 않음입니다.",
+        "별도 지시가 없으면 ASTM C581 표준 적층/유리 표면매트/무충전제 조건. 실제 성형·내식층·후경화와 약품 불순물을 확인해야 합니다.",
+        "Fume Service 열은 액체 저장용 후보로 전용하지 않습니다. 제품 suffix가 다른 등급도 별도 제품입니다.",
+        "각주22: Double C-veil recommended (이중 C-veil 권장), 인쇄13쪽. 고성능 epoxy vinyl ester 4개 제품 열만 전사."
+      ],
+      "auto_eligible": true,
+      "checked": "2026-10-05",
+      "status": "해당 행·제품 열 육안 대조 / 프로젝트 승인 아님",
+      "temperature_meaning": "시험·사용·평가 온도 (최대 한계온도와 다를 수 있음)",
+      "edition": "촬영자료 판본 미확인"
+    }
+  ],
+  "scope": "89 checked condition rows, not complete manufacturer tables; original photos excluded"
+}
