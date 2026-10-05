@@ -6,7 +6,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Badge } from '@/components/ui/badge';
 import { CHEMICAL_DATABASE, RATING_DESCRIPTIONS, CATEGORY_LABELS, type ResistanceRating } from '@/lib/chemicalResistance';
 import { Search, AlertCircle } from 'lucide-react';
-import { MANUFACTURER_CONDITIONS, RESIN_GUIDES, guideFor } from '@/lib/manufacturerResinGuides';
+import { RESIN_GUIDES, CHEMICALS, chemicalLabel, searchManufacturerRows, type GuideId } from '@/lib/manufacturerResinGuides';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const RatingBadge = ({ rating }: { rating: ResistanceRating }) => {
@@ -30,10 +31,7 @@ export const ChemicalResistanceTable = () => {
   const [manufacturerSearch, setManufacturerSearch] = useState('');
   const [manufacturerFilter, setManufacturerFilter] = useState('all');
 
-  const manufacturerRows = useMemo(() => MANUFACTURER_CONDITIONS.filter(row =>
-    (manufacturerFilter === 'all' || row.guideId === manufacturerFilter) &&
-    `${row.chemical} ${row.product} ${row.concentration} ${guideFor(row.guideId).vendor}`.toLowerCase().includes(manufacturerSearch.trim().toLowerCase())
-  ), [manufacturerSearch, manufacturerFilter]);
+  const manufacturerRows = useMemo(() => searchManufacturerRows(manufacturerSearch, manufacturerFilter as GuideId | 'all'), [manufacturerSearch, manufacturerFilter]);
 
   const filteredData = useMemo(() => {
     return CHEMICAL_DATABASE.filter((chem) => {
@@ -53,16 +51,37 @@ export const ChemicalResistanceTable = () => {
       <Tabs defaultValue="manufacturer" className="space-y-4">
         <TabsList><TabsTrigger value="manufacturer">제조사별 원문 조건</TabsTrigger><TabsTrigger value="general">기존 일반 참고표</TabsTrigger></TabsList>
         <TabsContent value="manufacturer" className="space-y-4">
-          <Card><CardHeader><CardTitle>제조사별 수지 사용 조건</CardTitle><CardDescription>제품명·농도·최고 사용온도가 함께 판독된 일부 행만 전사했습니다. 온도는 특정 제품과 조건에만 해당하며 NR은 사용 비권장, 빈칸은 미확인입니다.</CardDescription></CardHeader>
+          <Card><CardHeader><CardTitle>제조사별 수지 최고 사용온도 (°C)</CardTitle><CardDescription>세원화성·ASHLAND·Polynt 원문에서 FRP 주요 약품 약 20종을 회사별로 옮겼습니다. 숫자는 해당 제품·농도에서의 최고 사용온도이며, NR은 사용 비권장입니다.</CardDescription></CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex flex-wrap gap-3">{RESIN_GUIDES.map(g => <a key={g.id} href={g.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4">{g.vendor} 원문 사진 PDF 보기 ↗</a>)}</div>
-              <div className="flex flex-wrap gap-3"><Input className="max-w-sm" aria-label="제조사 조건 검색" placeholder="약품명·농도·제품 등급 검색" value={manufacturerSearch} onChange={e => setManufacturerSearch(e.target.value)} /><Select value={manufacturerFilter} onValueChange={setManufacturerFilter}><SelectTrigger className="w-44"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">제조사 전체</SelectItem>{RESIN_GUIDES.map(g => <SelectItem key={g.id} value={g.id}>{g.vendor}</SelectItem>)}</SelectContent></Select></div>
-              <p className="text-sm text-muted-foreground">원문 전체 표는 PDF에서 직접 확인하세요. 사진 누락·기울어짐·작은 글자로 미전사된 행은 조회되지 않습니다. 제조사 최신 기술자료 및 실제 농도·온도·혼합물 조건을 별도로 확인해야 합니다.</p>
-              <div className="overflow-x-auto"><Table><TableHeader><TableRow><TableHead>제조사</TableHead><TableHead>화학약품</TableHead><TableHead>농도</TableHead><TableHead>제품 등급</TableHead><TableHead>최고 사용온도 (°C)</TableHead><TableHead>원문 위치</TableHead></TableRow></TableHeader><TableBody>
-                {manufacturerRows.map(row => <TableRow key={row.id}><TableCell><Badge variant="outline">{guideFor(row.guideId).vendor}</Badge></TableCell><TableCell>{row.chemical}</TableCell><TableCell>{row.concentration}</TableCell><TableCell className="font-medium">{row.product}</TableCell><TableCell>{row.temperature === 'NR' ? 'NR (비권장)' : row.temperature}</TableCell><TableCell className="text-xs"><a href={guideFor(row.guideId).url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{row.reference} ↗</a></TableCell></TableRow>)}
-              </TableBody></Table></div>
-              {manufacturerRows.length === 0 && <p className="text-sm text-muted-foreground">전사된 조건에 일치하는 항목이 없습니다. 원문 PDF에서 확인하세요.</p>}
+              <div className="flex flex-wrap gap-3">
+                <div className="relative flex-1 min-w-[220px] max-w-md"><Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" /><Input className="pl-10" aria-label="제조사 조건 검색" placeholder="예: 황산, 염산, NaOH, H2SO4, Sulfuric, R585" value={manufacturerSearch} onChange={e => setManufacturerSearch(e.target.value)} /></div>
+                <Select value={manufacturerFilter} onValueChange={setManufacturerFilter}><SelectTrigger className="w-44"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">제조사 전체</SelectItem>{RESIN_GUIDES.map(g => <SelectItem key={g.id} value={g.id}>{g.vendor}</SelectItem>)}</SelectContent></Select>
+              </div>
+              <div className="flex flex-wrap gap-2">{Object.entries(CHEMICALS).map(([k, c]) => <Button key={k} type="button" size="sm" variant={manufacturerSearch === c.ko ? 'default' : 'outline'} className="h-7 text-xs" onClick={() => setManufacturerSearch(manufacturerSearch === c.ko ? '' : c.ko)}>{c.ko}</Button>)}</div>
+              <div className="flex flex-wrap gap-4 text-xs text-muted-foreground p-3 rounded-md bg-muted/50">
+                <span><b className="text-foreground">숫자</b> 최고 사용온도(°C)</span><span><b className="text-destructive">NR</b> 사용 비권장</span><span><b>-</b> 원문에 자료 없음</span><span><b>미확인</b> 사진상 판독 불확실 — 원문 확인</span><span><b>A/B</b> ASHLAND 원문 표기 그대로(원문 각주 확인)</span><span><b>LS</b> Limited Service</span>
+              </div>
             </CardContent></Card>
+          {RESIN_GUIDES.filter(g => manufacturerFilter === 'all' || g.id === manufacturerFilter).map(g => {
+            const rows = manufacturerRows.filter(r => r.guideId === g.id);
+            return (
+              <Card key={g.id}>
+                <CardHeader className="pb-3"><div className="flex flex-wrap items-center justify-between gap-2"><CardTitle className="text-lg">{g.vendor} <span className="text-sm font-normal text-muted-foreground">— {g.title}</span></CardTitle><a href={g.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline underline-offset-4">원문 사진 PDF ↗</a></div><CardDescription>{g.coverage} · {rows.length}건 표시</CardDescription></CardHeader>
+                <CardContent>
+                  {rows.length === 0 ? <p className="text-sm text-muted-foreground">이 회사 자료에서는 옮긴 항목이 없습니다. 촬영되지 않았거나 판독이 불확실한 페이지일 수 있으니 원문 PDF를 확인하세요.</p> :
+                  <div className="overflow-x-auto"><Table><TableHeader><TableRow><TableHead className="min-w-[160px]">화학약품</TableHead><TableHead>농도</TableHead>{g.products.map(p => <TableHead key={p} className="text-center text-xs whitespace-nowrap">{p}</TableHead>)}<TableHead className="min-w-[160px]">원문 위치</TableHead></TableRow></TableHeader><TableBody>
+                    {rows.map(row => { const c = chemicalLabel(row.chemical); return (
+                      <TableRow key={row.id}>
+                        <TableCell><div className="font-medium">{c.ko} {c.formula !== '-' && <span className="font-mono text-xs text-primary">({c.formula})</span>}</div><div className="text-xs text-muted-foreground">{c.en}</div></TableCell>
+                        <TableCell className="whitespace-nowrap">{row.concentration}</TableCell>
+                        {row.values.map((v, i) => <TableCell key={i} className={`text-center whitespace-nowrap ${v === null ? 'text-xs text-muted-foreground italic' : v.includes('NR') ? 'text-destructive font-semibold' : 'font-medium'}`}>{v ?? '미확인'}</TableCell>)}
+                        <TableCell className="text-xs"><a href={g.url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{row.reference} ↗</a>{row.note && <div className="text-muted-foreground mt-1">{row.note}</div>}</TableCell>
+                      </TableRow>); })}
+                  </TableBody></Table></div>}
+                </CardContent>
+              </Card>);
+          })}
+          <p className="text-sm text-muted-foreground">옮기지 않은 약품·농도는 원문 PDF에서 확인하세요. 실제 적용 전 제조사 최신 기술자료와 실제 농도·온도·혼합물 조건을 별도로 확인해야 합니다.</p>
         </TabsContent>
         <TabsContent value="general" className="space-y-4">
       <div className="p-3 rounded-lg border border-amber-300 bg-amber-50 text-amber-950 dark:bg-amber-950/30 dark:text-amber-200 text-sm">기존 표는 제조사 출처 미확인 일반 참고값입니다. 제조사 제품별 최고 사용온도와 직접 비교하거나 설계 승인값으로 사용하지 마세요. A/B/C 등급은 제조사 표의 온도·NR과 호환되지 않습니다.</div>
