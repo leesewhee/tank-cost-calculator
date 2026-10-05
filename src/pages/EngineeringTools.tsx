@@ -57,7 +57,7 @@ export const BoltCalculatorPage = () => (
 );
 
 export const FRPCalculatorPage = () => (
-  <ToolPage title="FRP 두께 계산기" subtitle="RTP-1 및 ASME Section X 기준에 따른 FRP 용기 설계" icon={<Calculator className="w-8 h-8 text-sidebar-primary-foreground" />}>
+  <ToolPage title="FRP 두께 계산기" subtitle="기존 산출식 참고 및 제조사별 수지 조건 대조 · 구조 적합 미판정" icon={<Calculator className="w-8 h-8 text-sidebar-primary-foreground" />}>
     <FRPThicknessCalculator />
   </ToolPage>
 );
