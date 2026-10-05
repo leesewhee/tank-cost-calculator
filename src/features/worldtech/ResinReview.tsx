@@ -39,7 +39,7 @@ export default function ResinReview() {
 
   return <Card>
     <CardHeader><CardTitle>제조사별 수지 조건 검토</CardTitle>
-      <p className="text-sm text-muted-foreground">추가 자료 89개 조건행을 농도와 온도에 정확히 대조합니다. 기존 조회표와 별도 자료이며, 후보는 설계·제작 승인 결과가 아닙니다.</p>
+      <p className="text-sm text-muted-foreground">추가 자료 89개 조건행을 농도와 온도에 대조합니다. 기존 조회표와 별도 자료이며, 후보는 설계·제작 승인 결과가 아닙니다.</p>
     </CardHeader>
     <CardContent className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -59,7 +59,7 @@ export default function ResinReview() {
         <p className="text-sm">해당 제조사의 수록 농도: {result.value.availableConcentrations.join(', ') || '없음'}</p>
         {result.value.row && <div className="border-t pt-3 text-xs text-muted-foreground space-y-1">
           <p>출처: {result.value.row.source}</p><p>판본: {result.value.row.edition || '미확인'}</p><p>온도 의미: {result.value.row.temperature_meaning}</p>
-          <p>대조 날짜: {'checked' in result.value.row ? String(result.value.row.checked) : '미확인'} · 자료 내 판독 상태이며 제조사 승인 아님</p>
+          <p>자료 표시 날짜: {'checked' in result.value.row ? String(result.value.row.checked) : '미확인'} · 프로젝트 원문 재확인 및 제조사 검토 필요</p>
           {guideUrl && <a href={guideUrl} target="_blank" rel="noopener noreferrer" className="inline-block text-primary underline">업로드된 원문 사진 보기 ↗</a>}
           {manufacturer === '폴린트' && <p>이 조건행은 별도 판본의 전사 자료입니다. 업로드된 사진 PDF와 동일 판본인지 확인되지 않아 실제 사용 전 원문을 별도로 대조하세요.</p>}
         </div>}
