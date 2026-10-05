@@ -58,6 +58,7 @@ export default function ResinReview() {
       {result?.error && <p role="alert" className="text-sm text-destructive">{result.error}</p>}
       {result?.value && <div className="space-y-3" aria-live="polite">
         <p className="font-semibold">{result.value.status}{result.value.recommended ? ` · 첫 번째 후보: ${result.value.recommended}` : ''}</p>
+        {manufacturer === '폴린트' && <p className="text-sm text-destructive">이번 업로드에는 해당 2018년 판본 원문이 없습니다. 값은 비교용이며 후보는 제시하지 않습니다.</p>}
         {result.value.limits.length > 0 && <div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b text-left"><th className="p-2">제품</th><th className="p-2">원문 값</th><th className="p-2">판정</th></tr></thead><tbody>{result.value.limits.map(item => <tr key={item.product} className="border-b"><td className="p-2">{item.product}</td><td className="p-2">{item.value === null ? '자료 없음' : typeof item.value === 'number' ? `${item.value} °C` : item.value}</td><td className="p-2">{item.status}</td></tr>)}</tbody></table></div>}
         {result.value.notes.map((note, i) => <p key={i} className="text-sm text-muted-foreground">{note}</p>)}
         <p className="text-sm">해당 제조사의 수록 농도: {result.value.availableConcentrations.join(', ') || '없음'}</p>
