@@ -9,7 +9,11 @@ import { RESIN_GUIDES } from '@/lib/manufacturerResinGuides';
 import { recommendResin, type EvidenceRow } from './resinEngine';
 import catalog from './resin-evidence.json';
 
-const rows = catalog.rows as EvidenceRow[];
+// The separately cited Polynt 2018 edition is not among the uploaded original photos.
+// Retain its transcription for comparison, but do not auto-nominate a product until the source is checked.
+const rows = (catalog.rows as EvidenceRow[]).map(row => row.manufacturer === '폴린트'
+  ? { ...row, auto_eligible: false }
+  : row);
 const guideByManufacturer: Record<string, string | undefined> = {
   세원화성: RESIN_GUIDES.find(g => g.id === 'sewon')?.url,
   ASHLAND: RESIN_GUIDES.find(g => g.id === 'ashland')?.url,
@@ -61,7 +65,7 @@ export default function ResinReview() {
           <p>출처: {result.value.row.source}</p><p>판본: {result.value.row.edition || '미확인'}</p><p>온도 의미: {result.value.row.temperature_meaning}</p>
           <p>자료 표시 날짜: {'checked' in result.value.row ? String(result.value.row.checked) : '미확인'} · 프로젝트 원문 재확인 및 제조사 검토 필요</p>
           {guideUrl && <a href={guideUrl} target="_blank" rel="noopener noreferrer" className="inline-block text-primary underline">업로드된 원문 사진 보기 ↗</a>}
-          {manufacturer === '폴린트' && <p>이 조건행은 별도 판본의 전사 자료입니다. 업로드된 사진 PDF와 동일 판본인지 확인되지 않아 실제 사용 전 원문을 별도로 대조하세요.</p>}
+          {manufacturer === '폴린트' && <p>이 조건행은 별도 2018년 판본의 전사 자료입니다. 해당 판본 원문은 이번 업로드에 없어 자동 후보를 보류합니다. 업로드된 사진 PDF와 같은 자료라고 취급하지 마세요.</p>}
         </div>}
         <p className="text-sm text-muted-foreground">정확히 일치하는 농도만 사용하며 보간하지 않습니다. 낮은 온도, 혼합물, 미확인 pH는 자동 후보에서 제외합니다.</p>
       </div>}
