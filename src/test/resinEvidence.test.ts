@@ -17,11 +17,15 @@ describe('제조사 근거 조건', () => {
     }
   });
   it('이식용 899개 Python 대조 사례와 후보가 일치한다', () => {
+    let conservativeDifferences = 0;
     for (const item of cases as { input: ResinInput; candidates: string[] }[]) {
-      // Original fixtures treat missing hypochlorite pH as eligible; this is intentionally stricter.
-      if (item.input.manufacturer === '폴린트' && item.input.chemical === 'sodium-hypochlorite' && item.input.ph === undefined) continue;
-      expect(recommendResin(rows, item.input).candidates).toEqual(item.candidates);
+      const actual = recommendResin(rows, item.input).candidates;
+      if (item.input.manufacturer === '폴린트' && item.input.chemical === 'sodium-hypochlorite' && item.input.ph === undefined && item.candidates.length) {
+        expect(actual).toEqual([]);
+        conservativeDifferences++;
+      } else expect(actual).toEqual(item.candidates);
     }
+    expect(conservativeDifferences).toBe(3);
   });
   it('농도 불일치·미확인 pH·혼합물·물 종류 오인 방지', () => {
     const base: ResinInput = { manufacturer: '폴린트', chemical: 'hydrochloric-acid', concentration: 29, temperature: 25 };
