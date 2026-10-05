@@ -9,10 +9,11 @@ import { Separator } from '@/components/ui/separator';
 import { AlertTriangle, Plus, Trash2, FileText, Beaker, Settings, CircleDot } from 'lucide-react';
 import {
   DesignStandard, ResinType, CHEMICALS, HEAD_TYPES, BOTTOM_TYPES, NOZZLE_STANDARDS,
-  Nozzle, FRPCalculationInput, calculateFRPThickness, getRecommendedResin,
+  Nozzle, FRPCalculationInput, calculateFRPThickness,
   getRecommendedHeadType, getRecommendedBottomType, getResinName,
 } from '@/lib/frpCalculator';
 import { RESIN_GUIDES } from '@/lib/manufacturerResinGuides';
+import ResinReview from '@/features/worldtech/ResinReview';
 
 export const FRPThicknessCalculator = () => {
   const [designStandard, setDesignStandard] = useState<DesignStandard>('rtp-1');
@@ -20,11 +21,10 @@ export const FRPThicknessCalculator = () => {
   const [concentration, setConcentration] = useState<number>(100);
   const [temperature, setTemperature] = useState<number>(25);
   const [resinType, setResinType] = useState<ResinType>('vinyl-ester');
-  const [useRecommendedResin, setUseRecommendedResin] = useState<boolean>(true);
   const [innerDiameter, setInnerDiameter] = useState<number>(2000);
   const [height, setHeight] = useState<number>(4000);
   const [designPressure, setDesignPressure] = useState<number>(0.1);
-  const [vacuumPressure, setVacuumPressure] = useState<number>(0);
+  const [vacuumPressure, setVacuumPressure] = useState<number>(0.101325);
   const [headType, setHeadType] = useState<string>('flat');
   const [useRecommendedHead, setUseRecommendedHead] = useState<boolean>(true);
   const [bottomType, setBottomType] = useState<string>('flat');
@@ -35,11 +35,10 @@ export const FRPThicknessCalculator = () => {
   const [newNozzleQuantity, setNewNozzleQuantity] = useState<number>(1);
   const [showResults, setShowResults] = useState<boolean>(false);
 
-  const recommendedResin = useMemo(() => getRecommendedResin(chemicalId, concentration, temperature), [chemicalId, concentration, temperature]);
   const recommendedHead = useMemo(() => getRecommendedHeadType(innerDiameter, height, designPressure, vacuumPressure), [innerDiameter, height, designPressure, vacuumPressure]);
   const recommendedBottom = useMemo(() => getRecommendedBottomType(innerDiameter, height, designPressure), [innerDiameter, height, designPressure]);
 
-  const effectiveResin = useRecommendedResin ? recommendedResin : resinType;
+  const effectiveResin = resinType;
   const effectiveHead = useRecommendedHead ? recommendedHead : headType;
   const effectiveBottom = useRecommendedBottom ? recommendedBottom : bottomType;
 
@@ -92,21 +91,19 @@ export const FRPThicknessCalculator = () => {
             <div className="space-y-2"><Label>운전 온도 (°C)</Label><Input type="number" value={temperature} onChange={(e) => setTemperature(Number(e.target.value))} /></div>
           </div>
           {selectedChemical && <div className="flex gap-4 text-sm text-muted-foreground"><span>기존 참고 농도 기준: {selectedChemical.maxConcentration}%</span><span>기존 참고 온도 기준: {selectedChemical.maxTemperature}°C</span></div>}
-          <p className="text-sm text-amber-700 dark:text-amber-300">위 값과 아래 자동 추천은 기존 계산기의 일반 가정이며 제조사 승인 사용조건이 아닙니다. 제품별 화학약품·농도·온도는 <a href="/chemical-resistance" className="underline">제조사별 원문 조건 조회</a>에서 별도로 확인하세요.</p>
+          <p className="text-sm text-amber-700 dark:text-amber-300">위 농도·온도 기준은 기존 계산기의 출처 미확인 참고값이며 제조사 승인 사용조건이 아닙니다. 아래에서 제조사별 제품 조건을 따로 대조하세요.</p>
           <div className="flex flex-wrap gap-3 text-xs">{RESIN_GUIDES.map(g => <a key={g.id} href={g.url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{g.vendor} 원문 사진 PDF ↗</a>)}</div>
         </CardContent>
       </Card>
+
+      <ResinReview />
 
       {/* Resin Selection */}
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><CircleDot className="w-5 h-5" />수지 선택</CardTitle></CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center gap-4 p-3 bg-muted/50 rounded-lg"><span className="text-sm">기존 가정 기반 추천 (제조사 검증 아님):</span><Badge variant="secondary">{getResinName(recommendedResin)}</Badge></div>
-          <div className="flex gap-4">
-            <Button variant={useRecommendedResin ? 'default' : 'outline'} onClick={() => setUseRecommendedResin(true)}>추천 사용</Button>
-            <Button variant={!useRecommendedResin ? 'default' : 'outline'} onClick={() => setUseRecommendedResin(false)}>직접 선택</Button>
-          </div>
-          {!useRecommendedResin && (
+          <p className="text-sm text-muted-foreground">기존 계산용 일반 수지 분류를 직접 선택합니다. 위 제조사 제품 후보가 이 분류의 적층 물성이나 두께를 승인하지는 않습니다.</p>
+          {(
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {(['general-vinyl', 'vinyl-ester', 'novolac'] as ResinType[]).map(r => (
                 <button key={r} type="button" onClick={() => setResinType(r)} className={`p-3 rounded-lg border-2 text-center transition-all ${resinType === r ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50'}`}>{getResinName(r)}</button>
@@ -124,7 +121,7 @@ export const FRPThicknessCalculator = () => {
             <div className="space-y-2"><Label>내경 (mm)</Label><Input type="number" value={innerDiameter} onChange={(e) => setInnerDiameter(Number(e.target.value))} min={100} /></div>
             <div className="space-y-2"><Label>높이 (mm)</Label><Input type="number" value={height} onChange={(e) => setHeight(Number(e.target.value))} min={100} /></div>
             <div className="space-y-2"><Label>설계 압력 (MPa)</Label><Input type="number" value={designPressure} onChange={(e) => setDesignPressure(Number(e.target.value))} step={0.01} min={0} /></div>
-            <div className="space-y-2"><Label>진공 압력 (MPa, 절대)</Label><Input type="number" value={vacuumPressure} onChange={(e) => setVacuumPressure(Number(e.target.value))} step={0.01} min={0} /></div>
+            <div className="space-y-2"><Label>내부 절대압 (MPa abs, 대기압 0.101325)</Label><Input type="number" value={vacuumPressure} onChange={(e) => setVacuumPressure(Number(e.target.value))} step={0.01} min={0} /></div>
           </div>
           <Separator />
           {/* Head Type */}
@@ -174,8 +171,8 @@ export const FRPThicknessCalculator = () => {
       {showResults && (
         <Card className="border-primary">
           <CardHeader className="bg-primary/5">
-            <CardTitle className="text-2xl">엔지니어링 리포트</CardTitle>
-            <div className="flex gap-2"><Badge>{designStandard === 'rtp-1' ? 'RTP-1' : 'ASME Section X'}</Badge><Badge variant="outline">{getResinName(effectiveResin)}</Badge></div>
+            <CardTitle className="text-2xl">기존 산출식 참고 결과</CardTitle>
+            <div className="flex gap-2"><Badge variant="outline">기존 산출식 참고 · 규격 적합 미판정 ({designStandard === 'rtp-1' ? 'RTP-1' : 'ASME Section X'} 선택)</Badge><Badge variant="outline">{getResinName(effectiveResin)}</Badge></div>
           </CardHeader>
           <CardContent className="space-y-6 pt-6">
             {result.warnings.length > 0 && (
@@ -189,9 +186,9 @@ export const FRPThicknessCalculator = () => {
               <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">상판 설계</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">상판 두께:</span><span className="font-medium">{result.headThickness} mm</span><span className="text-muted-foreground">상판 중량:</span><span className="font-medium">{result.headWeight} kg</span><span className="text-muted-foreground">상판 형식:</span><span className="font-medium">{HEAD_TYPES.find(h => h.id === effectiveHead)?.name}</span></div></div>
               <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">하판 설계</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">하판 두께:</span><span className="font-medium">{result.bottomThickness} mm</span><span className="text-muted-foreground">하판 중량:</span><span className="font-medium">{result.bottomWeight} kg</span><span className="text-muted-foreground">하판 형식:</span><span className="font-medium">{BOTTOM_TYPES.find(h => h.id === effectiveBottom)?.name || (effectiveBottom === 'flat' ? '평판' : '경판')}</span></div></div>
               <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">총 중량 & 표면적</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">총 중량:</span><span className="font-medium text-lg text-primary">{result.totalWeight} kg</span><span className="text-muted-foreground">표면적:</span><span className="font-medium">{result.totalSurfaceArea} m²</span></div></div>
-              <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">후프 보강</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">상태:</span><span className="font-medium">{result.hoopReinforcement.required ? <Badge>필요</Badge> : <Badge variant="secondary">불필요</Badge>}</span>{result.hoopReinforcement.required && <><span className="text-muted-foreground">사이즈:</span><span className="font-medium">{result.hoopReinforcement.size}</span><span className="text-muted-foreground">간격:</span><span className="font-medium">{result.hoopReinforcement.spacing} mm</span><span className="text-muted-foreground">개수:</span><span className="font-medium">{result.hoopReinforcement.count}개</span></>}{result.stiffenerRings > 0 && <><span className="text-muted-foreground">보강 링:</span><span className="font-medium">{result.stiffenerRings}개</span></>}</div></div>
-              <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">안전 여유</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">안전률:</span><span className="font-medium">{result.safetyFactor}:1</span><span className="text-muted-foreground">부식 여유:</span><span className="font-medium">{result.corrosionAllowance} mm</span></div></div>
-              <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">압력 설계</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">최대 허용 작동 압력:</span><span className="font-medium">{result.maxAllowableWorkingPressure} MPa</span><span className="text-muted-foreground">수압 시험 압력:</span><span className="font-medium">{result.hydrostaticTestPressure} MPa</span></div></div>
+              <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">후프 보강 (기존 추정)</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">기존 산출 조건:</span><span className="font-medium">{result.hoopReinforcement.required ? '해당' : '해당 없음'}</span>{result.hoopReinforcement.required && <><span className="text-muted-foreground">추정 사이즈:</span><span className="font-medium">{result.hoopReinforcement.size}</span><span className="text-muted-foreground">추정 간격:</span><span className="font-medium">{result.hoopReinforcement.spacing} mm</span><span className="text-muted-foreground">추정 개수:</span><span className="font-medium">{result.hoopReinforcement.count}개</span></>}{result.stiffenerRings > 0 && <><span className="text-muted-foreground">보강 링 추정:</span><span className="font-medium">{result.stiffenerRings}개</span></>}</div><p className="text-xs text-muted-foreground">구조 필요 여부 및 규격 적합은 미판정입니다.</p></div>
+              <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">기존 산출 가정</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">가정 계수:</span><span className="font-medium">{result.safetyFactor}:1 (승인값 아님)</span><span className="text-muted-foreground">가정 두께:</span><span className="font-medium">{result.corrosionAllowance} mm</span></div></div>
+              <div className="space-y-3"><h3 className="font-semibold text-lg border-b pb-2">압력 설계</h3><div className="grid grid-cols-2 gap-2 text-sm"><span className="text-muted-foreground">최대 허용 작동 압력·수압 시험 압력:</span><span className="font-medium">미판정</span><span className="text-muted-foreground">외압 좌굴·노즐 보강:</span><span className="font-medium">별도 검토 필요</span></div></div>
               {/* Laminate Structure */}
               <div className="space-y-3 md:col-span-2">
                 <h3 className="font-semibold text-lg border-b pb-2">적층 구조</h3>
@@ -215,13 +212,13 @@ export const FRPThicknessCalculator = () => {
                     { label: '내식층', value: result.corrosionLayerThickness },
                     { label: '이음부 S.W', value: result.jointSW },
                     { label: '이음부 C.B', value: result.jointCB },
-                    { label: 'L/L', value: result.linerLayer },
+                    { label: 'L/L (러그 별도 확인)', value: null },
                     { label: '후프', value: result.hoopThickness },
                   ].map(item => (
                     <div key={item.label} className="p-3 bg-primary/5 border border-primary/20 rounded-lg text-center">
                       <div className="text-xs text-muted-foreground">{item.label}</div>
-                      <div className="font-bold text-lg">{item.value}</div>
-                      <div className="text-xs text-muted-foreground">mm</div>
+                      <div className="font-bold text-lg">{item.value ?? '미확인'}</div>
+                      {item.value !== null && <div className="text-xs text-muted-foreground">mm</div>}
                     </div>
                   ))}
                 </div>
@@ -229,7 +226,7 @@ export const FRPThicknessCalculator = () => {
               {/* Nozzle Reinforcement */}
               {nozzles.length > 0 && (
                 <div className="space-y-3 md:col-span-2">
-                  <h3 className="font-semibold text-lg border-b pb-2">노즐 보강</h3>
+                <h3 className="font-semibold text-lg border-b pb-2">노즐 보강 (기존 추정 · 적합 미판정)</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                     {nozzles.map(n => {
                       const r = result.nozzleReinforcement.find(nr => nr.nozzleId === n.id);

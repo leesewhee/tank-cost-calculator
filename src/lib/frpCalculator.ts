@@ -100,8 +100,6 @@ export interface FRPCalculationResult {
   stiffenerRings: number;
   safetyFactor: number;
   corrosionAllowance: number;
-  maxAllowableWorkingPressure: number;
-  hydrostaticTestPressure: number;
   innerLinerThickness: number;
   structuralLayerThickness: number;
   outerLayerThickness: number;
@@ -112,7 +110,7 @@ export interface FRPCalculationResult {
   corrosionLayerThickness: number;
   jointSW: number;
   jointCB: number;
-  linerLayer: number;
+  linerLayer: null;
   hoopThickness: number;
   nozzleReinforcement: { nozzleId: string; reinforcementThickness: number; reinforcementDiameter: number; }[];
   warnings: string[];
@@ -128,17 +126,8 @@ export const getResinName = (resinType: ResinType): string => {
   return RESIN_PROPERTIES[resinType].name;
 };
 
-export const getRecommendedResin = (chemicalId: string, concentration: number, temperature: number): ResinType => {
-  const chemical = CHEMICALS.find(c => c.id === chemicalId);
-  if (!chemical) return 'vinyl-ester';
-  if (concentration > chemical.maxConcentration * 0.8 || temperature > chemical.maxTemperature * 0.8) {
-    return 'novolac';
-  }
-  return chemical.recommendedResin;
-};
-
 export const getRecommendedHeadType = (diameter: number, height: number, designPressure: number, vacuumPressure: number): string => {
-  if (designPressure > 0.5 || vacuumPressure > 0.05) return '2-1-elliptical';
+  if (designPressure > 0.5 || Math.max(0.101325 - vacuumPressure, 0) > 0.05) return '2-1-elliptical';
   const aspectRatio = height / diameter;
   if (aspectRatio > 2) return '2-1-elliptical';
   if (aspectRatio > 1) return '10-percent-dish';
@@ -162,10 +151,10 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
 
   if (chemical) {
     if (input.concentration > chemical.maxConcentration) {
-      warnings.push(`농도가 ${chemical.name}의 최대 허용치(${chemical.maxConcentration}%)를 초과합니다.`);
+      warnings.push(`농도가 기존 참고값 ${chemical.name}의 농도(${chemical.maxConcentration}%)를 초과합니다. 제조사 원문 확인 필요.`);
     }
     if (input.temperature > chemical.maxTemperature) {
-      warnings.push(`온도가 ${chemical.name}의 최대 허용치(${chemical.maxTemperature}°C)를 초과합니다.`);
+      warnings.push(`온도가 기존 참고값 ${chemical.name}의 온도(${chemical.maxTemperature}°C)를 초과합니다. 제조사 원문 확인 필요.`);
     }
   }
 
@@ -217,13 +206,14 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
   bottomThickness = Math.max(bottomThickness, 10);
   bottomThickness = Math.ceil(bottomThickness * 2) / 2;
 
-  const vacuumCritical = input.vacuumPressure > 0.03;
+  const vacuumDifferential = Math.max(0.101325 - input.vacuumPressure, 0);
+  const vacuumCritical = vacuumDifferential > 0.03;
   let stiffenerRings = 0;
   if (vacuumCritical) {
     const bucklingPressure = (2.6 * resinProps.modulus * Math.pow(shellThickness / input.innerDiameter, 2.5)) / 1000;
-    if (input.vacuumPressure > bucklingPressure * 0.5) {
+    if (vacuumDifferential > bucklingPressure * 0.5) {
       stiffenerRings = Math.ceil(input.height / 1500);
-      warnings.push(`진공 압력으로 인해 ${stiffenerRings}개의 보강 링이 필요합니다.`);
+      warnings.push(`기존 산출식의 보강 링 추정값 ${stiffenerRings}개입니다. 외압 좌굴 및 보강 치수는 미판정입니다.`);
     }
   }
 
@@ -256,8 +246,6 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
   const outerLayerThickness = 1.5;
   const structuralLayerThickness = shellThickness - innerLinerThickness - outerLayerThickness;
 
-  const maxAllowableWorkingPressure = (allowableStress * shellThickness) / radius;
-  const hydrostaticTestPressure = Math.max(lowerPressure * 1.5, lowerPressure + 0.1);
 
   const nozzleReinforcement = input.nozzles.map(nozzle => {
     const nozzleDiameter = getNozzleDiameter(nozzle.standard, nozzle.size);
@@ -275,7 +263,8 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
   const corrosionLayerThickness = innerLinerThickness;
   const jointSW = Math.ceil((shellLowerThickness * 1.2) * 2) / 2;
   const jointCB = Math.ceil((shellLowerThickness * 1.1) * 2) / 2;
-  const linerLayer = innerLinerThickness;
+  // 러그 L/L은 내식층 두께에서 도출할 수 없다.
+  const linerLayer = null;
   const hoopThicknessValue = hoopReinforcement.required ? Math.ceil((shellLowerThickness * 1.3) * 2) / 2 : 0;
 
   return {
@@ -285,8 +274,6 @@ export const calculateFRPThickness = (input: FRPCalculationInput): FRPCalculatio
     totalWeight: Math.round(totalWeight),
     totalSurfaceArea: Math.round(totalSurfaceArea * 100) / 100,
     hoopReinforcement, stiffenerRings, safetyFactor, corrosionAllowance,
-    maxAllowableWorkingPressure: Math.round(maxAllowableWorkingPressure * 1000) / 1000,
-    hydrostaticTestPressure: Math.round(hydrostaticTestPressure * 1000) / 1000,
     innerLinerThickness,
     structuralLayerThickness: Math.round(structuralLayerThickness * 10) / 10,
     outerLayerThickness,

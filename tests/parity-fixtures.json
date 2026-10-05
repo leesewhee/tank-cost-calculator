@@ -1,0 +1,9724 @@
+[
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hard-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 34.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sulfuric-acid",
+      "concentration": 81.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 30.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "nitric-acid",
+      "concentration": 70.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "phosphoric-acid",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 0.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-2000SE / KRF-2000SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 21.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 85.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "methanol",
+      "concentration": 40.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR841L / SR841H"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetic-acid",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "acetone",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 30.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "methanol",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR841L / SR841H"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR841L / SR841H"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "nitric-acid",
+      "concentration": 40.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 85.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "phosphoric-acid",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "saltwater",
+      "concentration": 25,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hydroxide",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 5.25,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 18.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "R585",
+      "SR825L / SR825H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 70.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sulfuric-acid",
+      "concentration": 80.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE",
+      "SR819SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "toluene",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "di-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "R280",
+      "R470",
+      "R585",
+      "SR825L / SR825H",
+      "SR841L / SR841H",
+      "SR870SE"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "R585"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "distilled-water",
+      "concentration": 100.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 50.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "acetic-acid",
+      "concentration": 75.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 1.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 5.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 10.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 15.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 20.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 25.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 32.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 36.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": -1,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": -1,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 25,
+      "mixture": false
+    },
+    "candidates": [
+      "HETRON 942/35",
+      "HETRON 980/35",
+      "HETRON FR998/35",
+      "HETRON 970/35"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 25,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 55,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 55,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 100,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 100,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 130,
+      "mixture": false
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "hydrochloric-acid",
+      "concentration": 37.0,
+      "temperature": 130,
+      "mixture": true
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 7
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 11
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "폴린트",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 12
+    },
+    "candidates": [
+      "RF-1001 / KRF-1001",
+      "RF-2000SE / KRF-2000SE",
+      "RF-1051 / KRF-1051"
+    ]
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 7
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 11
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "세원화성",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 12
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 7
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 11
+    },
+    "candidates": []
+  },
+  {
+    "input": {
+      "manufacturer": "ASHLAND",
+      "chemical": "sodium-hypochlorite",
+      "concentration": 10,
+      "temperature": 25,
+      "ph": 12
+    },
+    "candidates": []
+  }
+]
