@@ -12,6 +12,7 @@ import {
   Nozzle, FRPCalculationInput, calculateFRPThickness, getRecommendedResin,
   getRecommendedHeadType, getRecommendedBottomType, getResinName,
 } from '@/lib/frpCalculator';
+import { RESIN_GUIDES } from '@/lib/manufacturerResinGuides';
 
 export const FRPThicknessCalculator = () => {
   const [designStandard, setDesignStandard] = useState<DesignStandard>('rtp-1');
@@ -90,7 +91,9 @@ export const FRPThicknessCalculator = () => {
             <div className="space-y-2"><Label>농도 (%)</Label><Input type="number" value={concentration} onChange={(e) => setConcentration(Number(e.target.value))} min={0} max={100} /></div>
             <div className="space-y-2"><Label>운전 온도 (°C)</Label><Input type="number" value={temperature} onChange={(e) => setTemperature(Number(e.target.value))} /></div>
           </div>
-          {selectedChemical && <div className="flex gap-4 text-sm text-muted-foreground"><span>최대 허용 농도: {selectedChemical.maxConcentration}%</span><span>최대 허용 온도: {selectedChemical.maxTemperature}°C</span></div>}
+          {selectedChemical && <div className="flex gap-4 text-sm text-muted-foreground"><span>기존 참고 농도 기준: {selectedChemical.maxConcentration}%</span><span>기존 참고 온도 기준: {selectedChemical.maxTemperature}°C</span></div>}
+          <p className="text-sm text-amber-700 dark:text-amber-300">위 값과 아래 자동 추천은 기존 계산기의 일반 가정이며 제조사 승인 사용조건이 아닙니다. 제품별 화학약품·농도·온도는 <a href="/chemical-resistance" className="underline">제조사별 원문 조건 조회</a>에서 별도로 확인하세요.</p>
+          <div className="flex flex-wrap gap-3 text-xs">{RESIN_GUIDES.map(g => <a key={g.id} href={g.url} target="_blank" rel="noopener noreferrer" className="text-primary underline">{g.vendor} 원문 사진 PDF ↗</a>)}</div>
         </CardContent>
       </Card>
 
@@ -98,7 +101,7 @@ export const FRPThicknessCalculator = () => {
       <Card>
         <CardHeader><CardTitle className="flex items-center gap-2"><CircleDot className="w-5 h-5" />수지 선택</CardTitle></CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center gap-4 p-3 bg-muted/50 rounded-lg"><span className="text-sm">추천 수지:</span><Badge variant="secondary">{getResinName(recommendedResin)}</Badge></div>
+          <div className="flex items-center gap-4 p-3 bg-muted/50 rounded-lg"><span className="text-sm">기존 가정 기반 추천 (제조사 검증 아님):</span><Badge variant="secondary">{getResinName(recommendedResin)}</Badge></div>
           <div className="flex gap-4">
             <Button variant={useRecommendedResin ? 'default' : 'outline'} onClick={() => setUseRecommendedResin(true)}>추천 사용</Button>
             <Button variant={!useRecommendedResin ? 'default' : 'outline'} onClick={() => setUseRecommendedResin(false)}>직접 선택</Button>
